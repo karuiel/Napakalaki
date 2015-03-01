@@ -7,7 +7,7 @@ package napakalaki;
 
 /**
  *
- * @author miguemc
+ * @author miguemc y maria del mar
  */
 public enum TreasureKind {
     ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE, NECKLACE
