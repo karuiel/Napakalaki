@@ -16,10 +16,10 @@ public class PruebaNapakalaki {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        Prize premio=new Prize(3,2);
-        ArrayList<TreasureKind> vTreasures= new ArrayList();
-        ArrayList<TreasureKind> hTreasures= new ArrayList();
+
+        Prize premio = new Prize(3,2);
+        ArrayList<TreasureKind> vTreasures = new ArrayList();
+        ArrayList<TreasureKind> hTreasures = new ArrayList();
         
         TreasureKind tesoro = TreasureKind.ARMOR;
         TreasureKind cosa = TreasureKind.HELMET;

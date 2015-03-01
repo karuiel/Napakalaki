@@ -9,19 +9,24 @@ package napakalaki;
  *
  * @author miguemc
  */
+
+//Aquí solo he cambiado la cabecera del constructor
 public class Monster {
+    
     private String name;
     private int combatLevel;
     private Prize price;
     private BadConsequence bc;
     
-    public Monster(String newName, int newLevel,
-            BadConsequence newBc,Prize newPrice){
-        name = newName;
-        combatLevel=newLevel;
-        bc=newBc;
-        price=newPrice;
+    public Monster(String name, int level,
+                    BadConsequence bc,Prize price){
+        this.name = name;
+        this.combatLevel = level;
+        this.bc = bc;
+        this.price = price;
     }
+    
+    //-------------------------------------Getters----------------------------------------------
     
     public String getName(){
         return name;
@@ -32,8 +37,9 @@ public class Monster {
         
     }
     public String toString(){
-        return "Name = " + name + "Combat level= " + 
-                Integer.toString(combatLevel) + "Prize=("+ price.toString()+" ) " +
+        return "Name = " + name + 
+                "Combat level= " + Integer.toString(combatLevel) +
+                "Prize=("+ price.toString()+" ) " +
                 "Bad consequence= ( " + bc.toString()+ " ) ";
     }
     
