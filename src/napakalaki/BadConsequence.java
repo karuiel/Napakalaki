@@ -11,14 +11,7 @@ import java.util.Iterator;
  *
  * @author miguemc
  */
-/*
-En los constructores he cambiado los parámetros también, pero hay que inicializar todas las variables, 
-no solo las que se pasan como parámetro, que lastra dijo en clase el viernes que si hay cosas en 
-estado no válido quita puntos. Para el método toString pongo el mío comentado al final de la clase para
-que le heches un ojo y ya cuando eso lo vemos.
 
-He puesto lo que getters y constructors porque queda to fucker jajajaj
-*/
 public class BadConsequence {
     
   private String text;

@@ -10,7 +10,6 @@ package napakalaki;
  * @author miguemc
  */
 
-//Aquí solo he cambiado la cabecera del constructor
 public class Monster {
     
     private String name;
@@ -29,13 +28,21 @@ public class Monster {
     //-------------------------------------Getters----------------------------------------------
     
     public String getName(){
-        return name;
-        
+        return name;     
     }    
+    
     public int getCombatLevel(){
-        return combatLevel;
-        
+        return combatLevel;     
     }
+    
+    public BadConsequence getBadConsequence(){
+        return this.bc;
+    }
+    
+    public Prize getPrize(){
+        return this.price;
+    }
+    
     public String toString(){
         return "Name = " + name + 
                 "Combat level= " + Integer.toString(combatLevel) +
