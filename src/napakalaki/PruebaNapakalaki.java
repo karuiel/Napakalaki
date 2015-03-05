@@ -125,6 +125,33 @@ public class PruebaNapakalaki {
                 true);
         prize = new Prize(2,1);
         monstruos.add(new Monster("Los hondos", 8, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("Pierdes dos niveles y dos tesoros ocultos" ,2,
+               0,2);
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Semillas Cthulhu", 4, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("Te intentas escaquear."
+                + "Pierdes una mano visible" ,0,
+                new ArrayList(Arrays.asList(TreasureKind.ONEHAND)), 
+                new ArrayList());
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Dameargo", 1, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("Da mucho asquito.Pierdes 3 niveles" ,3,
+                0, 0);
+        prize = new Prize(1,1);
+        monstruos.add(new Monster("Pollipólipo volante", 3, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("No le hace gracia que pronuncien mal su nombre."
+                + "Estas muerto" ,true);
+        prize = new Prize(3,1);
+        monstruos.add(new Monster("Yskhtihyssg-Goth", 12, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("La familia te atrapa. Estas muerto" ,true);
+        prize = new Prize(4,1);
+        monstruos.add(new Monster("Familia feliz", 1, badConsequence, prize));
+        
         //Consultas
         
         System.out.println("\nLos monstruos cuyo buen rollo implica una ganancia de más de dos "+
