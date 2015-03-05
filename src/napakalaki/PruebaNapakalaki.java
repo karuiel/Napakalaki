@@ -119,6 +119,12 @@ public class PruebaNapakalaki {
                 new ArrayList());
         prize = new Prize(1,1);
         monstruos.add(new Monster("Bicéfalo", 20, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("Estos monstruos resultan bastantes superficiales y "
+                + "te aburren mortalmente. Estas muerto." ,
+                true);
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Los hondos", 8, badConsequence, prize));
         //Consultas
         
         System.out.println("\nLos monstruos cuyo buen rollo implica una ganancia de más de dos "+
