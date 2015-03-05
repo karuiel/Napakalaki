@@ -83,21 +83,18 @@ public class BadConsequence {
   
   public String toString(){
       String part1,part2,part3;
-      Iterator<TreasureKind> vTreasuresIterator= specificVisibleTreasures.iterator();
-      Iterator<TreasureKind> hTreasuresIterator= specificHiddenTreasures.iterator();
+      
       part1="Text= "+ text + "Levels= "+ Integer.toString(levels)+
               "Visible treasures= " + Integer.toString(nVisibleTreasures)+
               "Invisible treasures= "+ Integer.toString(nHiddenTreasures)+
               "Death= "+ Boolean.toString(death) + "Specific visible treasures=";
               part2= " ";
-               while(vTreasuresIterator.hasNext()){
-                 TreasureKind vElemento = vTreasuresIterator.next();
+               for(TreasureKind vElemento : specificVisibleTreasures){
                  part2+=vElemento.toString()+" ";
               }
               part1 = part1+part2+"Specific hidden treasures =";
               part3= " ";
-              while(hTreasuresIterator.hasNext()){
-                  TreasureKind hElemento= hTreasuresIterator.next();
+              for(TreasureKind hElemento : specificHiddenTreasures){
                   part3+=hElemento.toString() + " ";
               }
               return part1+part3;

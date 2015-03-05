@@ -80,7 +80,7 @@ public class PruebaNapakalaki {
         
         
         //cambiar arrayList
-        badConsequence = new BadConsequence("Pierdes todos tus tesoros",0,
+        badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0,
                 new ArrayList(Arrays.asList(TreasureKind.HELMET)), 
                 new ArrayList());
         prize = new Prize(3,1);
