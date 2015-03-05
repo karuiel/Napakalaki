@@ -82,55 +82,35 @@ public class BadConsequence {
   }
   
   public String toString(){
-      String part1,part2,part3;
+      String output;
       
-      part1="Text= "+ text + "Levels= "+ Integer.toString(levels)+
-              "Visible treasures= " + Integer.toString(nVisibleTreasures)+
-              "Invisible treasures= "+ Integer.toString(nHiddenTreasures)+
-              "Death= "+ Boolean.toString(death) + "Specific visible treasures=";
-              part2= " ";
-               for(TreasureKind vElemento : specificVisibleTreasures){
-                 part2+=vElemento.toString()+" ";
-              }
-              part1 = part1+part2+"Specific hidden treasures =";
-              part3= " ";
-              for(TreasureKind hElemento : specificHiddenTreasures){
-                  part3+=hElemento.toString() + " ";
-              }
-              return part1+part3;
+      output ="Text = " + text + 
+              "\nLevels = "+ Integer.toString(levels) +
+              "\nVisible treasures = " + Integer.toString(nVisibleTreasures)+
+              "\nHidden treasures = " + Integer.toString(nHiddenTreasures)+
+              "\nDeath= " + Boolean.toString(death) +
+              "\nSpecific visible treasures = ";
+              
+      for(TreasureKind vElement : specificVisibleTreasures){
+          output += vElement.toString() + " ";
+      }
+      
+      //Caso en que specificVisibleTreasures está vacío
+      if(specificVisibleTreasures.isEmpty()){
+            output += "nil\n";
+      }
+      
+      output += "Specific hidden treasures = ";
+              
+      for(TreasureKind hElement : specificHiddenTreasures){
+         output += hElement.toString() + " ";
+      }
+      
+      //Caso en que specificHiddenTreasures está vacío
+      if(specificHiddenTreasures.isEmpty()){
+         output += "nil\n";
+      }  
+      
+      return output;
   }
-  /*    public String toString(){
-        
-        String output;
-        
-        output = "Text = " + text + 
-                "\nLevels = " + Integer.toString(levels) +
-                "\nnVisibleTreasures = " + Integer.toString(nVisibleTreasures) +
-                "\nnHiddenTreasures = " + Integer.toString(nHiddenTreasures) +
-                "\nDeath = " + Boolean.toString(death) +
-                "\n SpecificHiddenTreasures = ";
-        
-        for(int i = 0; i < specificHiddenTreasures.size(); ++i){
-            output += specificHiddenTreasures.get(i) + "\n";
-        }
-  
-        //Caso en que specificHiddenTreasures está vacío
-        if(specificHiddenTreasures.size() == 0){
-            output += "nil\n";
-        }
-  
-  
-        output += "SpecificVisibleTreasures = ";
-  
-        for(int i = 0; i < specificVisibleTreasures.size(); ++i){
-            output += specificVisibleTreasures.get(i) + "\n";
-        }
-  
-        //Caso en que sprcificVisibleTreasures está vacío
-        if(specificVisibleTreasures.size() == 0){
-            output += "nil\n";
-        }
-  
-        return output;
-    }*/
 }
