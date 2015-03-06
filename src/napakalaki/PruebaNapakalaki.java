@@ -152,8 +152,40 @@ public class PruebaNapakalaki {
         prize = new Prize(4,1);
         monstruos.add(new Monster("Familia feliz", 1, badConsequence, prize));
         
-        //Consultas
+        badConsequence = new BadConsequence("La quinta directiva primaria te obliga a perder"
+                + " dos niveles y un tesoro dos manos visible" ,2,
+                new ArrayList(Arrays.asList(TreasureKind.BOTHHANDS)), 
+                new ArrayList());
+        prize = new Prize(2,1);
+        monstruos.add(new Monster("Roboggoth", 8, badConsequence, prize));
         
+        badConsequence = new BadConsequence("Te asusta en la noche. "
+                + "Pierdes un casco visible" ,0,new ArrayList(Arrays.asList(TreasureKind.HELMET)), 
+                new ArrayList());
+        prize = new Prize(1,1);
+        monstruos.add(new Monster("El espia", 5, badConsequence, prize));
+        
+        badConsequence = new BadConsequence("Menudo susto te llevas. Pierdes "
+                + "dos niveles y cinco tesoros visibles" ,2,5,0);
+        prize = new Prize(1,1);
+        monstruos.add(new Monster("El Lenguas", 20, badConsequence, prize));
+        
+        
+        //Consultas
+        System.out.println("\nLos monstruos cuyo nivel de combate es mayor a 10 son: ");
+        for(Monster monster: monstruos){
+            if(monster.getCombatLevel()>10){
+                System.out.println(monster.toString());
+            }
+        }
+        
+        System.out.println("\nLos monstruos cuyo mal rollo solo implica la perdida de niveles son");
+        for(Monster monster: monstruos){
+            BadConsequence bc = monster.getBadConsequence();
+            if((bc.getNHiddenTreasures()==0)&&(bc.getNVisibleTreasures()==0)&&(bc.getLevel()!=0)){
+                System.out.println(monster.toString());
+            }
+        }
         System.out.println("\nLos monstruos cuyo buen rollo implica una ganancia de más de dos "+
                             "niveles son: ");
         for(int i = 0; i < monstruos.size(); ++i){
