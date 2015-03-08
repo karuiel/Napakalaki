@@ -198,8 +198,20 @@ public class PruebaNapakalaki {
         System.out.println("\nLos monstruos cuyo  mal rollo supone la pérdida de al menos un tesoro ONEHAND son: ");
         for(Monster monster: monstruos){
             BadConsequence bc =  monster.getBadConsequence();
-            if(bc.getNVisibleTreasures() >=1 || bc.getNHiddenTreasures() >= 1){
-                System.out.println(monster.toString());
+            ArrayList<TreasureKind>  visibleTreasures = bc.getSpecificVisibleTreasures();
+            ArrayList<TreasureKind>  hiddenTreasures = bc.getSpecificHiddenTreasures();
+            
+            for(TreasureKind visibles: visibleTreasures ){
+                if(visibles.name() == "ONEHAND"){
+                    System.out.println(monster.toString());
+                }
+                else{
+                    for(TreasureKind invisibles: hiddenTreasures ){
+                        if(invisibles.name() == "ONEHAND"){
+                            System.out.println(monster.toString());
+                        }
+                    }
+                }    
             }
         }
     }
