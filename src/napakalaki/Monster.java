@@ -17,6 +17,8 @@ public class Monster {
     private Prize price;
     private BadConsequence bc;
     
+    //--------------------------------------Constructor--------------------------------------------
+    
     public Monster(String name, int level,
                     BadConsequence bc,Prize price){
         this.name = name;

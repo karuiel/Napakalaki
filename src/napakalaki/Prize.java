@@ -15,6 +15,8 @@ public class Prize {
     private int treasures;
     private int levels;
     
+    //--------------------------------------Constructor--------------------------------------------
+    
     public Prize(int treasures, int levels){
         if(treasures > 0){
             this.treasures = treasures;
