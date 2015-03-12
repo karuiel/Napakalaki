@@ -39,9 +39,9 @@ public class BadConsequence {
   public BadConsequence(String text, boolean death){
       this.text = text;
       this.death = death;
-      this.levels = 0;
-      this.nHiddenTreasures = 0;
-      this.nVisibleTreasures = 0;
+      this.levels = -1;
+      this.nHiddenTreasures = -1;
+      this.nVisibleTreasures = -1;
       this.specificHiddenTreasures = new ArrayList<>();
       this.specificVisibleTreasures = new ArrayList<>();
   }
@@ -51,8 +51,8 @@ public class BadConsequence {
                         ArrayList<TreasureKind> tHidden){
       this.text = text;
       this.levels = levels;
-      this.nVisibleTreasures = tVisible.size();
-      this.nHiddenTreasures = tHidden.size();
+      this.nVisibleTreasures = -1;
+      this.nHiddenTreasures = -1;
       this.specificHiddenTreasures = tHidden;
       this.specificVisibleTreasures = tVisible;
       this.death = false;
