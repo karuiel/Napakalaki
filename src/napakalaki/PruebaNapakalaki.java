@@ -12,15 +12,9 @@ import java.util.Arrays;
  * @author miguemc
  */
 
-/*
-    Faltan por poner los monstruos de la segunda página. Para hacer las dos consultas he implementado
-dos getters de la clase monsters.
-    Hay dos monstruos que no tenía muy claro como ponerles el mal rollo. Y he borrado los comentarios
-que te puse la otra vez. Ejecútalo y mira la salida, funciona, pero queda feo todo pegado, hay que 
-inventarse una forma que sea menos fea, confío en tu instinto de principeso.
+//Hacer comentarios de java y ruby -> pedirselos a Rafa; corregir las consultas y 
+//guardar los resultados en un array, para luego imprimirlo
 
-¡FELIZ NAVIDAD! <3 
-*/
 public class PruebaNapakalaki {
 
     /**
@@ -173,6 +167,7 @@ public class PruebaNapakalaki {
         
         
         //Consultas
+        
         System.out.println("\nLos monstruos cuyo nivel de combate es mayor a 10 son: ");
         for(Monster monster: monstruos){
             if(monster.getCombatLevel() > 10){
@@ -183,7 +178,9 @@ public class PruebaNapakalaki {
         System.out.println("\nLos monstruos cuyo mal rollo solo implica la perdida de niveles son: ");
         for(Monster monster: monstruos){
             BadConsequence bc = monster.getBadConsequence();
-            if((bc.getNHiddenTreasures() == 0) && (bc.getNVisibleTreasures() == 0) && (bc.getLevel()!=0)){
+            if((bc.getNHiddenTreasures() == 0) && (bc.getNVisibleTreasures() == 0) && (bc.getLevel()!=0)
+                    && bc.getSpecificHiddenTreasures().isEmpty() && 
+                    bc.getSpecificVisibleTreasures().isEmpty()){
                 System.out.println(monster.toString());
             }
         }
