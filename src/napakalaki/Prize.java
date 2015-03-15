@@ -1,13 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa un buen rollo
+ *Invariante de representación:
+ *  -El atributo treasures debe ser un entero no negativo
+ *  -El atributo levels debe ser un entero no negativo
  */
 package napakalaki;
 
 /**
  *
- * @author miguemc
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
 public class Prize {
@@ -17,6 +18,12 @@ public class Prize {
     
     //--------------------------------------Constructor--------------------------------------------
     
+    
+    /*
+    *@brief Constructor de la clase
+    *@param int treasures: número de tesoros
+    *@param inr levels: número de niveles
+    */
     public Prize(int treasures, int levels){
         if(treasures > 0){
             this.treasures = treasures;
@@ -35,14 +42,30 @@ public class Prize {
     
     //--------------------------------------Getters-----------------------------------------------
     
+    
+    /*
+    *@brief Método que devuelve el valor del atributo treasures
+    *@return int número de tesoros
+    */
+    
     public int getTreasures(){
         return treasures;
     }
     
+    
+    /*
+    *@brief Método que devuelve el valor del atributo levels
+    *@return int número de niveles
+    */
+    
     public int getLevels(){
         return levels;
     }
-    
+   
+    /*
+    *@brief Método convierte en cadena de texto los atributos del objeto 
+    *@retun String cadena con los valores de los atributos
+    */
     public String toString(){
         return "Treasures = " + Integer.toString(treasures) + 
                 "\nLevels = " + Integer.toString(levels);

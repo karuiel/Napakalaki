@@ -1,25 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
- * @author miguemc
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-//Hacer comentarios de java y ruby -> pedirselos a Rafa; corregir las consultas y 
+// corregir las consultas y 
 //guardar los resultados en un array, para luego imprimirlo
 
 public class PruebaNapakalaki {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
 
         Prize premio = new Prize(3,2);
@@ -42,7 +34,7 @@ public class PruebaNapakalaki {
         Prize prize;
         
         
-        //Declaración de los mosntruos
+        //----------------------Declaración de los mosntruos------------------------
         
         badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta" ,0,
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
@@ -166,7 +158,7 @@ public class PruebaNapakalaki {
         monstruos.add(new Monster("Bicéfalo", 20, badConsequence, prize));
         
         
-        //Consultas
+        //----------------------------------Consultas----------------------------------------------
         
         System.out.println("\nLos monstruos cuyo nivel de combate es mayor a 10 son: ");
         for(Monster monster: monstruos){

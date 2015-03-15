@@ -1,13 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Enumerado con los tipos de tesoros existentes
  */
 package napakalaki;
 
 /**
  *
- * @author miguemc y Mariadel <3
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public enum TreasureKind {
     ARMOR, ONEHAND, BOTHHANDS, HELMET, SHOE, NECKLACE

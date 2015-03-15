@@ -1,7 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa el mal rollo
+ * Invariante de representación:
+ *  -El atributo levels debe ser un entero no negativo
+ *  -El atributo nVisibleTreasures debe ser un entero no negativo
+ *  -El atributo nHiddenTreasures debe ser un entero no negativo
  */
 package napakalaki;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.Iterator;
 
 /**
  *
- * @author miguemc
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
 public class BadConsequence {
@@ -36,6 +38,12 @@ public class BadConsequence {
       
   }
   
+  /*
+   *@brief Constructor con parámetros
+   *@param String text: cadena de texto
+   *@param boolean death: muerte
+  */
+  
   public BadConsequence(String text, boolean death){
       this.text = text;
       this.death = death;
@@ -45,6 +53,14 @@ public class BadConsequence {
       this.specificHiddenTreasures = new ArrayList<>();
       this.specificVisibleTreasures = new ArrayList<>();
   }
+  
+  /*
+   * @brief Constructor con parámetros
+   * @param String text: cadena de texto
+   * @param int levels: número de niveles a perder
+   * @paramArrayList<TreasureKind>tVisible: array con los tesoros visibles
+   * @param ArrayList<TrasureKind> tHidden: array con los tesoros ocultos
+  */
   
   public BadConsequence(String text, int levels,
                         ArrayList<TreasureKind> tVisible, 
@@ -61,34 +77,81 @@ public class BadConsequence {
   
   //--------------------------------------Getters-----------------------------------------------
   
+  /*
+   * @brief Metodo que devuelve el atributo texto
+   * @return String: cadena de texto 
+  */
+  
   public String getText(){
       return text;
   }
+
+  /*
+   * @brief Metodo que devuelve el atributo levels
+   * @return int: número de niveles a perder 
+  */
   
   public int getLevel(){
       return levels;
   }
   
+  /*
+   * @brief Metodo que devuelve el atributo nVisibleTreasures
+   * @return int: número de tesoros visibles a perder 
+  */
+  
   public int getNVisibleTreasures(){
       return nVisibleTreasures;
   }
+  
+  /*
+   * @brief Metodo que devuelve el atributo nHiddenTreasures
+   * @return int: número de tesoros invisibles a perder
+  */
   
   public int getNHiddenTreasures(){
       return nHiddenTreasures;
   }
   
+  
+  /*
+   * @brief Metodo que devuelve el atributo death
+   * @return boolean: true en caso de que el mal rollo implique muerte
+                      false en caso contrario
+  */
+  
   public boolean getDeath(){
       return death;
   }
+  
+  /*
+   * @brief Metodo que devuelve el atributo specificHiddenTreasures 
+   * @return ArrayList<TreasureKind>: Array con el tipo de tesoros invisibles 
+                                      concretos que se pierden
+                                      Será un array vacío en caso de que no se especifiquen      
+  */
   
   public ArrayList<TreasureKind> getSpecificHiddenTreasures(){
       return this.specificHiddenTreasures;
   }
   
   
+  /*
+   * @brief Metodo que devuelve el atributo specificHiddenTreasures 
+   * @return ArrayList<TreasureKind>: Array con el tipo de tesoros visibles 
+                                      concretos que se pierden
+                                      Será un array vacío en caso de que no se especifiquen      
+  */
+  
   public ArrayList<TreasureKind> getSpecificVisibleTreasures(){
       return this.specificVisibleTreasures;
   }
+ 
+  
+  /*
+   * @brief Método para convertir en cadena de texto los atributos del objeto
+   * @return String: cadena de texto con el valor de los atributos
+  */
   
   public String toString(){
       String output;
