@@ -6,36 +6,35 @@ import java.util.Arrays;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-// corregir las consultas y 
-//guardar los resultados en un array, para luego imprimirlo
-
 public class PruebaNapakalaki {
 
     
     public static void main(String[] args) {
-
-        Prize premio = new Prize(3,2);
-        ArrayList<TreasureKind> vTreasures = new ArrayList();
-        ArrayList<TreasureKind> hTreasures = new ArrayList();
         
-        TreasureKind tesoro = TreasureKind.ARMOR;
-        TreasureKind cosa = TreasureKind.HELMET;
-        vTreasures.add(tesoro);
-        hTreasures.add(cosa);
-        BadConsequence malRollo= new BadConsequence("eres feo",4,vTreasures,hTreasures);
-        Monster monstruo= new Monster("monstruo",10,malRollo,premio);
+        //-----------------------------Prueba Sesión 1--------------------------
         
-        System.out.println(premio.toString());
-        System.out.println(malRollo.toString());
-        System.out.println(monstruo.toString());
+        Prize price = new Prize(1,1);
+        System.out.println("Premio creado:");
+        System.out.println(price.toString());
+        
+        String text = "Sientes bichos bajo la ropa. Descarta la armadura visible.";
+        BadConsequence bc1 = new BadConsequence(text,0,1,0);
+        BadConsequence bc2 = new BadConsequence(text,false);
+        
+        System.out.println("Malos rollos creados:");
+        System.out.println(bc1.toString());
+        System.out.println(bc2.toString());
+        
+        Monster myMonster = new Monster("Bichgooth", 2, bc1,price);
+        System.out.println("El monstruo creado es:");
+        System.out.println(myMonster.toString());
+        
+        //----------------------Declaración de los mosntruos------------------------
         
         ArrayList<Monster> monstruos = new ArrayList();
         BadConsequence badConsequence;
         Prize prize;
-        
-        
-        //----------------------Declaración de los mosntruos------------------------
-        
+                
         badConsequence = new BadConsequence("Pierdes tu armadura visible y otra oculta" ,0,
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
                 new ArrayList(Arrays.asList(TreasureKind.ARMOR)));

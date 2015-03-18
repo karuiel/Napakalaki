@@ -27,11 +27,29 @@ public class BadConsequence {
   
   //-------------------------------------Constructors----------------------------------------------
   
+  
+  /*
+   *@brief Constructor con parámetros
+   *@param String text: cadena de texto
+   *@param int levels: número de niveles a perder
+   *@param int nVisible: número de tesoros visibles a perder
+   *@param int nHidden: número de tesoros ocultos a perder
+   */
   public BadConsequence(String text, int levels, int nVisible, int nHidden){
       this.text = text;
       this.levels = levels;
-      this.nVisibleTreasures = nVisible;
-      this.nHiddenTreasures = nHidden;
+      if(nVisible >= 0){
+        this.nVisibleTreasures = nVisible;
+      }  
+      else{
+      this.nVisibleTreasures = 0;
+      }
+      if(nHidden >= 0){
+        this.nHiddenTreasures = nHidden;
+      }
+      else{
+          this.nHiddenTreasures = 0;
+      }
       this.death = false;
       this.specificHiddenTreasures = new ArrayList<>();
       this.specificVisibleTreasures = new ArrayList<>();
@@ -42,8 +60,7 @@ public class BadConsequence {
    *@brief Constructor con parámetros
    *@param String text: cadena de texto
    *@param boolean death: muerte
-  */
-  
+   */
   public BadConsequence(String text, boolean death){
       this.text = text;
       this.death = death;
@@ -60,8 +77,7 @@ public class BadConsequence {
    * @param int levels: número de niveles a perder
    * @paramArrayList<TreasureKind>tVisible: array con los tesoros visibles
    * @param ArrayList<TrasureKind> tHidden: array con los tesoros ocultos
-  */
-  
+   */
   public BadConsequence(String text, int levels,
                         ArrayList<TreasureKind> tVisible, 
                         ArrayList<TreasureKind> tHidden){
@@ -80,8 +96,7 @@ public class BadConsequence {
   /*
    * @brief Metodo que devuelve el atributo texto
    * @return String: cadena de texto 
-  */
-  
+   */ 
   public String getText(){
       return text;
   }
@@ -89,8 +104,7 @@ public class BadConsequence {
   /*
    * @brief Metodo que devuelve el atributo levels
    * @return int: número de niveles a perder 
-  */
-  
+   */ 
   public int getLevel(){
       return levels;
   }
@@ -98,8 +112,7 @@ public class BadConsequence {
   /*
    * @brief Metodo que devuelve el atributo nVisibleTreasures
    * @return int: número de tesoros visibles a perder 
-  */
-  
+   */
   public int getNVisibleTreasures(){
       return nVisibleTreasures;
   }
@@ -107,19 +120,16 @@ public class BadConsequence {
   /*
    * @brief Metodo que devuelve el atributo nHiddenTreasures
    * @return int: número de tesoros invisibles a perder
-  */
-  
+   */  
   public int getNHiddenTreasures(){
       return nHiddenTreasures;
   }
-  
-  
+    
   /*
    * @brief Metodo que devuelve el atributo death
    * @return boolean: true en caso de que el mal rollo implique muerte
                       false en caso contrario
-  */
-  
+   */ 
   public boolean getDeath(){
       return death;
   }
@@ -129,39 +139,34 @@ public class BadConsequence {
    * @return ArrayList<TreasureKind>: Array con el tipo de tesoros invisibles 
                                       concretos que se pierden
                                       Será un array vacío en caso de que no se especifiquen      
-  */
-  
+   */ 
   public ArrayList<TreasureKind> getSpecificHiddenTreasures(){
       return this.specificHiddenTreasures;
   }
-  
-  
+   
   /*
    * @brief Metodo que devuelve el atributo specificHiddenTreasures 
    * @return ArrayList<TreasureKind>: Array con el tipo de tesoros visibles 
                                       concretos que se pierden
                                       Será un array vacío en caso de que no se especifiquen      
-  */
-  
+   */ 
   public ArrayList<TreasureKind> getSpecificVisibleTreasures(){
       return this.specificVisibleTreasures;
   }
- 
-  
+   
   /*
    * @brief Método para convertir en cadena de texto los atributos del objeto
    * @return String: cadena de texto con el valor de los atributos
-  */
-  
+   */ 
   public String toString(){
       String output;
       
       output ="Text = " + text + 
-              "\nLevels = "+ Integer.toString(levels) +
-              "\nVisible treasures = " + Integer.toString(nVisibleTreasures)+
-              "\nHidden treasures = " + Integer.toString(nHiddenTreasures)+
-              "\nDeath= " + Boolean.toString(death) +
-              "\nSpecific visible treasures = ";
+              "\n\tLevels = "+ Integer.toString(levels) +
+              "\n\tVisible treasures = " + Integer.toString(nVisibleTreasures)+
+              "\n\tHidden treasures = " + Integer.toString(nHiddenTreasures)+
+              "\n\tDeath= " + Boolean.toString(death) +
+              "\n\tSpecific visible treasures = ";
               
       for(TreasureKind vElement : specificVisibleTreasures){
           output += vElement.toString() + " ";
@@ -169,10 +174,10 @@ public class BadConsequence {
       
       //Caso en que specificVisibleTreasures está vacío
       if(specificVisibleTreasures.isEmpty()){
-            output += "nil\n";
+            output += "nil";
       }
       
-      output += "Specific hidden treasures = ";
+      output += "\n\tSpecific hidden treasures = ";
               
       for(TreasureKind hElement : specificHiddenTreasures){
          output += hElement.toString() + " ";
@@ -180,7 +185,7 @@ public class BadConsequence {
       
       //Caso en que specificHiddenTreasures está vacío
       if(specificHiddenTreasures.isEmpty()){
-         output += "nil\n";
+         output += "nil";
       }  
       
       return output;

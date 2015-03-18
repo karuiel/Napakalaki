@@ -26,12 +26,16 @@ public class Monster {
      * @param int level: nivel de combate del monstruo
      * @param BadConsequence bc: mal rollo del monstrup
      * @param Prize price: buen rollo del monstruo
-    */
-    
+     */ 
     public Monster(String name, int level,
                     BadConsequence bc,Prize price){
         this.name = name;
-        this.combatLevel = level;
+        if(level >= 0){
+            this.combatLevel = level;
+        }
+        else{
+            this.combatLevel = 0;
+        }
         this.bc = bc;
         this.price = price;
     }
@@ -42,8 +46,7 @@ public class Monster {
     /*
      *@brief Método para obtener el atributo name
      * @return String: nombre del monstruo
-    */
-    
+     */  
     public String getName(){
         return name;     
     }    
@@ -51,8 +54,7 @@ public class Monster {
     /*
      * @brief Método para obtener el atributo combatLevel
      * @return int: nivel de combate del monstruo
-    */
-    
+     */ 
     public int getCombatLevel(){
         return combatLevel;     
     }
@@ -60,8 +62,7 @@ public class Monster {
     /*
      * @brief Método para obtener el atributo bc
      * @return BadConsequence: mal rollo del monstruo
-    */
-    
+     */   
     public BadConsequence getBadConsequence(){
         return this.bc;
     }
@@ -69,8 +70,7 @@ public class Monster {
     /*
      *@brief Método para obtener el atributo price
      * @return Prize: buen rollo del monstruo
-    */
-    
+     */   
     public Prize getPrize(){
         return this.price;
     }
@@ -78,13 +78,11 @@ public class Monster {
   /*
    * @brief Método para convertir en cadena de texto los atributos del objeto
    * @return String: cadena de texto con el valor de los atributos del monstruo
-  */
-    
+   */
     public String toString(){
         return "Name = " + name + 
-                "\nCombat level = " + Integer.toString(combatLevel) +
-                "\nPrize = ("+ price.toString()+" ) " +
-                "\nBad consequence = ( " + bc.toString()+ " ) ";
-    }
-    
+                "\n\tCombat level = " + Integer.toString(combatLevel) +
+                "\n\n\tPrize = ("+ price.toString()+" ) " +
+                "\n\n\tBad consequence = ( " + bc.toString()+ " ) ";
+    }       
 }
