@@ -20,6 +20,9 @@ public class PruebaNapakalaki {
         String text = "Sientes bichos bajo la ropa. Descarta la armadura visible.";
         BadConsequence bc1 = new BadConsequence(text,0,1,0);
         BadConsequence bc2 = new BadConsequence(text,false);
+        BadConsequence bc3 = new BadConsequence(text,8,
+                        new ArrayList(Arrays.asList(TreasureKind.SHOE)),
+                        new ArrayList(Arrays.asList(TreasureKind.HELMET)));
         
         System.out.println("Malos rollos creados:");
         System.out.println(bc1.toString());
