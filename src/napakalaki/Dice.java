@@ -5,13 +5,14 @@
  */
 package napakalaki;
 
+
 /**
  *
  * @author maria
  */
 public class Dice {
 
-    private static final Dice instance = Dice.new();
+    /*private static final Dice instance = Dice.new();
     private Dice(){
         
     }
@@ -21,6 +22,6 @@ public class Dice {
     public int nextNumber(){
         int number = Math.random()*6 + 1;
         return 0;
-    }
+    }*/
     
 }
