@@ -16,6 +16,7 @@ public class Napakalaki {
     private Monster currentMonster;
     private Player currentPlayer;
     private ArrayList<Player> players;
+    
     private Napakalaki(){}
     private void initPlayers(ArrayList<String> names){}
     //private Player nextPlayer(){}
