@@ -190,4 +190,12 @@ public class BadConsequence {
       
       return output;
   }
+  
+  //public boolean isEmpty(){}
+  public boolean kills(){
+      return this.death;
+  }
+  public void substractVisibleTreasure(Treasure t){}
+  public void substractHideenTreasure(Treasure t){}
+  //public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, arrayList<Treasure> h){}
 }
