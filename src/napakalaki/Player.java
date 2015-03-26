@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package napakalaki;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -14,8 +16,8 @@ public class Player {
     private String name;
     private int level;
     private int MAXHIDDENTREASURES = 4;
-    private Treasure hiddenTreasures;
-    private Treasure visibleTreasures;
+    private ArrayList<Treasure> hiddenTreasures;
+    private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence;
     
     private void bringToLive(){}
@@ -27,7 +29,11 @@ public class Player {
     private void setPendingBadConsequence(BadConsequence b){}
     private void die(){}
     private void discardNecklaceIfVisible(){}
-    private void dieIfNoTreasures(){}
+    private void dieIfNoTreasures(){
+        if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty()){
+            this.dead = true;
+        }
+    }
    /* private boolean canIBuyLevlels(int I){}
     protected float computeGoldCoinsValue(ArrayList<Treasure> t){}
     public void applyPrize(Prize p){}
@@ -42,9 +48,13 @@ public class Player {
         return this.level;
     }/*
     public boolean validState(){}
-    public boolean initTreasures(){}
-    public boolean isDead(){}
-    public boolean hasVisibleTreasures(){}*/
+    public boolean initTreasures(){}*/
+    public boolean isDead(){
+        return this.dead;
+    }
+    public boolean hasVisibleTreasures(){
+        return !visibleTreasures.isEmpty();
+    }
     public Player(String name){
         this.name = name;
     }

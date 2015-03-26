@@ -191,7 +191,14 @@ public class BadConsequence {
       return output;
   }
   
-  //public boolean isEmpty(){}
+  public boolean isEmpty(){
+      boolean vacio = false;
+      if(levels == 0  && nVisibleTreasures == 0  && nHiddenTreasures == 0 && !death
+                && !specificVisibleTreasures.isEmpty() && !specificHiddenTreasures.isEmpty()){
+          vacio = true;      
+      }
+      return vacio;
+  }
   public boolean kills(){
       return this.death;
   }

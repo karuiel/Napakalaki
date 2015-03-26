@@ -11,14 +11,15 @@ package napakalaki;
  */
 public class Dice {
 
-    private static final Dice instance = null;
+    private static final Dice instance = Dice.new();
     private Dice(){
         
     }
-   /* public static Dice getInstance(){
+    public static Dice getInstance(){
         return this.instance;
-    }*/
+    }
     public int nextNumber(){
+        int number = Math.random()*6 + 1;
         return 0;
     }
     
