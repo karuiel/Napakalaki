@@ -20,23 +20,44 @@ public class Player {
     private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence;
     
-    private void bringToLive(){}
+    //Hacer
+    private void bringToLive(){
+        this.dead = false;
+    }
     private void incrementLevels(int l){
-        this.level += l;}
+        this.level += l;
+    }
+    
     private void decrementLevels(int l){
         this.level -= l;
     }
-    private void setPendingBadConsequence(BadConsequence b){}
-    private void die(){}
-    private void discardNecklaceIfVisible(){}
+    
+    private void setPendingBadConsequence(BadConsequence b){
+        this.pendingBadConsequence = b;
+    }
+    
+    private void die(){
+    }
+    private void discardNecklaceIfVisible(){
+    }
     private void dieIfNoTreasures(){
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty()){
             this.dead = true;
         }
     }
-   /* private boolean canIBuyLevlels(int I){}
-    protected float computeGoldCoinsValue(ArrayList<Treasure> t){}
-    public void applyPrize(Prize p){}
+    private boolean canIBuyLevlels(int I){
+        return (10 > (level + I));
+    }
+    
+    //NOTA: en el diagrama de clase viene implementado como float; no le veo sentido
+   /* protected int computeGoldCoinsValue(ArrayList<Treasure> t){
+        int coins = 0;
+        for(Treasure treasure: t){
+            coins += treasure.getGoldCoins();
+        }
+        return coins;
+    }*/
+   /* public void applyPrize(Prize p){}
     public CombatResult combat(Monster m){}
     public void applyBadConsequence(BadConsequence bad){}
     public boolean makeTreasureVisible(Treasure t){}
@@ -45,10 +66,31 @@ public class Player {
     public void discardHiddenTreasure(Treasure t){}
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){}*/
     public int getCombatLevel(){
-        return this.level;
-    }/*
-    public boolean validState(){}
-    public boolean initTreasures(){}*/
+        int nivel = this.level;
+        boolean collar = false;
+        for(Treasure vElement : visibleTreasures){
+            if(vElement.getType().name() == "NECKLACE" ){
+                collar = true;
+            }
+        }
+        for(Treasure vElement : visibleTreasures){
+          if(!collar){  
+            nivel += vElement.getMinBonus();
+          }
+          else{
+              nivel += vElement.getMaxBonus();
+          }
+      }
+        return nivel;
+    }
+    public boolean validState(){
+        boolean valid = true;
+        if(hiddenTreasures.size() > 4 || !pendingBadConsequence.isEmpty()){
+            valid = false;
+        }
+        return valid;
+    }
+    //public boolean initTreasures(){}
     public boolean isDead(){
         return this.dead;
     }
