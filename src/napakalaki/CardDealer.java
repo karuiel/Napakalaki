@@ -6,6 +6,9 @@
 package napakalaki;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;         
+
 /**
  *
  * @author maria
@@ -23,9 +26,127 @@ public class CardDealer {
     
     
     private CardDealer(){}
-    private void initTreasureCardDeck(){}
+    private void initTreasureCardDeck(){
+        String name;
+        int goldCoins;
+        int minBonus;
+        int maxBonus;
+        TreasureKind type;
+        
+        name = "¡Sí mi amo!";
+        goldCoins = 0;
+        minBonus = 4;
+        maxBonus = 7;
+        type = TreasureKind.HELMET;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Botas de investigación";
+        goldCoins = 600;
+        minBonus = 3;
+        maxBonus = 4;
+        type = TreasureKind.SHOE;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Capucha de Cthulhu";
+        goldCoins = 500;
+        minBonus = 3;
+        maxBonus = 5;
+        type = TreasureKind.HELMET;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "A prueba de babas";
+        goldCoins = 400;
+        minBonus = 2;
+        maxBonus = 5;
+        type = TreasureKind.ARMOR;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Botas de lluvia ácida";
+        goldCoins = 800;
+        minBonus = 1;
+        maxBonus = 1;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Casco minero";
+        goldCoins = 400;
+        minBonus = 2;
+        maxBonus = 4;
+        type = TreasureKind.HELMET;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Ametralladora Thompson";
+        goldCoins = 600;
+        minBonus = 4;
+        maxBonus = 8;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Camiseta de la UGR";
+        goldCoins = 100;
+        minBonus = 1;
+        maxBonus = 7;
+        type = TreasureKind.ARMOR;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Clavo de rail ferroviario";
+        goldCoins = 400;
+        minBonus = 3;
+        maxBonus = 6;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Cuchillo de sushi arcano";
+        goldCoins = 300;
+        minBonus = 2;
+        maxBonus = 3;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Fez alópodo";
+        goldCoins = 700;
+        minBonus = 3;
+        maxBonus = 5;
+        type = TreasureKind.HELMET;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Hacha prehistórica";
+        goldCoins = 500;
+        minBonus = 2;
+        maxBonus = 5;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "El aparato del Pr. Tesla";
+        goldCoins = 900;
+        minBonus = 4;
+        maxBonus = 8;
+        type = TreasureKind.ARMOR;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Gaita";
+        goldCoins = 500;
+        minBonus = 4;
+        maxBonus = 5;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Insecticida";
+        goldCoins = 300;
+        minBonus = 2;
+        maxBonus = 3;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Escopeta de 3 cañones";
+        goldCoins = 700;
+        minBonus = 4;
+        maxBonus = 6;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+    }
     private void initMonsterCardDeck(){
-        ArrayList<Monster> unusedMonster = new ArrayList();
         BadConsequence badConsequence;
         Prize prize;
                 
@@ -148,9 +269,13 @@ public class CardDealer {
                 "Pierdes 3 niveles y tus tesoros visibles de las manos.",3,
                 Integer.MAX_VALUE,0);
         prize = new Prize(1,1);
-        unusedMonster.add(new Monster("Bicéfalo", 20, badConsequence, prize));}
+        unusedMonster.add(new Monster("Bicéfalo", 20, badConsequence, prize));
+        Collections.shuffle(unusedMonster);
+    }
     private void shuffleTreasures(){}
-    private void shuffleMonsters(){}
+    private void shuffleMonsters(){
+        Collections.shuffle(unusedMonster);
+    }
     public static CardDealer getInstante(){
         return instance;
     }
