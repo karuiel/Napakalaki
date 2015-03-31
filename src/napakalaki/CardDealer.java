@@ -272,7 +272,9 @@ public class CardDealer {
         unusedMonster.add(new Monster("Bicéfalo", 20, badConsequence, prize));
         Collections.shuffle(unusedMonster);
     }
-    private void shuffleTreasures(){}
+    private void shuffleTreasures(){
+        Collections.shuffle(usedTreasures);
+    }
     private void shuffleMonsters(){
         Collections.shuffle(unusedMonster);
     }
@@ -281,7 +283,11 @@ public class CardDealer {
     }
     //public Treasure nextTreasure(){}
     //public Monster nextMonster(){}
-    public void giveTreasureBack(Treasure t){}
-    public void giveMonsterBack(Monster m){}
+    public void giveTreasureBack(Treasure t){
+        usedTreasures.add(t);
+    }
+    public void giveMonsterBack(Monster m){
+        usedMonster.add(m);
+    }
     public void initCards(){}
 }
