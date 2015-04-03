@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 /**
  *
- * @author maria
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public class Napakalaki {
     private static final Napakalaki instance = new Napakalaki();

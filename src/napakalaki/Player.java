@@ -9,7 +9,7 @@
         uno o ningún tesoro de tipo shoe
         uno o ningún tesoro de tipo necklace
         uno o ningún tesoro de tipo bothhands
-        uno dos o ningún tesoro de tipo onehand en caso de no tener ninguno de tipo
+        uno, dos o ningún tesoro de tipo onehand en caso de no tener ninguno de tipo
             bothhands, y ninguno en caso contrario
        
  */
@@ -22,6 +22,10 @@ import java.util.Iterator;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
+//NOTA:metodo bring to live??
+//incrementLevels--> ¿Que pasa si el jugador ya consigue el nivel 10?
+//Constructor--> que asignar en pendingBadConsequence
+//dieifnotreasures--> ¿Solo modifica del atributo death o se encarga de matar al jugador?
 public class Player {
     private boolean dead = true;
     private String name;
@@ -55,11 +59,15 @@ public class Player {
     public int getCombatLevel(){
         int nivel = this.level;
         boolean collar = false;
+        
+        // Bucle de búsqueda del collar
         for(Treasure vElement : visibleTreasures){
             if(vElement.getType().name() == "NECKLACE" ){
                 collar = true;
             }
         }
+        
+        // Bucle de recuento de niveles
         for(Treasure vElement : visibleTreasures){
           if(!collar){  
             nivel += vElement.getMinBonus();
@@ -73,7 +81,6 @@ public class Player {
     
 //--------------------------------------Other methods-----------------------------------------
     
-//NOTA:Hacer
     private void bringToLive(){
         this.dead = false;
     }
@@ -106,11 +113,13 @@ public class Player {
     }
     
     /*
-     * @brief Método para cambiar el estado del jugador a muerto
+     * @brief Método para cambiar el estado del jugador a muerto 
+     *          en caso de que no tenga tesoros
     */
     private void dieIfNoTreasures(){
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty()){
             this.dead = true;
+            //NOTA:llamada al método die cuando esté implementado
         }
     }
     
@@ -130,7 +139,7 @@ public class Player {
      *      no tiene más de 4 tesoros ocultos y no tiene mal rollo pendiente
      * @return boolean: true en caso de que se encuentre en estado válido
      *                  false en caso contrario
-    */
+     */
     public boolean validState(){
         boolean valid = true;
         if(hiddenTreasures.size() > 4 || !pendingBadConsequence.isEmpty()){
@@ -138,7 +147,7 @@ public class Player {
         }
         return valid;
     }
-    //public boolean initTreasures(){}
+
     /*
      * @brief Método para determinar si el jugador está muerto
      * @return boolean true en caso de que esté muerto
@@ -168,6 +177,7 @@ public class Player {
     public void discardVisibleTreasure(Treasure t){}
     public void discardHiddenTreasure(Treasure t){}
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){}*/
+    //public boolean initTreasures(){}
     private void die(){}
     private void discardNecklaceIfVisible(){}      
     //NOTA: en el diagrama de clase viene implementado como float; no le veo sentido

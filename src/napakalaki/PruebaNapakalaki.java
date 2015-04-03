@@ -11,8 +11,45 @@ public class PruebaNapakalaki {
     
     public static void main(String[] args) {
         
-        //-----------------------------Prueba Sesión 1--------------------------
+    // Prueba de las clases de la segunda práctica    
         
+    CardDealer cartas = CardDealer.getInstance();   
+        
+    BadConsequence bc = new BadConsequence("uno",false);
+    if(bc.isEmpty()){
+        System.out.println("bc vacío");
+    }
+    else{
+        System.out.println("bc lleno");
+    }
+    
+    
+    if(bc.kills()){
+        System.out.println("mata");
+    }
+    else{
+        System.out.println("no mata");
+    }
+        
+        
+    Dice dado = Dice.getInstance();        
+        
+    System.out.println(dado.nextNumber());
+
+    Treasure t = new Treasure("tesoro",1000,1,2,TreasureKind.HELMET);
+    System.out.println("Datos del tesoro:");
+    System.out.println(t.getGoldCoins());
+    System.out.println(t.getMaxBonus());
+    System.out.println(t.getMinBonus());
+    System.out.println(t.getName());
+    System.out.println(t.getType());
+   
+    Player jugador = new Player("Maria");
+    System.out.println(jugador.getCombatLevel());
+    
+    
+        //-----------------------------Prueba Sesión 1--------------------------
+     /*   
         Prize price = new Prize(1,1);
         System.out.println("Premio creado:");
         System.out.println(price.toString());
@@ -32,7 +69,7 @@ public class PruebaNapakalaki {
         System.out.println("El monstruo creado es:");
         System.out.println(myMonster.toString());
         
-        //----------------------Declaración de los mosntruos------------------------
+        //----------------------Declaración de los monstruos------------------------
         
         ArrayList<Monster> monstruos = new ArrayList();
         BadConsequence badConsequence;
@@ -207,6 +244,6 @@ public class PruebaNapakalaki {
                     }
                 }    
             }
-        }
+        }*/
     }    
 }

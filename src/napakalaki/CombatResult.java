@@ -5,9 +5,9 @@
  */
 package napakalaki;
 
-/**
+/*
  *
- * @author maria
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public enum CombatResult {
     WINANDWINGAME, WIN, LOSE, LOSEANDESCAPE, LOSEANDDIE

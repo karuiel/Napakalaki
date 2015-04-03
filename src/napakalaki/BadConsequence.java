@@ -189,8 +189,8 @@ public class BadConsequence {
   /*
    * @brief Método para comprobar si el mal rollo está vacío
    * @return boolean: true en caso de que esté vacío
-                      false en caso contrario
-  */
+   *                  false en caso contrario
+   */
   public boolean isEmpty(){
       boolean vacio = false;
       if(levels == 0  && nVisibleTreasures == 0  && nHiddenTreasures == 0 && !death

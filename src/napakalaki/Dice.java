@@ -10,6 +10,7 @@ import java.util.Random;
  *
  * @authorMiguel Morales Castillo y María del Mar Ruiz Martín
  */
+
 public class Dice {
 
     private static final Dice instance = new Dice();
@@ -23,12 +24,15 @@ public class Dice {
         
     }
 
+//------------------------------------Getter------------------------------------------------   
     /*
      * @brief Método para obtener la instancia de la clase
     */
     public static Dice getInstance(){
         return instance;
     }
+
+//-----------------------------------Other methods------------------------------------------    
     
     /*
      * @brief Método para obtener un número

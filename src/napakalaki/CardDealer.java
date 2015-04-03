@@ -14,11 +14,14 @@ import java.util.Collections;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-//NOTA: initTreasureCardDeck; shuffleMonsters; shuffleTreasure;
-//El método usado para barajar es el bueno??
+//NOTA:
+//Terminar de añadir los tesoros
+//hay que cambiar algo de los monstruos añadidos¿?
 //giveback...¿simplemente añade o tiene que barajarse?
 //shuffle array list
+
 public class CardDealer {
+    
     private static final CardDealer instance = new CardDealer();
     private ArrayList<Monster> unusedMonster;
     private ArrayList<Monster> usedMonster;
@@ -26,7 +29,15 @@ public class CardDealer {
     private ArrayList<Treasure> usedTreasures;
     
 //-------------------------------------Constructors---------------------------------------------    
-    private CardDealer(){}
+    
+    private CardDealer(){
+        unusedMonster = new ArrayList<>();
+        usedMonster = new ArrayList<>();
+        unusedTreasures = new ArrayList<>();
+        usedTreasures = new ArrayList<>();
+        initTreasureCardDeck();
+        initMonsterCardDeck();
+    }
     
 //---------------------------------------Other methods----------------------------------------
            
@@ -34,7 +45,7 @@ public class CardDealer {
      * @brief Método para obtener la instancia de la clase CardDeales
      * @return CardDeales instancia
     */
-    public static CardDealer getInstante(){
+    public static CardDealer getInstance(){
         return instance;
     }
     
@@ -158,6 +169,118 @@ public class CardDealer {
         minBonus = 4;
         maxBonus = 6;
         type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Garabato místico";
+        goldCoins = 300;
+        minBonus = 2;
+        maxBonus = 2;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        //NOTA::¿QUE ES BONUSMAYOR?
+        name = "La fuerza de Mr T";
+        goldCoins = 1000;
+        minBonus = 0;
+        maxBonus = 0;
+        type = TreasureKind.NECKLACE;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "La rebeca metálica";
+        goldCoins = 400;
+        minBonus = 2;
+        maxBonus = 3;
+        type = TreasureKind.ARMOR;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Mazo de los antiguos";
+        goldCoins = 200;
+        minBonus = 3;
+        maxBonus = 4;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Necro-playboycón";
+        goldCoins = 300;
+        minBonus = 3;
+        maxBonus = 5;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Lanzallamas";
+        goldCoins = 800;
+        minBonus = 4;
+        maxBonus = 8;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Necro-comicón";
+        goldCoins = 100;
+        minBonus = 1;
+        maxBonus = 1;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Necronomicón";
+        goldCoins = 800;
+        minBonus = 5;
+        maxBonus = 7;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Linterna a 2 manos";
+        goldCoins = 400;
+        minBonus = 3;
+        maxBonus = 6;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Necro-gnomicón";
+        goldCoins = 200;
+        minBonus = 2;
+        maxBonus = 4;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Necrotelecom";
+        goldCoins = 300;
+        minBonus = 2;
+        maxBonus = 3;
+        type = TreasureKind.HELMET;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Porra preternatural";
+        goldCoins = 200;
+        minBonus = 2;
+        maxBonus = 3;
+        type = TreasureKind.ONEHAND;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Tentáculo de pega";
+        goldCoins = 200;
+        minBonus = 0;
+        maxBonus = 1;
+        type = TreasureKind.HELMET;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Zapato deja-amigos";
+        goldCoins = 500;
+        minBonus = 0;
+        maxBonus = 1;
+        type = TreasureKind.SHOE;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Shogulador";
+        goldCoins = 600;
+        minBonus = 1;
+        maxBonus = 1;
+        type = TreasureKind.BOTHHANDS;
+        unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
+        
+        name = "Varita de atizamiento";
+        goldCoins = 400;
+        minBonus = 3;
+        maxBonus = 4;
+        type = TreasureKind.ONEHAND;
         unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
         
     }
