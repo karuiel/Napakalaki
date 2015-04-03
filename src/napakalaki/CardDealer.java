@@ -1,20 +1,21 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa el encargado de gestionar las cartas del juego
+ * Invariante de representación:
+ *  -Tan solo puede haber una instancia de la clase
  */
+
 package napakalaki;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;         
 
 /**
  *
- * @author maria
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
 //NOTA: initTreasureCardDeck; shuffleMonsters; shuffleTreasure;
+//El método usado para barajar es el bueno??
 //giveback...¿simplemente añade o tiene que barajarse?
 //shuffle array list
 public class CardDealer {
@@ -24,8 +25,22 @@ public class CardDealer {
     private ArrayList<Treasure> unusedTreasures;
     private ArrayList<Treasure> usedTreasures;
     
-    
+//-------------------------------------Constructors---------------------------------------------    
     private CardDealer(){}
+    
+//---------------------------------------Other methods----------------------------------------
+           
+    /*
+     * @brief Método para obtener la instancia de la clase CardDeales
+     * @return CardDeales instancia
+    */
+    public static CardDealer getInstante(){
+        return instance;
+    }
+    
+    /*
+     * @brief Método para inicializar el mazo de cartas de tesoros
+    */
     private void initTreasureCardDeck(){
         String name;
         int goldCoins;
@@ -146,6 +161,10 @@ public class CardDealer {
         unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
         
     }
+    
+    /*
+     * @brief Método para inicializar el mazo de cartas de monstruos
+    */
     private void initMonsterCardDeck(){
         BadConsequence badConsequence;
         Prize prize;
@@ -272,22 +291,35 @@ public class CardDealer {
         unusedMonster.add(new Monster("Bicéfalo", 20, badConsequence, prize));
         Collections.shuffle(unusedMonster);
     }
+    
+    /*
+     * @brief Método para barajar el mazo de cartar unusedTreasures
+    */
     private void shuffleTreasures(){
-        Collections.shuffle(usedTreasures);
+        Collections.shuffle(unusedTreasures);
     }
+    
+    /*
+     * @brief Método para barajar el mazo de cartar unusedMonsters
+    */
     private void shuffleMonsters(){
         Collections.shuffle(unusedMonster);
     }
-    public static CardDealer getInstante(){
-        return instance;
-    }
-    //public Treasure nextTreasure(){}
-    //public Monster nextMonster(){}
+
+    /*
+     * @brief Método para incluir una carta de tesoro en el mazo de usadas
+    */
     public void giveTreasureBack(Treasure t){
         usedTreasures.add(t);
     }
+    
+    /*
+     * @brief Método para incluir una carta de monstruo en el mazo de usadas
+    */
     public void giveMonsterBack(Monster m){
         usedMonster.add(m);
     }
     public void initCards(){}
+    //public Treasure nextTreasure(){}
+    //public Monster nextMonster(){}
 }

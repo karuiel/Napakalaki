@@ -74,6 +74,8 @@ public class Monster {
     public Prize getPrize(){
         return this.price;
     }
+       
+//------------------------------------Other methods-----------------------------  
     
   /*
    * @brief Método para convertir en cadena de texto los atributos del objeto

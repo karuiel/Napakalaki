@@ -124,15 +124,6 @@ public class BadConsequence {
   public int getNHiddenTreasures(){
       return nHiddenTreasures;
   }
-    
-  /*
-   * @brief Metodo que devuelve el atributo death
-   * @return boolean: true en caso de que el mal rollo implique muerte
-                      false en caso contrario
-   */ 
-  public boolean getDeath(){
-      return death;
-  }
   
   /*
    * @brief Metodo que devuelve el atributo specificHiddenTreasures 
@@ -153,7 +144,10 @@ public class BadConsequence {
   public ArrayList<TreasureKind> getSpecificVisibleTreasures(){
       return this.specificVisibleTreasures;
   }
-   
+  
+  
+  //-----------------------------------Other methods---------------------------------------
+  
   /*
    * @brief Método para convertir en cadena de texto los atributos del objeto
    * @return String: cadena de texto con el valor de los atributos
@@ -191,6 +185,12 @@ public class BadConsequence {
       return output;
   }
   
+  
+  /*
+   * @brief Método para comprobar si el mal rollo está vacío
+   * @return boolean: true en caso de que esté vacío
+                      false en caso contrario
+  */
   public boolean isEmpty(){
       boolean vacio = false;
       if(levels == 0  && nVisibleTreasures == 0  && nHiddenTreasures == 0 && !death
@@ -199,6 +199,12 @@ public class BadConsequence {
       }
       return vacio;
   }
+  
+  /*
+   * @brief Método para determinar si el mal rollo implica la muerte
+   * @return boolean: truen en caso de que implique la muerte
+                      false en caso contrario
+  */
   public boolean kills(){
       return this.death;
   }

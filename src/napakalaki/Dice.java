@@ -1,26 +1,39 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase que representa un dado
+ * Invariante de representación:
+ *  -Tan solo puede haber una instancia de la clase
  */
 package napakalaki;
 import java.util.Random;
 
 /**
  *
- * @author maria
+ * @authorMiguel Morales Castillo y María del Mar Ruiz Martín
  */
 public class Dice {
 
     private static final Dice instance = new Dice();
+    
+//-----------------------------------Constructor-------------------------------------------    
+    
+    /*
+     * @brief Constructor de la clase
+    */
     private Dice(){
         
     }
-    
+
+    /*
+     * @brief Método para obtener la instancia de la clase
+    */
     public static Dice getInstance(){
         return instance;
     }
     
+    /*
+     * @brief Método para obtener un número
+     * @return int: número obtenido
+    */
     public int nextNumber(){
         Random rand = new Random();
         int number = rand.nextInt(5) + 1;
