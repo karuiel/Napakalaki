@@ -15,7 +15,7 @@ public class Dice {
 
     private static final Dice instance = new Dice();
     
-//-----------------------------------Constructor-------------------------------------------    
+//---------------------------------Constructor----------------------------------    
     
     /*
      * @brief Constructor de la clase
@@ -24,7 +24,7 @@ public class Dice {
         
     }
 
-//------------------------------------Getter------------------------------------------------   
+//---------------------------------Getter---------------------------------------   
     /*
      * @brief Método para obtener la instancia de la clase
     */
@@ -32,7 +32,7 @@ public class Dice {
         return instance;
     }
 
-//-----------------------------------Other methods------------------------------------------    
+//-------------------------------Other methods----------------------------------    
     
     /*
      * @brief Método para obtener un número

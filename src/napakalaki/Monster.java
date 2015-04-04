@@ -18,7 +18,7 @@ public class Monster {
     private Prize price;
     private BadConsequence bc;
     
-    //--------------------------------------Constructor--------------------------------------------
+    //------------------------------Constructor---------------------------------
     
     /*
      * @brief Constructor con parámetros
@@ -40,7 +40,7 @@ public class Monster {
         this.price = price;
     }
     
-    //-------------------------------------Getters----------------------------------------------
+    //-------------------------------Getters------------------------------------
     
     
     /*

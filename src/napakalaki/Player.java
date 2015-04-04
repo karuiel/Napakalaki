@@ -25,7 +25,6 @@ import java.util.Iterator;
 //NOTA:metodo bring to live??
 //incrementLevels--> ¿Que pasa si el jugador ya consigue el nivel 10?
 //Constructor--> que asignar en pendingBadConsequence
-//dieifnotreasures--> ¿Solo modifica del atributo death o se encarga de matar al jugador?
 public class Player {
     private boolean dead = true;
     private String name;
@@ -35,7 +34,7 @@ public class Player {
     private ArrayList<Treasure> visibleTreasures;
     private BadConsequence pendingBadConsequence;
 
-//-------------------------------------Constructor--------------------------------------------
+//---------------------------------Constructor----------------------------------
 
 /*
  * @brief Constuctor de la clase
@@ -50,7 +49,7 @@ public class Player {
         //this.pendingBadConsequence = new BadConsequence();
     }
     
-//---------------------------------------Getters---------------------------------------------
+//----------------------------------Getters-------------------------------------
     
     /*
      * @brief Método para obtener el nivel de combate del jugador
@@ -79,7 +78,7 @@ public class Player {
         return nivel;
     }
     
-//--------------------------------------Other methods-----------------------------------------
+//---------------------------------Other methods--------------------------------
     
     private void bringToLive(){
         this.dead = false;
@@ -91,6 +90,9 @@ public class Player {
     */
     private void incrementLevels(int l){
         this.level += l;
+        if(level > 10){
+            level = 10;
+        }
     }
     
     /*
@@ -107,7 +109,7 @@ public class Player {
     /*
      * @brief Método para asignar un mal rollo al jugador
      * @param BadConsequence b: mal rollo a asignar
-    */
+     */
     private void setPendingBadConsequence(BadConsequence b){
         this.pendingBadConsequence = b;
     }
@@ -126,7 +128,7 @@ public class Player {
     /*
      * @brief Método para determinar si se pueden comprar una cantidad de niveles
      * @param int I: número de niveles a comprar
-     * @return boolean: true en caso de que dicho incremento no suponga ganar la partida
+     * @return boolean: true en caso de que el incremento no suponga ganar la partida
      *                  false en caso contrario
     */
     private boolean canIBuyLevlels(int I){
@@ -181,7 +183,7 @@ public class Player {
     private void die(){}
     private void discardNecklaceIfVisible(){}      
     //NOTA: en el diagrama de clase viene implementado como float; no le veo sentido
-   /* protected int computeGoldCoinsValue(ArrayList<Treasure> t){
+    /* protected int computeGoldCoinsValue(ArrayList<Treasure> t){
         int coins = 0;
         for(Treasure treasure: t){
             coins += treasure.getGoldCoins();

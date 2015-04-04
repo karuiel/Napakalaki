@@ -103,7 +103,8 @@ public class PruebaNapakalaki {
         monstruos.add(new Monster("Ángeles de la noche ibicenca", 14, badConsequence, prize));     
         
         
-        badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0, Integer.MAX_VALUE,Integer.MAX_VALUE );
+        badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",
+                                        0, Integer.MAX_VALUE,Integer.MAX_VALUE );
         prize = new Prize(3,1);
         monstruos.add(new Monster("El gorrón en el umbral", 10, badConsequence, prize));
        
@@ -125,12 +126,12 @@ public class PruebaNapakalaki {
                  
         badConsequence = new BadConsequence("Pierdes 5 niveles y 3 tesoros visibles", 5, 3, 0);
         prize = new Prize(4,2);
-        monstruos.add(new   Monster("El   rey   de   rosa",   13,   badConsequence, prize));
+        monstruos.add(new Monster("El   rey   de   rosa",   13,   badConsequence, prize));
         
                 
         badConsequence = new BadConsequence("Toses los pulmones y pierdes 2 niveles", 2, 0, 0);
         prize = new Prize(1,1);
-        monstruos.add(new   Monster("La que redacta en las tinieblas", 2, badConsequence, prize));
+        monstruos.add(new Monster("La que redacta en las tinieblas", 2, badConsequence, prize));
 
         
         badConsequence = new BadConsequence("Estos monstruos resultan bastantes superficiales y "

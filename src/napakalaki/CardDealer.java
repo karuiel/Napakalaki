@@ -15,7 +15,6 @@ import java.util.Collections;
  */
 
 //NOTA:
-//Terminar de añadir los tesoros
 //hay que cambiar algo de los monstruos añadidos¿?
 //giveback...¿simplemente añade o tiene que barajarse?
 //shuffle array list
@@ -28,7 +27,7 @@ public class CardDealer {
     private ArrayList<Treasure> unusedTreasures;
     private ArrayList<Treasure> usedTreasures;
     
-//-------------------------------------Constructors---------------------------------------------    
+//------------------------------Constructors------------------------------------    
     
     private CardDealer(){
         unusedMonster = new ArrayList<>();
@@ -39,7 +38,7 @@ public class CardDealer {
         initMonsterCardDeck();
     }
     
-//---------------------------------------Other methods----------------------------------------
+//------------------------------Other methods-----------------------------------
            
     /*
      * @brief Método para obtener la instancia de la clase CardDeales
