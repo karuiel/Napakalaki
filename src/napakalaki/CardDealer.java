@@ -176,7 +176,7 @@ public class CardDealer {
         maxBonus = 2;
         type = TreasureKind.ONEHAND;
         unusedTreasures.add(new Treasure(name, goldCoins, minBonus, maxBonus,type));
-        //NOTA::¿QUE ES BONUSMAYOR?
+        //NOTA::¿QUE ES BONUS MAYOR? Ponemos 0
         name = "La fuerza de Mr T";
         goldCoins = 1000;
         minBonus = 0;
