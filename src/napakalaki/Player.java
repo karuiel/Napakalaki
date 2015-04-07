@@ -22,9 +22,6 @@ import java.util.Iterator;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-//NOTA:metodo bring to live??
-//incrementLevels--> ¿Que pasa si el jugador ya consigue el nivel 10?
-//Constructor--> que asignar en pendingBadConsequence
 public class Player {
     private boolean dead = true;
     private String name;
@@ -46,7 +43,7 @@ public class Player {
         this.dead = false;
         this.hiddenTreasures = new ArrayList<>();
         this.visibleTreasures = new ArrayList<>();
-        //this.pendingBadConsequence = new BadConsequence();
+        this.pendingBadConsequence = new BadConsequence("vacio",false);
     }
     
 //----------------------------------Getters-------------------------------------

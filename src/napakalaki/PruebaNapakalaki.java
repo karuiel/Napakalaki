@@ -49,7 +49,7 @@ public class PruebaNapakalaki {
     
     
         //-----------------------------Prueba Sesión 1--------------------------
-     /*   
+     /*  
         Prize price = new Prize(1,1);
         System.out.println("Premio creado:");
         System.out.println(price.toString());

@@ -14,10 +14,6 @@ import java.util.Collections;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-//NOTA:
-//hay que cambiar algo de los monstruos añadidos¿?
-//giveback...¿simplemente añade o tiene que barajarse?
-//shuffle array list
 
 public class CardDealer {
     
