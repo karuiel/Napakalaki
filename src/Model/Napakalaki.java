@@ -16,10 +16,18 @@ public class Napakalaki {
     private Monster currentMonster;
     private Player currentPlayer;
     private ArrayList<Player> players;
+    private int currentPlayerIndex;
     
     private Napakalaki(){}
-    private void initPlayers(ArrayList<String> names){}
-    //private Player nextPlayer(){}
+    private void initPlayers(ArrayList<String> names){
+        for(String n : names){ 
+           players.add(new Player(n));
+      }
+    }
+    private Player nextPlayer(){
+        currentPlayerIndex = (currentPlayerIndex + 1) % players.size(); 
+        return players.get(currentPlayerIndex);
+    }
     public static Napakalaki getInstance(){
         return instance;
     }
@@ -29,13 +37,22 @@ public class Napakalaki {
     //public boolean makeTreasureVisible(Treasure t){}
     //public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){}
     public void initGame(ArrayList<String> players){}
-    /*public Player getCurrentPlayer(){}
-    public Monster getCurrentMonster(){}
-    public boolean canMakeTreasureVisible(Treasure t){}
+    public Player getCurrentPlayer(){
+        return currentPlayer;
+    }
+    public Monster getCurrentMonster(){
+        return currentMonster;
+    }
+    public boolean nextTurnAllowed(){
+        return currentPlayer.validState();
+    }
+    /*public boolean canMakeTreasureVisible(Treasure t){}
     public ArrayList<Treasure> getVisibleTreasures(){}
     public ArrayList<Treasure> getHiddenTreasures(){}
-    public boolean nextTurn(){}
-    public boolean nextTurnAllowed(){}
-    public boolean endOfGame(CombatResult result){}*/
+    public boolean nextTurn(){}*/
+    
+    public boolean endOfGame(CombatResult result){
+        return result == CombatResult.WINANDWINGAME;
+    }
     
 }

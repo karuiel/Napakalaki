@@ -208,7 +208,37 @@ public class BadConsequence {
   public boolean kills(){
       return this.death;
   }
-  public void substractVisibleTreasure(Treasure t){}
-  public void substractHideenTreasure(Treasure t){}
+  public void substractVisibleTreasure(Treasure t){
+      boolean eliminado = false;
+      int i = 0;
+      if(specificVisibleTreasures.size()!=0){
+        for(TreasureKind tesoro: specificVisibleTreasures){
+            ++i;
+            if(!eliminado && tesoro == t.getType()){
+                specificVisibleTreasures.remove(i);
+                eliminado = true;
+            }
+        }
+      }
+      else{
+         nVisibleTreasures = Math.max(0,nVisibleTreasures-1); 
+      }
+  }
+  public void substractHidenTreasure(Treasure t){
+      boolean eliminado = false;
+      int i = 0;
+      if(specificHiddenTreasures.size()!=0){
+        for(TreasureKind tesoro: specificHiddenTreasures){
+            ++i;
+            if(!eliminado && tesoro == t.getType()){
+                specificHiddenTreasures.remove(i);
+                eliminado = true;
+            }
+        }
+      }
+      else{
+         nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
+      }
+  }
   //public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, arrayList<Treasure> h){}
 }

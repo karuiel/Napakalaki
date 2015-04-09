@@ -440,6 +440,14 @@ public class CardDealer {
         usedMonster.add(m);
     }
     //public void initCards(){}
-    //public Treasure nextTreasure(){}
-    //public Monster nextMonster(){}
+    public Treasure nextTreasure(){
+        Treasure next = unusedTreasures.get(0);
+        unusedTreasures.remove(0);
+        return next;        
+    }
+    public Monster nextMonster(){
+        Monster next = unusedMonster.get(0);
+        unusedMonster.remove(0);
+        return next;
+    }
 }
