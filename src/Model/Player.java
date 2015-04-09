@@ -167,10 +167,45 @@ public class Player {
         return !visibleTreasures.isEmpty();
     }
 
+    private int contains(ArrayList<Treasure> treasures, TreasureKind t){
+        int repetitions = 0;
+        for(Treasure x: treasures){
+            if(x.getType() == t){
+                repetitions ++;
+            }
+        }
+        return repetitions;
+    }
     
     public boolean canMakeTreasurevisible(Treasure t){
-       
-        boolean canMake=true;
+        TreasureKind type = t.getType();
+        boolean canMake = false;
+        
+        /*
+        Algoritmo:
+            Si el tipo de tesoro es ONEHAND o BOTHHANDS
+                Si hay un tesoro BOTHHANDS no se puede realizar el cambio
+                Si no lo hay, se puede realizar el cambio si
+                    es de tipo BOTHHANDS y no hay ninguno tipo ONEHAND o
+                    es de tipo ONEHAND y hay uno o ningún tesoro tipo ONEHAND
+            En caso contrario
+                Se podrá realizar el cambio si no hay ninguno del mismo tipo en 
+                el vector de tesoros visibles       
+        */
+        if(type == TreasureKind.ONEHAND || type == TreasureKind.BOTHHANDS){
+            if(contains(visibleTreasures,TreasureKind.BOTHHANDS)==0){
+                int onehand = contains(visibleTreasures,TreasureKind.BOTHHANDS);
+                if( (onehand < 2) && (type == TreasureKind.ONEHAND) ||
+                         (onehand == 0) && (TreasureKind.BOTHHANDS == type)){
+                    canMake = true;
+                }
+            }
+        }
+        else{
+            canMake = (contains(visibleTreasures,type) == 0);
+        }
+        return canMake;
+       /* boolean canMake=true;
         int contador = 0;
         
             for(Treasure x: visibleTreasures){
@@ -190,10 +225,7 @@ public class Player {
                         canMake = false;
                     }                   
                 }
-            }           
-            
-        return canMake;
-        
+            } */               
     }
     
    // public ArrayList<Treasure> getVisibleTreasures(){}
