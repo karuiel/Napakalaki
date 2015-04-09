@@ -167,6 +167,12 @@ public class Player {
         return !visibleTreasures.isEmpty();
     }
 
+    /**
+     * @brief Método auxiliar para contar las repeticiones de un tesoro en un array
+     * @param ArrayList<Treasure> treasures: array con los tesoros
+     * @param TreasureKind t: tesoro a buscar
+     * @return int: número de repeticiones
+     */
     private int contains(ArrayList<Treasure> treasures, TreasureKind t){
         int repetitions = 0;
         for(Treasure x: treasures){
