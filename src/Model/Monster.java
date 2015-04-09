@@ -4,7 +4,7 @@
  *  -El atributo combatLevel debe ser un natural
  */
 
-package napakalaki;
+package Model;
 
 /**
  *

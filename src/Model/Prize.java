@@ -4,7 +4,7 @@
  *  -El atributo treasures debe ser un entero no negativo
  *  -El atributo levels debe ser un entero no negativo
  */
-package napakalaki;
+package Model;
 
 /**
  *

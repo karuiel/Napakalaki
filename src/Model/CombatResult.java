@@ -1,7 +1,7 @@
 /*
  * Enumerado con los posibles resultados de un combate
  */
-package napakalaki;
+package Model;
 
 /*
  *

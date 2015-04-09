@@ -3,7 +3,7 @@
  * Invariante de representación:
  *  -Tan solo puede haber una instancia de la clase
  */
-package napakalaki;
+package Model;
 import java.util.Random;
 
 /**

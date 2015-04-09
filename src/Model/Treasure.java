@@ -5,7 +5,7 @@
  *  -El atributo minBonus debe ser un entero no negativo
  *  -El atributo maxBonus debe ser un entero no negativo
  */
-package napakalaki;
+package Model;
 
 /**
  *

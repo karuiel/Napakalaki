@@ -4,7 +4,7 @@
  *  -Tan solo puede haber una instancia de la clase
  */
 
-package napakalaki;
+package Model;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Collections;         
@@ -32,6 +32,8 @@ public class CardDealer {
         usedTreasures = new ArrayList<>();
         initTreasureCardDeck();
         initMonsterCardDeck();
+        shuffleTreasures();
+        shuffleMonsters();
     }
     
 //------------------------------Other methods-----------------------------------
@@ -437,7 +439,7 @@ public class CardDealer {
     public void giveMonsterBack(Monster m){
         usedMonster.add(m);
     }
-    public void initCards(){}
+    //public void initCards(){}
     //public Treasure nextTreasure(){}
     //public Monster nextMonster(){}
 }

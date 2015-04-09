@@ -1,7 +1,7 @@
 /*
  * Enumerado con los tipos de tesoros existentes
  */
-package napakalaki;
+package Model;
 
 /**
  *

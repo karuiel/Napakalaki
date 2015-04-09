@@ -13,7 +13,7 @@
             bothhands, y ninguno en caso contrario
        
  */
-package napakalaki;
+package Model;
 import java.util.ArrayList;
 import java.util.Iterator;
 

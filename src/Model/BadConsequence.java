@@ -5,7 +5,7 @@
  *  -El atributo nVisibleTreasures debe ser un entero no negativo
  *  -El atributo nHiddenTreasures debe ser un entero no negativo
  */
-package napakalaki;
+package Model;
 import java.util.ArrayList;
 import java.util.Iterator;
 

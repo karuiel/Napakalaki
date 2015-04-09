@@ -1,4 +1,4 @@
-package napakalaki;
+package Model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -13,8 +13,14 @@ public class PruebaNapakalaki {
         
     // Prueba de las clases de la segunda práctica    
         
+    Dice dado = Dice.getInstance();            
+    System.out.println(dado.nextNumber());    
+    
+    //Prueba clase dado
     CardDealer cartas = CardDealer.getInstance();   
-        
+    
+    
+    //Prueba clase BadConsequence
     BadConsequence bc = new BadConsequence("uno",false);
     if(bc.isEmpty()){
         System.out.println("bc vacío");
@@ -30,13 +36,15 @@ public class PruebaNapakalaki {
     else{
         System.out.println("no mata");
     }
-        
-        
-    Dice dado = Dice.getInstance();        
-        
-    System.out.println(dado.nextNumber());
-
-    Treasure t = new Treasure("tesoro",1000,1,2,TreasureKind.HELMET);
+    bc.toString();
+    
+    //Prueba clase Treasure
+    String text = "tesoro";
+    int goldCoins = 1000;
+    int min = 1;
+    int max = 2;
+    TreasureKind tesoro = TreasureKind.HELMET;
+    Treasure t = new Treasure(text, goldCoins, min, max, tesoro);
     System.out.println("Datos del tesoro:");
     System.out.println(t.getGoldCoins());
     System.out.println(t.getMaxBonus());
@@ -44,9 +52,22 @@ public class PruebaNapakalaki {
     System.out.println(t.getName());
     System.out.println(t.getType());
    
+    //Prueba de clase jugador
+    
     Player jugador = new Player("Maria");
     System.out.println(jugador.getCombatLevel());
+    System.out.println(jugador.validState());
+    System.out.println(jugador.hasVisibleTreasures());
+    System.out.println(jugador.isDead());
     
+    //Prueba de clase CardDealer
+    CardDealer crupier = CardDealer.getInstance();
+    BadConsequence badConsequence = new BadConsequence("Toses los pulmones y pierdes 2 niveles", 2, 0, 0);
+    Prize prize = new Prize(1,1);
+    Monster monster = new Monster("La que redacta en las tinieblas", 2, badConsequence, prize);
+    
+    crupier.giveMonsterBack(monster);
+    crupier.giveTreasureBack(t);
     
         //-----------------------------Prueba Sesión 1--------------------------
      /*  
