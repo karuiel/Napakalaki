@@ -59,7 +59,7 @@ public class PruebaNapakalaki {
     System.out.println(jugador.validState());
     System.out.println(jugador.hasVisibleTreasures());
     System.out.println(jugador.isDead());
-    
+    System.out.println(jugador.canMakeTreasurevisible(t));
     //Prueba de clase CardDealer
     CardDealer crupier = CardDealer.getInstance();
     BadConsequence badConsequence = new BadConsequence("Toses los pulmones y pierdes 2 niveles", 2, 0, 0);

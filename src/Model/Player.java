@@ -38,12 +38,14 @@ public class Player {
  * @param String name: nombre del jugador   
  */
     public Player(String name){
+
         this.name = name;
         this.level = 1;
         this.dead = false;
         this.hiddenTreasures = new ArrayList<>();
         this.visibleTreasures = new ArrayList<>();
         this.pendingBadConsequence = new BadConsequence("vacio",false);
+
     }
     
 //----------------------------------Getters-------------------------------------
@@ -166,25 +168,63 @@ public class Player {
     }
 
     
+    public boolean canMakeTreasurevisible(Treasure t){
+       
+        boolean canMake=true;
+        int contador = 0;
+        
+            for(Treasure x: visibleTreasures){
+                TreasureKind tipo = x.getType();
+                if(t.getType()!= TreasureKind.ONEHAND){
+                    if(t.getType()==x.getType()){
+                      canMake=false;  
+                    }
+                }else{
+                    if(tipo==TreasureKind.BOTHHANDS){
+                        canMake=false;
+                    }
+                    if(tipo==TreasureKind.ONEHAND){
+                        contador++;
+                    }
+                    if(contador==2){
+                        canMake = false;
+                    }                   
+                }
+            }           
+            
+        return canMake;
+        
+    }
+    
    // public ArrayList<Treasure> getVisibleTreasures(){}
    // public ArrayList<Treasure> getHiddenTreasures(){}
    /* public void applyPrize(Prize p){}
     public CombatResult combat(Monster m){}
     public void applyBadConsequence(BadConsequence bad){}
     public boolean makeTreasureVisible(Treasure t){}
-    public boolean canMakeTreasurevisible(Treasure t){}
+    
     public void discardVisibleTreasure(Treasure t){}
     public void discardHiddenTreasure(Treasure t){}
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){}*/
     //public boolean initTreasures(){}
     private void die(){}
-    private void discardNecklaceIfVisible(){}      
-    //NOTA: en el diagrama de clase viene implementado como float; no le veo sentido
-    /* protected int computeGoldCoinsValue(ArrayList<Treasure> t){
+    private void discardNecklaceIfVisible(){
+        CardDealer dealer = CardDealer.getInstance();
+        for(Treasure x: visibleTreasures){
+            if(x.getType()==TreasureKind.NECKLACE){
+                dealer.giveTreasureBack(x);
+                visibleTreasures.remove(x);
+            }
+        }
+        
+    }      
+    //NOTA: en el diagrama de clase viene implementado como float; no le veo sentido 
+    //Yo tambien lo veo mejor como int las monedas no van a ser media moneda en plan to partia xD
+     protected int computeGoldCoinsValue(ArrayList<Treasure> t){
         int coins = 0;
         for(Treasure treasure: t){
             coins += treasure.getGoldCoins();
         }
         return coins;
-    }*/
+    }
 }    
