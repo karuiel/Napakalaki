@@ -418,7 +418,9 @@ public class Player {
     }
     
     public String toString(){
-        return this.name;
+        String output =" " + name + 
+              "\tNiveles = "+ Integer.toString(level);
+        return output;
     }
     
 }    
