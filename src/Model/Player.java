@@ -49,6 +49,19 @@ public class Player {
 
     }
     
+    /*
+ * @brief Constuctor de copia
+ * @param Player player: jugador a copiar   
+ */
+    public Player(Player player){
+        this.name = player.name;
+        this.level = player.level;
+        this.dead = player.dead;        
+        this.hiddenTreasures = player.hiddenTreasures; 
+        this.visibleTreasures = player.visibleTreasures;
+        this.pendingBadConsequence = player.pendingBadConsequence;
+    }
+    
 //----------------------------------Getters-------------------------------------
     
     /*
@@ -104,6 +117,19 @@ public class Player {
     
 //---------------------------------Other methods--------------------------------
     
+    
+    protected int getOponentLevel(Monster m){
+        return m.getCombatLevel();
+    }
+    protected boolean shouldConvert(){
+        Dice dice = Dice.getInstance();
+        int number = dice.nextNumber();
+        if(number==6){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     /*
      * @brief Método encargado de revivir al jugador
