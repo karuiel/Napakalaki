@@ -80,4 +80,8 @@ public class Treasure {
         return this.type;
     }
     
+    public String toString(){
+        return this.name;
+    }
+    
 }
