@@ -24,9 +24,12 @@ public class Napakalaki {
            players.add(new Player(n));
       }
     }
+    //Modifico este metodo en el pdf pone que hay que actualizar currentPlayer
     private Player nextPlayer(){
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size(); 
-        return players.get(currentPlayerIndex);
+        currentPlayer = players.get(currentPlayerIndex);
+        return currentPlayer;
+               
     }
     public static Napakalaki getInstance(){
         return instance;
