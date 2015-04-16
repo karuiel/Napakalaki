@@ -311,9 +311,13 @@ public class Player {
     
     //Nota: preguntar
     public boolean makeTreasureVisible(Treasure t){
-        visibleTreasures.add(t);
-        hiddenTreasures.remove(t);
-        return true;
+        if(canMakeTreasureVisible(t)){
+            visibleTreasures.add(t);
+            hiddenTreasures.remove(t);
+            return true;
+        }else{       
+            return false;
+        }
     }
     
     

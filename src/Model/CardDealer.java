@@ -317,7 +317,7 @@ public class CardDealer {
         unusedMonster.add(new Monster("Ángeles de la noche ibicenca", 14, badConsequence, prize));     
         
         
-        badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0, Integer.MAX_VALUE,Integer.MAX_VALUE );
+        badConsequence = new BadConsequence("Pierdes todos tus tesoros visibles",0, Integer.MAX_VALUE,0);
         prize = new Prize(3,1);
         unusedMonster.add(new Monster("El gorrón en el umbral", 10, badConsequence, prize));
        
