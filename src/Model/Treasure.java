@@ -84,7 +84,7 @@ public class Treasure {
         String output ="Nombre = " + this.name + 
               "\n\tTipo = "+ this.type +
               "\n\tValor = " +Integer.toString(goldCoins) +
-              "\n\tMin Bonus" + Integer.toString(minBonus)+
+              "\n\tMin Bonus = " + Integer.toString(minBonus)+
               "\n\tMax Bonus= " + Integer.toString(maxBonus);
         
         return output;
