@@ -446,8 +446,18 @@ public class CardDealer {
     
     //Nota: que lio has hecho en estos métodos alma de cantaro! jaja
     public Treasure nextTreasure(){
-        Treasure next = unusedTreasures.get(0);
+        Treasure next;
+        if(unusedTreasures.size()!=0){
+         next = unusedTreasures.get(0);
         unusedTreasures.remove(0);
+        }else{
+            unusedTreasures=usedTreasures;
+            usedTreasures= new ArrayList<>();
+            shuffleMonsters();
+            next = unusedTreasures.get(0);
+            unusedTreasures.remove(0);
+            
+        }
         return next;        
     }
     public Monster nextMonster(){
