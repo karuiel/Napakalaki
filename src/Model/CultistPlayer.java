@@ -18,4 +18,13 @@ public class CultistPlayer extends Player {
     public static int getTotalCultistPlayer(){
         return totalCultistPlayers;
     }
+    @Override
+    protected boolean shouldConvert(){
+        return false;
+    }
+    
+    @Override
+    protected int getOponentLevel(Monster m){
+        return m.getSpecialValue();
+    }
 }
