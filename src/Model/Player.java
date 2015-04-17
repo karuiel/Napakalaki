@@ -127,7 +127,7 @@ public class Player {
     */
     private void dieIfNoTreasures(){
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty()){
-            this.dead = true;
+            die();
             //NOTA:llamada al método die cuando esté implementado
         }
     }
@@ -365,6 +365,7 @@ public class Player {
     }
     
     private void die(){
+        this.dead=true;
         CardDealer dealer = CardDealer.getInstance();
         for(Treasure v: visibleTreasures){
             dealer.giveTreasureBack(v);
@@ -401,7 +402,8 @@ public class Player {
     
     public String toString(){
         String output =" " + name + 
-              "\tNiveles = "+ Integer.toString(level);
+              "\tNiveles = "+ Integer.toString(level)+
+              "\tNivele de Combate = "+ Integer.toString(this.getCombatLevel());
         return output;
     }
     

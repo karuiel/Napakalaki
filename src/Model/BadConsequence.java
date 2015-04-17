@@ -212,13 +212,19 @@ public class BadConsequence {
 
   public void substractVisibleTreasure(Treasure t){
       boolean eliminado = false;
+      boolean found = false;
+      int indice=0;
       if(specificVisibleTreasures.size()!=0){
-        for(TreasureKind tesoro: specificVisibleTreasures){
-          if(!eliminado && tesoro == t.getType()){
-              specificVisibleTreasures.remove(tesoro);
-              eliminado = true;
-          }
-        }
+        for(int i = 0; i < specificVisibleTreasures.size()&& !found;++i){
+                TreasureKind type = specificVisibleTreasures.get(i);
+                if(type == t.getType()){
+                    found = true;
+                    indice = i;
+                }
+            }
+        specificVisibleTreasures.remove(indice);
+        eliminado = true;
+        
       } 
        if(!eliminado){
            nVisibleTreasures = Math.max(0,nVisibleTreasures-1); 
@@ -227,13 +233,18 @@ public class BadConsequence {
   
   public void substractHiddenTreasure(Treasure t){
       boolean eliminado = false;
+      boolean found = false;
+      int indice = 0;
       if(specificHiddenTreasures.size()!=0){
-        for(TreasureKind tesoro: specificHiddenTreasures){
-          if(!eliminado && tesoro == t.getType()){
-              specificHiddenTreasures.remove(tesoro);
-              eliminado = true;
-          }
+        for(int i = 0; i < specificHiddenTreasures.size()&& !found;++i){
+            TreasureKind type = specificHiddenTreasures.get(i);
+            if(type == t.getType()){
+                found = true;
+                indice = i;
+            }
         }
+        specificHiddenTreasures.remove(indice);
+        eliminado = true;
       }  
       if(!eliminado){
         nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
