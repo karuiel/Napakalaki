@@ -30,8 +30,7 @@ public class CardDealer {
         usedMonster = new ArrayList<>();
         unusedTreasures = new ArrayList<>();
         usedTreasures = new ArrayList<>();
-        initTreasureCardDeck();//NOTA:quitar, ya que están en initCards
-        initMonsterCardDeck();
+        initCards();
         shuffleTreasures();
         shuffleMonsters();
     }
