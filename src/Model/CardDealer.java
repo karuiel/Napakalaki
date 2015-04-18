@@ -414,7 +414,7 @@ public class CardDealer {
                 m,new ArrayList());
         prize = new Prize(1,1);
         unusedMonster.add(new Monster("Bicéfalo", 20, badConsequence, prize));
-        Collections.shuffle(unusedMonster);
+    
     }
     
     /*
