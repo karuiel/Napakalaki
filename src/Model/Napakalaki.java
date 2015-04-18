@@ -87,7 +87,11 @@ public class Napakalaki {
         currentPlayer.discardHiddenTreasure(t);
     }
     
-    //public boolean makeTreasureVisible(Treasure t){}
+    public boolean makeTreasureVisible(Treasure t){
+        
+            return currentPlayer.makeTreasureVisible(t);
+        
+    }
     
     /*
      * @brief Método que gestiona la compra de niveles
@@ -149,10 +153,6 @@ public class Napakalaki {
     */
     public boolean canMakeTreasureVisible(Treasure t){
         boolean canMake = currentPlayer.canMakeTreasureVisible(t);
-        
-        if(canMake){
-            currentPlayer.makeTreasureVisible(t);
-        }
         return canMake;
     }
     //public ArrayList<Treasure> getVisibleTreasures(){}
