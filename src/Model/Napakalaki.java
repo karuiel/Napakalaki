@@ -6,7 +6,7 @@
 package Model;
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.Random;
 /**
  *
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
@@ -18,17 +18,26 @@ public class Napakalaki {
     private ArrayList<Player> players;
     private int currentPlayerIndex;
     
-    private Napakalaki(){}
+    //Nota: no se que cojones hacer aqui <3
+    //(igual para ruby)
+    private Napakalaki(){
+        currentPlayerIndex = -1;
+    }
+    
     private void initPlayers(ArrayList<String> names){
         for(String n : names){ 
            players.add(new Player(n));
       }
     }
-    //Nota: si es el primer turno hay que calcular quien empieza
-    //se me ocurre en el constructor inicializar index con -1 para poder determinar
-    //que estamos en el primer turno. Por cierto, hay que hacer el constructor
+
     private Player nextPlayer(){
-        currentPlayerIndex = (currentPlayerIndex + 1) % players.size(); 
+        if(currentPlayerIndex ==-1){
+            Random rand = new Random();
+            int currentPlayerIndex = rand.nextInt(players.size());
+        }
+        else{
+            currentPlayerIndex = (currentPlayerIndex + 1) % players.size(); 
+        }   
         currentPlayer = players.get(currentPlayerIndex);
         return currentPlayer;
                
@@ -37,7 +46,6 @@ public class Napakalaki {
         return instance;
     }
     
-    //Nota: Preguntar por este diagrama
     public CombatResult combat(){
         CombatResult result = currentPlayer.combat(currentMonster);
         CardDealer dealer = CardDealer.getInstance();
@@ -45,8 +53,6 @@ public class Napakalaki {
         return result;
     }
     
-    
-    //Nota: ¿a que jugador se aplica?¿al actual?
     public void discardVisibleTreasure(Treasure t){
         currentPlayer.discardVisibleTreasure(t);       
     }

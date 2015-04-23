@@ -215,12 +215,10 @@ public class BadConsequence {
   //¿Que pasa si no se puede cumplir un mal rollo?
   public void substractVisibleTreasure(Treasure t){
       boolean eliminado = false;
-      int i = 0;
 
       for(TreasureKind tesoro: specificVisibleTreasures){
-        ++i;
         if(!eliminado && tesoro == t.getType()){
-            specificVisibleTreasures.remove(i);
+            specificVisibleTreasures.remove(tesoro);
             eliminado = true;
         }
       }
@@ -231,11 +229,10 @@ public class BadConsequence {
   
   public void substractHiddenTreasure(Treasure t){
       boolean eliminado = false;
-      int i = 0;
+
       for(TreasureKind tesoro: specificHiddenTreasures){
-        ++i;
         if(!eliminado && tesoro == t.getType()){
-            specificHiddenTreasures.remove(i);
+            specificHiddenTreasures.remove(tesoro);
             eliminado = true;
         }
       }

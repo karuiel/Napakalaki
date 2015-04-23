@@ -245,7 +245,7 @@ public class Player {
     
    // public ArrayList<Treasure> getVisibleTreasures(){}
    // public ArrayList<Treasure> getHiddenTreasures(){}
-    //Nota: implementar
+
     public void applyPrize(Prize p){
         int nLevels = p.getLevels();
         incrementLevels(nLevels);
