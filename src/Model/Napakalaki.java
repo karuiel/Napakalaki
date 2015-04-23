@@ -24,7 +24,9 @@ public class Napakalaki {
            players.add(new Player(n));
       }
     }
-    //Modifico este metodo en el pdf pone que hay que actualizar currentPlayer
+    //Nota: si es el primer turno hay que calcular quien empieza
+    //se me ocurre en el constructor inicializar index con -1 para poder determinar
+    //que estamos en el primer turno. Por cierto, hay que hacer el constructor
     private Player nextPlayer(){
         currentPlayerIndex = (currentPlayerIndex + 1) % players.size(); 
         currentPlayer = players.get(currentPlayerIndex);
@@ -34,12 +36,34 @@ public class Napakalaki {
     public static Napakalaki getInstance(){
         return instance;
     }
-    //public CombatResult combat(){}
-    public void discardVisibleTreasure(Treasure t){}
-    public void discardHiddenTreasure(Treasure t){}
+    
+    //Nota: Preguntar por este diagrama
+    public CombatResult combat(){
+        CombatResult result = currentPlayer.combat(currentMonster);
+        CardDealer dealer = CardDealer.getInstance();
+        dealer.giveMonsterBack(currentMonster);
+        return result;
+    }
+    
+    
+    //Nota: ¿a que jugador se aplica?¿al actual?
+    public void discardVisibleTreasure(Treasure t){
+        currentPlayer.discardVisibleTreasure(t);       
+    }
+    
+    public void discardHiddenTreasure(Treasure t){
+        currentPlayer.discardHiddenTreasure(t);
+    }
     //public boolean makeTreasureVisible(Treasure t){}
-    //public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){}
-    public void initGame(ArrayList<String> players){}
+    public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
+        return currentPlayer.buyLevels(visible, hidden);
+    }
+    public void initGame(ArrayList<String> players){
+        CardDealer dealer = CardDealer.getInstance();
+        dealer.initCards();
+        initPlayers(players);
+        nextTurn();
+    }
     public Player getCurrentPlayer(){
         return currentPlayer;
     }
@@ -49,10 +73,29 @@ public class Napakalaki {
     public boolean nextTurnAllowed(){
         return currentPlayer.validState();
     }
-    /*public boolean canMakeTreasureVisible(Treasure t){}
-    public ArrayList<Treasure> getVisibleTreasures(){}
-    public ArrayList<Treasure> getHiddenTreasures(){}
-    public boolean nextTurn(){}*/
+    public boolean canMakeTreasureVisible(Treasure t){
+        boolean canMake = currentPlayer.canMakeTreasureVisible(t);
+        
+        if(canMake){
+            currentPlayer.makeTreasureVisible(t);
+        }
+        return canMake;
+    }
+    //public ArrayList<Treasure> getVisibleTreasures(){}
+    //public ArrayList<Treasure> getHiddenTreasures(){}
+    
+    //Nota: preguntar al profesor
+    public boolean nextTurn(){
+        boolean allowed = nextTurnAllowed();
+        if(allowed){
+            currentMonster = CardDealer.getInstance().nextMonster();
+            currentPlayer = nextPlayer();
+            if(currentPlayer.isDead()){
+                currentPlayer.initTreasures();  
+            }
+        }
+        return allowed;
+    }
     
     public boolean endOfGame(CombatResult result){
         return result == CombatResult.WINANDWINGAME;

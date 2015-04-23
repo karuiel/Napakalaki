@@ -8,6 +8,7 @@
 package Model;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Arrays;
 
 /**
  *
@@ -208,37 +209,45 @@ public class BadConsequence {
   public boolean kills(){
       return this.death;
   }
+  
+  //Nota: preguntar al profesor por una mejor implementación (igual para los hidden)
+  //¿Esta bien el contador?¿los vectores no empiezan en el 0?
+  //¿Que pasa si no se puede cumplir un mal rollo?
   public void substractVisibleTreasure(Treasure t){
       boolean eliminado = false;
       int i = 0;
-      if(specificVisibleTreasures.size()!=0){
-        for(TreasureKind tesoro: specificVisibleTreasures){
-            ++i;
-            if(!eliminado && tesoro == t.getType()){
-                specificVisibleTreasures.remove(i);
-                eliminado = true;
-            }
+
+      for(TreasureKind tesoro: specificVisibleTreasures){
+        ++i;
+        if(!eliminado && tesoro == t.getType()){
+            specificVisibleTreasures.remove(i);
+            eliminado = true;
         }
       }
-      else{
+      if(!eliminado){
          nVisibleTreasures = Math.max(0,nVisibleTreasures-1); 
       }
   }
-  public void substractHidenTreasure(Treasure t){
+  
+  public void substractHiddenTreasure(Treasure t){
       boolean eliminado = false;
       int i = 0;
-      if(specificHiddenTreasures.size()!=0){
-        for(TreasureKind tesoro: specificHiddenTreasures){
-            ++i;
-            if(!eliminado && tesoro == t.getType()){
-                specificHiddenTreasures.remove(i);
-                eliminado = true;
-            }
+      for(TreasureKind tesoro: specificHiddenTreasures){
+        ++i;
+        if(!eliminado && tesoro == t.getType()){
+            specificHiddenTreasures.remove(i);
+            eliminado = true;
         }
       }
-      else{
+      if(!eliminado){
          nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
       }
   }
-  //public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, arrayList<Treasure> h){}
+  public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
+      
+      BadConsequence bad  = new BadConsequence("Pierdes tu armadura visible y otra oculta" ,0,
+                new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
+                new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
+      return bad;
+  }
 }

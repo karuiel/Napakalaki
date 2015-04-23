@@ -79,7 +79,9 @@ public class Player {
     
 //---------------------------------Other methods--------------------------------
     
-    private void bringToLive(){
+    //Nota: he cambiado el nombre de este método porque estaba mal
+    //hay que ver si se ha utilizado en algun lado...
+    private void bringToLife(){
         this.dead = false;
     }
     
@@ -130,7 +132,7 @@ public class Player {
      * @return boolean: true en caso de que el incremento no suponga ganar la partida
      *                  false en caso contrario
     */
-    private boolean canIBuyLevlels(int I){
+    private boolean canIBuyLevels(int I){
         return (10 > (level + I));
     }
 
@@ -183,7 +185,9 @@ public class Player {
         return repetitions;
     }
     
-    public boolean canMakeTreasurevisible(Treasure t){
+    //Nota: creo que el tio nos va a decir que nada de métodos auxiliares
+    //asi que copiamos el código. Preguntar de todas formas
+    public boolean canMakeTreasureVisible(Treasure t){
         TreasureKind type = t.getType();
         boolean canMake = false;
         
@@ -200,7 +204,7 @@ public class Player {
         */
         if(type == TreasureKind.ONEHAND || type == TreasureKind.BOTHHANDS){
             if(contains(visibleTreasures,TreasureKind.BOTHHANDS)==0){
-                int onehand = contains(visibleTreasures,TreasureKind.BOTHHANDS);
+                int onehand = contains(visibleTreasures,TreasureKind.ONEHAND);
                 if( (onehand < 2) && (type == TreasureKind.ONEHAND) ||
                          (onehand == 0) && (TreasureKind.BOTHHANDS == type)){
                     canMake = true;
@@ -236,33 +240,170 @@ public class Player {
     
    // public ArrayList<Treasure> getVisibleTreasures(){}
    // public ArrayList<Treasure> getHiddenTreasures(){}
-   /* public void applyPrize(Prize p){}
-    public CombatResult combat(Monster m){}
-    public void applyBadConsequence(BadConsequence bad){}
-    public boolean makeTreasureVisible(Treasure t){}
+    //Nota: implementar
+    public void applyPrize(Prize p){
+        int nLevels = p.getLevels();
+        incrementLevels(nLevels);
+        CardDealer dealer = CardDealer.getInstance();
+        int nPrize = p.getTreasures();
+        
+        for(int i = 0; i < nPrize; ++i){
+            Treasure treasure = dealer.nextTreasure();
+            hiddenTreasures.add(treasure);
+        }
+    }
     
-    public void discardVisibleTreasure(Treasure t){}
-    public void discardHiddenTreasure(Treasure t){}
-    public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){}*/
-    //public boolean initTreasures(){}
-    private void die(){}
+    public CombatResult combat(Monster m){
+        int myLevel = getCombatLevel();
+        int levelMonster = m.getCombatLevel();
+        CombatResult result;
+        
+        if(myLevel > levelMonster){
+            Prize prize = m.getPrize();
+            applyPrize(prize);
+            if(level < 10){
+                result = CombatResult.WIN;
+            }
+            else{
+                result = CombatResult.WINANDWINGAME;
+            }
+        }
+        else{
+            Dice dice = Dice.getInstance();
+            int escape = dice.nextNumber();
+            if(escape < 5){
+                BadConsequence bad = m.getBadConsequence();
+                boolean amIDead = bad.kills();
+                
+                if(amIDead){
+                    die();
+                    result = CombatResult.LOSEANDDIE;
+                }
+                else{
+                    applyBadConsequence(bad);
+                    result = CombatResult.LOSE;
+                }
+            }
+            else{
+                result = CombatResult.LOSEANDESCAPE;
+            }
+        }
+        discardNecklaceIfVisible();
+        return result;
+    }
+    
+    public void applyBadConsequence(BadConsequence bad){
+        int nLevels = bad.getLevel();
+        decrementLevels(nLevels);
+        BadConsequence pendingBad =bad.adjustToFitTreasureLists(visibleTreasures, hiddenTreasures);
+        setPendingBadConsequence(pendingBad);
+    }
+    
+    //Nota: preguntar
+    public boolean makeTreasureVisible(Treasure t){
+        visibleTreasures.add(t);
+        hiddenTreasures.remove(t);
+        return true;
+    }
+    
+    
+    //Nota: preguntar al profesor si esto solo borra al primer tesor que se encuentre
+    public void discardVisibleTreasure(Treasure t){
+        visibleTreasures.remove(t);
+        if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){
+            pendingBadConsequence.substractVisibleTreasure(t);
+        }
+        CardDealer dealer = CardDealer.getInstance();
+        dealer.giveTreasureBack(t);
+        dieIfNoTreasures();
+    }
+    
+    public void discardHiddenTreasure(Treasure t){
+        hiddenTreasures.remove(t);
+        if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){
+            pendingBadConsequence.substractHiddenTreasure(t);
+        }
+        CardDealer dealer = CardDealer.getInstance();
+        dealer.giveTreasureBack(t);
+        dieIfNoTreasures();
+    }
+    
+    //nota: ver levels
+    public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
+        float levels = computeGoldCoinsValue(visible);
+        levels += computeGoldCoinsValue(hidden);
+        boolean canI = canIBuyLevels((int)levels);
+        
+        if(canI){
+            incrementLevels((int)levels);
+            for(Treasure v: visible){
+                discardVisibleTreasure(v);
+            }
+            for(Treasure h: hidden){
+                discardHiddenTreasure(h);
+            }
+        }
+        return canI;
+    }
+    
+    public boolean initTreasures(){
+        bringToLife();
+        Treasure treasure;
+        CardDealer dealer = CardDealer.getInstance();
+        Dice dice = Dice.getInstance();
+        int number = dice.nextNumber();
+        
+        if(number == 1){
+            treasure = dealer.nextTreasure();
+            hiddenTreasures.add(treasure);
+        }
+        
+        else if(number < 6){
+            for(int i = 0; i < 2; ++i){
+                treasure = dealer.nextTreasure();
+                hiddenTreasures.add(treasure);
+            }
+        }    
+        else if(number == 6){
+            for(int i = 0; i < 3; ++i){
+                treasure = dealer.nextTreasure();
+                hiddenTreasures.add(treasure);
+            }            
+        }    
+        return true;
+    }
+    
+    private void die(){
+        CardDealer dealer = CardDealer.getInstance();
+        for(Treasure v: visibleTreasures){
+            dealer.giveTreasureBack(v);
+        }
+        visibleTreasures.clear();
+        
+        for(Treasure v: hiddenTreasures){
+            dealer.giveTreasureBack(v);
+        }
+        hiddenTreasures.clear();
+    }
+    
     private void discardNecklaceIfVisible(){
         CardDealer dealer = CardDealer.getInstance();
         for(Treasure x: visibleTreasures){
             if(x.getType()==TreasureKind.NECKLACE){
-                dealer.giveTreasureBack(x);
+                dealer.giveTreasureBack(x);                
                 visibleTreasures.remove(x);
             }
         }
         
     }      
-    //NOTA: en el diagrama de clase viene implementado como float; no le veo sentido 
-    //Yo tambien lo veo mejor como int las monedas no van a ser media moneda en plan to partia xD
-     protected int computeGoldCoinsValue(ArrayList<Treasure> t){
+
+    protected float computeGoldCoinsValue(ArrayList<Treasure> t){
         int coins = 0;
+        float levels;
         for(Treasure treasure: t){
             coins += treasure.getGoldCoins();
         }
-        return coins;
+        levels = coins / 1000;
+        return levels;
     }
 }    

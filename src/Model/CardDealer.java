@@ -30,7 +30,7 @@ public class CardDealer {
         usedMonster = new ArrayList<>();
         unusedTreasures = new ArrayList<>();
         usedTreasures = new ArrayList<>();
-        initTreasureCardDeck();
+        initTreasureCardDeck();//NOTA:quitar, ya que están en initCards
         initMonsterCardDeck();
         shuffleTreasures();
         shuffleMonsters();
@@ -439,7 +439,12 @@ public class CardDealer {
     public void giveMonsterBack(Monster m){
         usedMonster.add(m);
     }
-    //public void initCards(){}
+    public void initCards(){
+        initTreasureCardDeck();
+        initMonsterCardDeck();
+    }
+    
+    //Nota: que lio has hecho en estos métodos alma de cantaro! jaja
     public Treasure nextTreasure(){
         Treasure next = unusedTreasures.get(0);
         unusedTreasures.remove(0);
