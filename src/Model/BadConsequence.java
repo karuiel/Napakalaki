@@ -243,11 +243,43 @@ public class BadConsequence {
          nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
       }
   }
+  
+  //Nota: esto hay que arreglarlo, pero es que no me apetece nada la verdad
   public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
-      
-      BadConsequence bad  = new BadConsequence("Pierdes tu armadura visible y otra oculta" ,0,
-                new ArrayList(Arrays.asList(TreasureKind.ARMOR)), 
-                new ArrayList(Arrays.asList(TreasureKind.ARMOR)));
+      BadConsequence bad;
+      if(death){
+         bad = new BadConsequence(text,death); 
+      }
+      else if(nVisibleTreasures != 0 || nHiddenTreasures != 0){
+          int nV = Math.max(nVisibleTreasures,v.size());
+          int nH = Math.max(nHiddenTreasures,h.size());
+          bad = new BadConsequence(text, levels, nV, nH);
+      }
+      else{
+        ArrayList<TreasureKind> vT = new ArrayList();
+        ArrayList<TreasureKind> hT = new ArrayList();
+        
+        for(TreasureKind t1: specificVisibleTreasures){
+            
+            for(Treasure t2: v){
+                TreasureKind type = t2.getType();
+                if(type == t1){
+                    vT.add(t1);
+                }
+            }
+        }
+       
+        for(TreasureKind t1: specificHiddenTreasures){            
+            
+            for(Treasure t2: h){
+                TreasureKind type = t2.getType();
+                if(type == t1){
+                    hT.add(t1);
+                }
+            }
+        }
+        bad  = new BadConsequence("text" ,0, vT, hT);
+      }
       return bad;
   }
 }

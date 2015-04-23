@@ -77,6 +77,11 @@ public class Player {
         return nivel;
     }
     
+    
+    public String getName(){
+        return this.name;
+    }
+    
 //---------------------------------Other methods--------------------------------
     
     //Nota: he cambiado el nombre de este método porque estaba mal
@@ -406,4 +411,5 @@ public class Player {
         levels = coins / 1000;
         return levels;
     }
+    
 }    
