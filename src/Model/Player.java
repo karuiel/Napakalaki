@@ -45,6 +45,7 @@ public class Player {
         this.hiddenTreasures = new ArrayList<>();
         this.visibleTreasures = new ArrayList<>();
         this.pendingBadConsequence = new BadConsequence("vacio",false);
+        initTreasures();
 
     }
     
@@ -243,8 +244,12 @@ public class Player {
             } */               
     }
     
-   // public ArrayList<Treasure> getVisibleTreasures(){}
-   // public ArrayList<Treasure> getHiddenTreasures(){}
+    public ArrayList<Treasure> getVisibleTreasures(){
+        return this.visibleTreasures;
+    }
+    public ArrayList<Treasure> getHiddenTreasures(){
+        return this.hiddenTreasures;
+    }
 
     public void applyPrize(Prize p){
         int nLevels = p.getLevels();
@@ -410,6 +415,10 @@ public class Player {
         }
         levels = coins / 1000;
         return levels;
+    }
+    
+    public String toString(){
+        return this.name;
     }
     
 }    

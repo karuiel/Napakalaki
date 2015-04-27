@@ -1,12 +1,12 @@
-package Model;
+/*package Model;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Arrays;*/
 
 /**
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-public class PruebaNapakalaki {
+/*public class PruebaNapakalaki {
 
     
     public static void main(String[] args) {
@@ -267,5 +267,5 @@ public class PruebaNapakalaki {
                 }    
             }
         }*/
-    }    
-}
+//    }    
+//}

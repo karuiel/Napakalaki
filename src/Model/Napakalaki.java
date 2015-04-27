@@ -21,6 +21,7 @@ public class Napakalaki {
     //Nota: no se que cojones hacer aqui <3
     //(igual para ruby)
     private Napakalaki(){
+        players = new ArrayList<>();
         currentPlayerIndex = -1;
     }
     
@@ -33,7 +34,7 @@ public class Napakalaki {
     private Player nextPlayer(){
         if(currentPlayerIndex ==-1){
             Random rand = new Random();
-            int currentPlayerIndex = rand.nextInt(players.size());
+            currentPlayerIndex = rand.nextInt(players.size());
         }
         else{
             currentPlayerIndex = (currentPlayerIndex + 1) % players.size(); 
@@ -77,7 +78,12 @@ public class Napakalaki {
         return currentMonster;
     }
     public boolean nextTurnAllowed(){
-        return currentPlayer.validState();
+        if(currentPlayerIndex==-1){
+            return true;
+        }
+        else{
+            return currentPlayer.validState();
+        }
     }
     public boolean canMakeTreasureVisible(Treasure t){
         boolean canMake = currentPlayer.canMakeTreasureVisible(t);
