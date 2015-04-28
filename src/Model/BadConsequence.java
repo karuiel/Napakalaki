@@ -239,11 +239,9 @@ public class BadConsequence {
       }
   }
   
-  //Nota: esto hay que arreglarlo, pero es que no me apetece nada la verdad
-  //Quitar death
   public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
       BadConsequence bad;
-      System.out.println("\n\n\nEn adjustToFitTreasureLists\n\n\n");
+
       if(death){
          bad = new BadConsequence(text,death); 
       }

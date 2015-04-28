@@ -463,7 +463,7 @@ public class CardDealer {
         Monster next;
         if(unusedMonster.size()!=0){           
             next = unusedMonster.get(0);
-            unusedTreasures.remove(0);
+            unusedMonster.remove(0);
         }else{
             unusedMonster=usedMonster;
             usedMonster= new ArrayList<>();
