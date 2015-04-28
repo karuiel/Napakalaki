@@ -191,8 +191,6 @@ public class Player {
         return repetitions;
     }
     
-    //Nota: creo que el tio nos va a decir que nada de métodos auxiliares
-    //asi que copiamos el código. Preguntar de todas formas
     public boolean canMakeTreasureVisible(Treasure t){
         TreasureKind type = t.getType();
         boolean canMake = false;
@@ -211,8 +209,8 @@ public class Player {
         if(type == TreasureKind.ONEHAND || type == TreasureKind.BOTHHANDS){
             if(contains(visibleTreasures,TreasureKind.BOTHHANDS)==0){
                 int onehand = contains(visibleTreasures,TreasureKind.ONEHAND);
-                if( (onehand < 2) && (type == TreasureKind.ONEHAND) ||
-                         (onehand == 0) && (TreasureKind.BOTHHANDS == type)){
+                if( ((onehand < 2) && (type == TreasureKind.ONEHAND)) ||
+                         ((onehand == 0) && (TreasureKind.BOTHHANDS == type))){
                     canMake = true;
                 }
             }
@@ -221,27 +219,6 @@ public class Player {
             canMake = (contains(visibleTreasures,type) == 0);
         }
         return canMake;
-       /* boolean canMake=true;
-        int contador = 0;
-        
-            for(Treasure x: visibleTreasures){
-                TreasureKind tipo = x.getType();
-                if(t.getType()!= TreasureKind.ONEHAND){
-                    if(t.getType()==x.getType()){
-                      canMake=false;  
-                    }
-                }else{
-                    if(tipo==TreasureKind.BOTHHANDS){
-                        canMake=false;
-                    }
-                    if(tipo==TreasureKind.ONEHAND){
-                        contador++;
-                    }
-                    if(contador==2){
-                        canMake = false;
-                    }                   
-                }
-            } */               
     }
     
     public ArrayList<Treasure> getVisibleTreasures(){
@@ -315,13 +292,13 @@ public class Player {
             visibleTreasures.add(t);
             hiddenTreasures.remove(t);
             return true;
-        }else{       
+        }
+        else{       
             return false;
         }
     }
     
     
-    //Nota: preguntar al profesor si esto solo borra al primer tesor que se encuentre
     public void discardVisibleTreasure(Treasure t){
         visibleTreasures.remove(t);
         if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){

@@ -444,7 +444,6 @@ public class CardDealer {
         initMonsterCardDeck();
     }
     
-    //Nota: que lio has hecho en estos métodos alma de cantaro! jaja
     public Treasure nextTreasure(){
         Treasure next;
         if(unusedTreasures.size()!=0){
@@ -453,7 +452,7 @@ public class CardDealer {
         }else{
             unusedTreasures=usedTreasures;
             usedTreasures= new ArrayList<>();
-            shuffleMonsters();
+            shuffleTreasures();
             next = unusedTreasures.get(0);
             unusedTreasures.remove(0);
             
@@ -461,8 +460,18 @@ public class CardDealer {
         return next;        
     }
     public Monster nextMonster(){
-        Monster next = unusedMonster.get(0);
-        unusedMonster.remove(0);
+        Monster next;
+        if(unusedMonster.size()!=0){
+         next = unusedMonster.get(0);
+        unusedTreasures.remove(0);
+        }else{
+            unusedMonster=usedMonster;
+            usedMonster= new ArrayList<>();
+            shuffleMonsters();
+            next = unusedMonster.get(0);
+            unusedMonster.remove(0);
+            
+        }
         return next;
     }
 }

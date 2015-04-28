@@ -209,10 +209,7 @@ public class BadConsequence {
   public boolean kills(){
       return this.death;
   }
-  
-  //Nota: preguntar al profesor por una mejor implementación (igual para los hidden)
-  //¿Esta bien el contador?¿los vectores no empiezan en el 0?
-  //¿Que pasa si no se puede cumplir un mal rollo?
+
   public void substractVisibleTreasure(Treasure t){
       boolean eliminado = false;
       if(specificVisibleTreasures.size()!=0){
