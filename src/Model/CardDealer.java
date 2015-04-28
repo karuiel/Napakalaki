@@ -447,8 +447,8 @@ public class CardDealer {
     public Treasure nextTreasure(){
         Treasure next;
         if(unusedTreasures.size()!=0){
-         next = unusedTreasures.get(0);
-        unusedTreasures.remove(0);
+            next = unusedTreasures.get(0);
+            unusedTreasures.remove(0);
         }else{
             unusedTreasures=usedTreasures;
             usedTreasures= new ArrayList<>();
@@ -461,9 +461,9 @@ public class CardDealer {
     }
     public Monster nextMonster(){
         Monster next;
-        if(unusedMonster.size()!=0){
-         next = unusedMonster.get(0);
-        unusedTreasures.remove(0);
+        if(unusedMonster.size()!=0){           
+            next = unusedMonster.get(0);
+            unusedTreasures.remove(0);
         }else{
             unusedMonster=usedMonster;
             usedMonster= new ArrayList<>();

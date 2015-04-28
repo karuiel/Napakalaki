@@ -253,7 +253,7 @@ public class Player {
             }
             else{
                 result = CombatResult.WINANDWINGAME;
-            }
+            }   
         }
         else{
             Dice dice = Dice.getInstance();

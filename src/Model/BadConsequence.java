@@ -243,6 +243,7 @@ public class BadConsequence {
   //Quitar death
   public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
       BadConsequence bad;
+      System.out.println("\n\n\nEn adjustToFitTreasureLists\n\n\n");
       if(death){
          bad = new BadConsequence(text,death); 
       }
@@ -254,9 +255,16 @@ public class BadConsequence {
       else{
         ArrayList<TreasureKind> vT = new ArrayList();
         ArrayList<TreasureKind> hT = new ArrayList();
-        ArrayList<Treasure> vCopy = v;
-        ArrayList<Treasure> hCopy = h;
+        ArrayList<Treasure> vCopy = new ArrayList<>();
+        ArrayList<Treasure> hCopy = new ArrayList<>();
         
+        for(Treasure t: v){
+            vCopy.add(t);
+        }
+        for(Treasure t: h){
+            hCopy.add(t);
+        }
+                
         for(TreasureKind t1: specificVisibleTreasures){
             boolean found = false;
             for(Treasure t2: vCopy){
@@ -281,6 +289,7 @@ public class BadConsequence {
             }
         }
         bad  = new BadConsequence(text ,0, vT, hT);
+        System.out.println("el bc es: \n"+bad.toString()+"\n\n\n\n\n\n\n\n");
       }
       return bad;
   }
