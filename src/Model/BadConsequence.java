@@ -227,16 +227,17 @@ public class BadConsequence {
   
   public void substractHiddenTreasure(Treasure t){
       boolean eliminado = false;
-
-      for(TreasureKind tesoro: specificHiddenTreasures){
-        if(!eliminado && tesoro == t.getType()){
-            specificHiddenTreasures.remove(tesoro);
-            eliminado = true;
+      if(specificHiddenTreasures.size()!=0){
+        for(TreasureKind tesoro: specificHiddenTreasures){
+          if(!eliminado && tesoro == t.getType()){
+              specificHiddenTreasures.remove(tesoro);
+              eliminado = true;
+          }
         }
-      }
-      if(!eliminado){
-         nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
-      }
+        if(!eliminado){
+           nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
+        }
+      }  
   }
   
   public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
@@ -251,8 +252,8 @@ public class BadConsequence {
           bad = new BadConsequence(text, 0, nV, nH);
       }
       else{
-        ArrayList<TreasureKind> vT = new ArrayList();
-        ArrayList<TreasureKind> hT = new ArrayList();
+        ArrayList<TreasureKind> vT = new ArrayList<>();
+        ArrayList<TreasureKind> hT = new ArrayList<>();
         ArrayList<Treasure> vCopy = new ArrayList<>();
         ArrayList<Treasure> hCopy = new ArrayList<>();
         
