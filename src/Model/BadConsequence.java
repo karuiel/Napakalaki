@@ -267,24 +267,24 @@ public class BadConsequence {
                 
         for(TreasureKind t1: specificVisibleTreasures){
             boolean found = false;
-            for(Treasure t2: vCopy){
-                TreasureKind type = t2.getType();
-                if(type == t1 && !found){
-                    vT.add(t1);
-                    vCopy.remove(t2);
+            for(int i = 0; i < vCopy.size()&& !found;++i){
+                TreasureKind type = vCopy.get(i).getType();
+                if(type == t1){
                     found = true;
+                    vT.add(t1);
+                    vCopy.remove(i);
                 }
             }
         }
        
         for(TreasureKind t1: specificHiddenTreasures){            
             boolean found = false;
-            for(Treasure t2: hCopy){
-                TreasureKind type = t2.getType();
-                if(type == t1 && !found){
-                    hT.add(t1);
-                    hCopy.remove(t2);
+            for(int i = 0; i < hCopy.size()&& !found;++i){
+                TreasureKind type = hCopy.get(i).getType();
+                if(type == t1){
                     found = true;
+                    hT.add(t1);
+                    hCopy.remove(i);
                 }
             }
         }

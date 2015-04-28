@@ -379,14 +379,15 @@ public class Player {
     
     private void discardNecklaceIfVisible(){
         CardDealer dealer = CardDealer.getInstance();
-        for(Treasure x: visibleTreasures){
-            if(x.getType()==TreasureKind.NECKLACE){
-                dealer.giveTreasureBack(x);                
-                visibleTreasures.remove(x);
+        boolean found = false;
+        for(int i = 0; i < visibleTreasures.size() && !found; ++i){
+            Treasure actual = visibleTreasures.get(i);
+            if(actual.getType()==TreasureKind.NECKLACE){
+                dealer.giveTreasureBack(actual);
+                visibleTreasures.remove(i);
             }
-        }
-        
-    }      
+        }        
+    } 
 
     protected float computeGoldCoinsValue(ArrayList<Treasure> t){
         int coins = 0;
