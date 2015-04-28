@@ -219,10 +219,10 @@ public class BadConsequence {
               eliminado = true;
           }
         }
-        if(!eliminado){
+      } 
+       if(!eliminado){
            nVisibleTreasures = Math.max(0,nVisibleTreasures-1); 
-        }
-      }
+       }
   }
   
   public void substractHiddenTreasure(Treasure t){
@@ -234,9 +234,9 @@ public class BadConsequence {
               eliminado = true;
           }
         }
-        if(!eliminado){
-           nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
-        }
+      }  
+      if(!eliminado){
+        nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
       }  
   }
   
