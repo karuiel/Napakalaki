@@ -210,6 +210,11 @@ public class BadConsequence {
       return this.death;
   }
 
+  /*
+   * @brief Método para eliminar un tesoro t de la lista de tesoros
+   *        visibles, ya sea específico o un número determinado
+   * @param Treasure t: tesoro entregado para cumplir el mal rollo
+  */
   public void substractVisibleTreasure(Treasure t){
       boolean eliminado = false;
       boolean found = false;
@@ -221,16 +226,21 @@ public class BadConsequence {
                     found = true;
                     indice = i;
                 }
-            }
-        specificVisibleTreasures.remove(indice);
-        eliminado = true;
-        
+        }
+        if(found){
+            specificVisibleTreasures.remove(indice);
+            eliminado = true;
+        }    
       } 
        if(!eliminado){
            nVisibleTreasures = Math.max(0,nVisibleTreasures-1); 
        }
   }
-  
+  /*
+   * @brief Método para eliminar un tesoro t de la lista de tesoros
+   *        ocultos, ya sea específico o un número determinado
+   * @param Treasure t: tesoro entregado para cumplir el mal rollo
+  */
   public void substractHiddenTreasure(Treasure t){
       boolean eliminado = false;
       boolean found = false;
@@ -243,14 +253,23 @@ public class BadConsequence {
                 indice = i;
             }
         }
-        specificHiddenTreasures.remove(indice);
-        eliminado = true;
+        if(found){
+            specificHiddenTreasures.remove(indice);
+            eliminado = true;
+        }    
       }  
       if(!eliminado){
         nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
       }  
   }
   
+  
+  /*
+   * @brief Método para crear un mal rollo de forma que el jugador lo pueda cumplir
+   * @param ArrayList<Treasure> v: lista de tesoros visibles que posee el jugador
+   * @param ArrayList<Treasure> h: lista de tesoros ocultos que posee el jugador
+   * @return BadConsequence: mal rollo creado
+  */
   public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
       BadConsequence bad;
 

@@ -80,6 +80,10 @@ public class Treasure {
         return this.type;
     }
     
+    /*
+     * @brief Método que convierte a String un elemento Treasure
+     * @return String: cadena de texto obtenida
+    */
     public String toString(){
         String output ="Nombre = " + this.name + 
               "\nTipo = "+ this.type +

@@ -78,15 +78,20 @@ public class Player {
         return nivel;
     }
     
-    
+    /*
+     * @brief Consultor del atributo name
+     * @return String: name
+    */
     public String getName(){
         return this.name;
     }
     
 //---------------------------------Other methods--------------------------------
     
-    //Nota: he cambiado el nombre de este método porque estaba mal
-    //hay que ver si se ha utilizado en algun lado...
+
+    /*
+     * @brief Método encargado de revivir al jugador
+    */
     private void bringToLife(){
         this.dead = false;
     }
@@ -128,7 +133,6 @@ public class Player {
     private void dieIfNoTreasures(){
         if(visibleTreasures.isEmpty() && hiddenTreasures.isEmpty()){
             die();
-            //NOTA:llamada al método die cuando esté implementado
         }
     }
     
@@ -175,7 +179,7 @@ public class Player {
         return !visibleTreasures.isEmpty();
     }
 
-    /**
+    /*
      * @brief Método auxiliar para contar las repeticiones de un tesoro en un array
      * @param ArrayList<Treasure> treasures: array con los tesoros
      * @param TreasureKind t: tesoro a buscar
@@ -191,6 +195,12 @@ public class Player {
         return repetitions;
     }
     
+    /*
+     * @brief Método encargafdo de determinar si un tesoro que está 
+              oculto puede pasar a estar visible
+     * @return boolean: true en caso en que se pueda pasar a visible
+     *                  false en caso contrario
+    */
     public boolean canMakeTreasureVisible(Treasure t){
         TreasureKind type = t.getType();
         boolean canMake = false;
@@ -221,13 +231,28 @@ public class Player {
         return canMake;
     }
     
+    
+    /*
+     * @brief Consultor visibleTreasures
+     * @return ArrayList<Treasures>: visibleTreasures
+    */
     public ArrayList<Treasure> getVisibleTreasures(){
         return this.visibleTreasures;
     }
+    
+    /*
+     * @brief Consultor hiddenTreasures
+     * @return ArrayList<Treasures>: hiddenTreasures
+    */
     public ArrayList<Treasure> getHiddenTreasures(){
         return this.hiddenTreasures;
     }
 
+    
+    /*
+     * @brief Método encargado de recibir un premio
+     * @param Prize p: premio a recibir
+    */
     public void applyPrize(Prize p){
         int nLevels = p.getLevels();
         incrementLevels(nLevels);
@@ -240,6 +265,11 @@ public class Player {
         }
     }
     
+    /*
+     * @brief Método encargado de combatir contra un monstruo
+     * @param Monster m: monstruo contra el que combatir
+     * @return CombatResult: resultado del combate
+    */
     public CombatResult combat(Monster m){
         int myLevel = getCombatLevel();
         int levelMonster = m.getCombatLevel();
@@ -279,6 +309,11 @@ public class Player {
         return result;
     }
     
+    
+    /*
+     * @brief Método encargado de aplicar un mal rollo
+     * @param BadConsequence bad: mal rollo recibido
+    */
     public void applyBadConsequence(BadConsequence bad){
         int nLevels = bad.getLevel();
         decrementLevels(nLevels);
@@ -286,7 +321,13 @@ public class Player {
         setPendingBadConsequence(pendingBad);
     }
     
-    //Nota: preguntar
+    
+    /*
+     * @brief Método encargado de decidir si un tesoro oculto puede pasar a visible
+     * @param Treasure t: tesoro a hacer visible
+     * @return boolean: true en caso en que se pueda hacer visible
+                        false en caso contrario
+    */
     public boolean makeTreasureVisible(Treasure t){
         if(canMakeTreasureVisible(t)){
             visibleTreasures.add(t);
@@ -301,7 +342,7 @@ public class Player {
     
     public void discardVisibleTreasure(Treasure t){
         visibleTreasures.remove(t);
-        if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){
+        if( (!pendingBadConsequence.isEmpty())){
             pendingBadConsequence.substractVisibleTreasure(t);
         }
         CardDealer dealer = CardDealer.getInstance();
@@ -311,7 +352,7 @@ public class Player {
     
     public void discardHiddenTreasure(Treasure t){
         hiddenTreasures.remove(t);
-        if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){
+        if( (!pendingBadConsequence.isEmpty())){
             pendingBadConsequence.substractHiddenTreasure(t);
         }
         CardDealer dealer = CardDealer.getInstance();
@@ -319,7 +360,6 @@ public class Player {
         dieIfNoTreasures();
     }
     
-    //nota: ver levels
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         float levels = computeGoldCoinsValue(visible);
         levels += computeGoldCoinsValue(hidden);

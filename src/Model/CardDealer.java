@@ -24,7 +24,10 @@ public class CardDealer {
     private ArrayList<Treasure> usedTreasures;
     
 //------------------------------Constructors------------------------------------    
-    
+ 
+    /*
+     * @brief Constructor 
+    */
     private CardDealer(){
         unusedMonster = new ArrayList<>();
         usedMonster = new ArrayList<>();
@@ -433,15 +436,24 @@ public class CardDealer {
     
     /*
      * @brief Método para incluir una carta de monstruo en el mazo de usadas
+     * @param Monster m: monstruo a devolver
     */
     public void giveMonsterBack(Monster m){
         usedMonster.add(m);
     }
+    
+    /*
+     * @brief Método para inicializar los mazos de cartas
+    */
     public void initCards(){
         initTreasureCardDeck();
         initMonsterCardDeck();
     }
     
+    /*
+     * @brief Método que devuelve la siguiente carta de tesoro
+     * @return Treasure: siguiente tesoro
+    */
     public Treasure nextTreasure(){
         Treasure next;
         if(unusedTreasures.size()!=0){
@@ -457,6 +469,11 @@ public class CardDealer {
         }
         return next;        
     }
+    
+    /*
+     * @brief Método que devuelve la siguiente carta de monstuo
+     * @return Treasure: siguiente monstruo
+    */
     public Monster nextMonster(){
         Monster next;
         if(unusedMonster.size()!=0){           
