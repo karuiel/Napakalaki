@@ -463,9 +463,12 @@ public class CardDealer {
         if(unusedTreasures.size()!=0){
             next = unusedTreasures.get(0);
             unusedTreasures.remove(0);
-        }else{
-            unusedTreasures=usedTreasures;
-            usedTreasures= new ArrayList<>();
+        }
+        else{
+            for(Treasure t: usedTreasures){
+                unusedTreasures.add(t);
+            }    
+            usedTreasures.clear();
             shuffleTreasures();
             next = unusedTreasures.get(0);
             unusedTreasures.remove(0);
@@ -484,8 +487,10 @@ public class CardDealer {
             next = unusedMonster.get(0);
             unusedMonster.remove(0);
         }else{
-            unusedMonster=usedMonster;
-            usedMonster= new ArrayList<>();
+            for(Monster t: usedMonster){
+                unusedMonster.add(t);
+            }    
+            usedMonster.clear();
             shuffleMonsters();
             next = unusedMonster.get(0);
             unusedMonster.remove(0);
