@@ -405,9 +405,13 @@ public class CardDealer {
         unusedMonster.add(new Monster("El Lenguas", 20, badConsequence, prize));
         
         
+        ArrayList<TreasureKind> m = new ArrayList<>();
+        m.add(TreasureKind.ONEHAND);
+        m.add(TreasureKind.ONEHAND);
+        m.add(TreasureKind.BOTHHANDS);
         badConsequence = new BadConsequence("Te faltan manos para tanta cabeza." + 
                 "Pierdes 3 niveles y tus tesoros visibles de las manos.",3,
-                Integer.MAX_VALUE,0);
+                m,new ArrayList());
         prize = new Prize(1,1);
         unusedMonster.add(new Monster("Bicéfalo", 20, badConsequence, prize));
         Collections.shuffle(unusedMonster);

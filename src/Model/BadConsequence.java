@@ -358,7 +358,6 @@ public class BadConsequence {
             }
         }
         bad  = new BadConsequence(text ,0, vT, hT);
-        System.out.println("el bc es: \n"+bad.toString()+"\n\n\n\n\n\n\n\n");
       }
       return bad;
   }
