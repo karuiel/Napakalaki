@@ -219,6 +219,14 @@ public class BadConsequence {
       boolean eliminado = false;
       boolean found = false;
       int indice=0;
+      
+      /*
+       Algoritmo: 
+            Si el mal rollo tiene tesoros específicos visibles:
+                Se busca un tesoros del mismo tipo que t y se elimina del mal rollo
+            Si no, se disminuye en uno el número de tesoros que implica    
+      */
+      
       if(specificVisibleTreasures.size()!=0){
         for(int i = 0; i < specificVisibleTreasures.size()&& !found;++i){
                 TreasureKind type = specificVisibleTreasures.get(i);
@@ -245,6 +253,13 @@ public class BadConsequence {
       boolean eliminado = false;
       boolean found = false;
       int indice = 0;
+      
+      /*
+       Algoritmo: 
+            Si el mal rollo tiene tesoros específicos ocultos:
+                Se busca un tesoros del mismo tipo que t y se elimina del mal rollo
+            Si no, se disminuye en uno el número de tesoros que implica    
+      */
       if(specificHiddenTreasures.size()!=0){
         for(int i = 0; i < specificHiddenTreasures.size()&& !found;++i){
             TreasureKind type = specificHiddenTreasures.get(i);
@@ -273,6 +288,26 @@ public class BadConsequence {
   public BadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
       BadConsequence bad;
 
+      /*
+      Algoritmo:
+        Si el mal rollo presente implica muerte se crea un nuevo mal rollo que la implique
+      
+        Si implica pérdida de un número determinado de tesoros se crea un nuevo mal rollo 
+        con el mínimo entre lo que implica el mal rollo y los tesoros que tiene el jugador,
+        tanto ocultos como visibles.
+      
+        Si implica pérdida de tesoros específicos:
+            *Se crean nuevos vectores con los tesoros del jugador
+            *Para cada elemento del mal rollo se busca si existe uno de igual tipo en la 
+            copia creada (cada uno en la correspondiente)
+                Si hay coincidencia: 
+                    Se añade al vector en el cual se almacena el nuevo mal rollo
+                    Se elimina dicha coincidencia del vector copia de los tesoros
+                Si no hay coincidencia:
+                    No pertenecerá al ajuste del mal rollo
+            *Se crea un mal rollo con los tipos específicos de tesoros seleccionados        
+      */
+      
       if(death){
          bad = new BadConsequence(text,death); 
       }
@@ -284,18 +319,21 @@ public class BadConsequence {
       else{
         ArrayList<TreasureKind> vT = new ArrayList<>();
         ArrayList<TreasureKind> hT = new ArrayList<>();
-        ArrayList<Treasure> vCopy = new ArrayList<>();
-        ArrayList<Treasure> hCopy = new ArrayList<>();
+        ArrayList<Treasure> vCopy = new ArrayList<>();//Copia de los tesoros visibles
+        ArrayList<Treasure> hCopy = new ArrayList<>();//Copia de los tesoros ocultos
         
+        //Bucles de copia
         for(Treasure t: v){
             vCopy.add(t);
         }
         for(Treasure t: h){
             hCopy.add(t);
         }
-                
+        
+        //Ajuste de los tesoros visibles
         for(TreasureKind t1: specificVisibleTreasures){
             boolean found = false;
+            //Búsqueda de t1 entre los tesoros del jugador
             for(int i = 0; i < vCopy.size()&& !found;++i){
                 TreasureKind type = vCopy.get(i).getType();
                 if(type == t1){
@@ -306,8 +344,10 @@ public class BadConsequence {
             }
         }
        
+        //Ajuste de los tesoros ocultos
         for(TreasureKind t1: specificHiddenTreasures){            
             boolean found = false;
+            //Búsqueda del tesoro t2 entre los tesoros del jugador
             for(int i = 0; i < hCopy.size()&& !found;++i){
                 TreasureKind type = hCopy.get(i).getType();
                 if(type == t1){

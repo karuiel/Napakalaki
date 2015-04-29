@@ -86,6 +86,22 @@ public class Player {
         return this.name;
     }
     
+    /*
+     * @brief Consultor visibleTreasures
+     * @return ArrayList<Treasures>: visibleTreasures
+    */
+    public ArrayList<Treasure> getVisibleTreasures(){
+        return this.visibleTreasures;
+    }
+    
+    /*
+     * @brief Consultor hiddenTreasures
+     * @return ArrayList<Treasures>: hiddenTreasures
+    */
+    public ArrayList<Treasure> getHiddenTreasures(){
+        return this.hiddenTreasures;
+    }
+    
 //---------------------------------Other methods--------------------------------
     
 
@@ -138,12 +154,12 @@ public class Player {
     
     /*
      * @brief Método para determinar si se pueden comprar una cantidad de niveles
-     * @param int I: número de niveles a comprar
+     * @param int l: número de niveles a comprar
      * @return boolean: true en caso de que el incremento no suponga ganar la partida
      *                  false en caso contrario
     */
-    private boolean canIBuyLevels(int I){
-        return (10 > (level + I));
+    private boolean canIBuyLevels(int l){
+        return (10 > (level + l));
     }
 
     
@@ -230,23 +246,6 @@ public class Player {
         }
         return canMake;
     }
-    
-    
-    /*
-     * @brief Consultor visibleTreasures
-     * @return ArrayList<Treasures>: visibleTreasures
-    */
-    public ArrayList<Treasure> getVisibleTreasures(){
-        return this.visibleTreasures;
-    }
-    
-    /*
-     * @brief Consultor hiddenTreasures
-     * @return ArrayList<Treasures>: hiddenTreasures
-    */
-    public ArrayList<Treasure> getHiddenTreasures(){
-        return this.hiddenTreasures;
-    }
 
     
     /*
@@ -274,6 +273,20 @@ public class Player {
         int myLevel = getCombatLevel();
         int levelMonster = m.getCombatLevel();
         CombatResult result;
+        
+        /*
+        Algoritmo:
+            Se calcula el nivel del jugador con sus tesoros visibles
+            Si el nivel del jugador es mayor que el del monstruo se aplica el premio
+                Si con el premio llega al nivel 10 ha ganado la partida
+                Si no tan solo ha ganado el combate
+            Si el nivel es menor o igual que el del monstruo se tira el dado
+                Si se obtiene un número mayor que 4 se escapa
+                En caso contrario:
+                    Si el mal rollo implica muerte el jugador pierde y muere
+                    Si no tan solo pierde y se aplica el mal rollo
+                
+        */
         
         if(myLevel > levelMonster){
             Prize prize = m.getPrize();
@@ -339,7 +352,10 @@ public class Player {
         }
     }
     
-    
+    /*
+     * @brief Método para descartarse de un tesoro visible
+     * @param Treasure t: tesoro a descartar
+    */
     public void discardVisibleTreasure(Treasure t){
         visibleTreasures.remove(t);
         if( (!pendingBadConsequence.isEmpty())){
@@ -350,6 +366,10 @@ public class Player {
         dieIfNoTreasures();
     }
     
+    /*
+     * @brief Método para descartarse de un tesoro oculto
+     * @param Treasure t: tesoro a descartar
+    */
     public void discardHiddenTreasure(Treasure t){
         hiddenTreasures.remove(t);
         if( (!pendingBadConsequence.isEmpty())){
@@ -360,6 +380,14 @@ public class Player {
         dieIfNoTreasures();
     }
     
+    
+    /*
+     * @brief Método encargado de gestionar la compra de niveles
+     * @param ArrayList<Treasure> visible: lista de tesoros visibles a vender
+     * @param ArrayList<Treasure> hidden: lista de tesoros ocultos a vender
+     * @return boolean: true en caso de que se realice la compra
+     *                  false en caso contrario
+    */
     public boolean buyLevels(ArrayList<Treasure> visible, ArrayList<Treasure> hidden){
         float levels = computeGoldCoinsValue(visible);
         levels += computeGoldCoinsValue(hidden);
@@ -377,6 +405,11 @@ public class Player {
         return canI;
     }
     
+    /*
+     * @brief Método encargado inicializar los tesoros ocultos 
+     * @return boolean: true en caso de éxito
+     *                  false en caso contrario
+    */
     public boolean initTreasures(){
         bringToLife();
         Treasure treasure;
@@ -384,6 +417,11 @@ public class Player {
         Dice dice = Dice.getInstance();
         int number = dice.nextNumber();
         
+        /*
+         Si se obtiene un 1 se adquiere un tesoro
+         Si se obtiene un 6 se adquieren 3
+         En caso contrario se adquieren 2
+        */
         if(number == 1){
             treasure = dealer.nextTreasure();
             hiddenTreasures.add(treasure);
@@ -404,23 +442,35 @@ public class Player {
         return true;
     }
     
+    
+    /*
+     * @brief Método encargado de gestionar la muerte del jugador
+    */
     private void die(){
         this.dead=true;
         CardDealer dealer = CardDealer.getInstance();
+        
+        //Bucle de borrado de los tesoros visibles
         for(Treasure v: visibleTreasures){
             dealer.giveTreasureBack(v);
         }
         visibleTreasures.clear();
         
+        //Bucle de borrado de los tesoros invisibles
         for(Treasure v: hiddenTreasures){
             dealer.giveTreasureBack(v);
         }
         hiddenTreasures.clear();
     }
     
+    /*
+     * @brief Método encargado de descartar el collar si está visible
+    */
     private void discardNecklaceIfVisible(){
         CardDealer dealer = CardDealer.getInstance();
         boolean found = false;
+        
+        //Bucle de búsqueda del collar
         for(int i = 0; i < visibleTreasures.size() && !found; ++i){
             Treasure actual = visibleTreasures.get(i);
             if(actual.getType()==TreasureKind.NECKLACE){
@@ -430,6 +480,12 @@ public class Player {
         }        
     } 
 
+    /*
+     * @brief Método encargado de calcular los niveles que proporcionan una lista 
+               de tesoros
+     * @param ArrayList<Treasure> t: tesoros 
+     * @return float: niveles que se pueden comprar
+    */
     protected float computeGoldCoinsValue(ArrayList<Treasure> t){
         int coins = 0;
         float levels;
@@ -440,6 +496,10 @@ public class Player {
         return levels;
     }
     
+    /*
+     * @brief Método encargado de convertir en String un objeto Player
+     * @return String: cadena de texto obtenida
+    */
     public String toString(){
         String output =" " + name + 
               "\tNiveles = "+ Integer.toString(level)+
