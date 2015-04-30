@@ -121,6 +121,7 @@ public class Player {
     protected int getOponentLevel(Monster m){
         return m.getLevel();
     }
+    
     protected boolean shouldConvert(){
         Dice dice = Dice.getInstance();
         int number = dice.nextNumber();
@@ -297,7 +298,7 @@ public class Player {
     */
     public CombatResult combat(Monster m){
         int myLevel = getCombatLevel();
-        int levelMonster = m.getLevel();
+        int levelMonster = this.getOponentLevel(m);
         CombatResult result;
         
         /*
@@ -342,6 +343,14 @@ public class Player {
             }
             else{
                 result = CombatResult.LOSEANDESCAPE;
+            }
+            
+            //Nota: arreglar
+            if(result == CombatResult.LOSE){
+                boolean convert = this.shouldConvert();
+                if(convert){
+                    result = CombatResult.LOSEANDCONVERT;
+                }
             }
         }
         discardNecklaceIfVisible();

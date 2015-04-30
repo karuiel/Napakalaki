@@ -454,6 +454,7 @@ public class CardDealer {
      * @brief Método para inicializar el mazo de cartas de Sectarios
     */
     private void initCultistCardDesk(){
+        
     
     }
     
