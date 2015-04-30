@@ -11,7 +11,7 @@ package Model;
  *
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
-public class Treasure {
+public class Treasure implements Card{
     
     private String name;
     private int goldCoins;
@@ -92,7 +92,13 @@ public class Treasure {
               "\nMax Bonus= " + Integer.toString(maxBonus);
         
         return output;
-            
+                   
     }
     
+    public int getBasicBalue(){
+        return minBonus;
+    }
+    public int getSpecialValue(){
+        return maxBonus;
+    }
 }

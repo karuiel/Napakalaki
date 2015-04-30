@@ -14,9 +14,10 @@ package Model;
 public class Monster {
     
     private String name;
-    private int combatLevel;
+    private int level;
     private Prize price;
     private BadConsequence bc;
+    private int levelChangeAgainstCultistPlayer;
     
     //------------------------------Constructor---------------------------------
     
@@ -26,18 +27,20 @@ public class Monster {
      * @param int level: nivel de combate del monstruo
      * @param BadConsequence bc: mal rollo del monstrup
      * @param Prize price: buen rollo del monstruo
+     * @param int 
      */ 
     public Monster(String name, int level,
-                    BadConsequence bc,Prize price){
+                    BadConsequence bc,Prize price,int levelChange){
         this.name = name;
         if(level >= 0){
-            this.combatLevel = level;
+            this.level = level;
         }
         else{
-            this.combatLevel = 0;
+            this.level = 0;
         }
         this.bc = bc;
         this.price = price;
+        this.levelChangeAgainstCultistPlayer = levelChange;
     }
     
     //-------------------------------Getters------------------------------------
@@ -55,8 +58,8 @@ public class Monster {
      * @brief Método para obtener el atributo combatLevel
      * @return int: nivel de combate del monstruo
      */ 
-    public int getCombatLevel(){
-        return combatLevel;     
+    public int getLevel(){
+        return level;     
     }
     
     /*
@@ -83,8 +86,15 @@ public class Monster {
    */
     public String toString(){
         return "Name = " + name + 
-                "\n\tCombat level = " + Integer.toString(combatLevel) +
+                "\n\tCombat level = " + Integer.toString(level) +
                 "\n\n\tPrize = ("+ price.toString()+" ) " +
                 "\n\n\tBad consequence = ( " + bc.toString()+ " ) ";
-    }       
+    } 
+    
+    public int getBasicBalue(){
+        return getLevel();
+    }
+    public int getSpecialValue(){
+        return getLevel()+ this.levelChangeAgainstCultistPlayer;
+    }
 }

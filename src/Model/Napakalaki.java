@@ -68,6 +68,9 @@ public class Napakalaki {
     public CombatResult combat(){
         CombatResult result = currentPlayer.combat(currentMonster);
         CardDealer dealer = CardDealer.getInstance();
+        if(result == CombatResult.LOSEANDCONVERT){
+            //Nota: jeje
+        }
         dealer.giveMonsterBack(currentMonster);
         return result;
     }

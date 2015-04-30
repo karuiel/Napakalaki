@@ -119,7 +119,7 @@ public class Player {
     
     
     protected int getOponentLevel(Monster m){
-        return m.getCombatLevel();
+        return m.getLevel();
     }
     protected boolean shouldConvert(){
         Dice dice = Dice.getInstance();
@@ -297,7 +297,7 @@ public class Player {
     */
     public CombatResult combat(Monster m){
         int myLevel = getCombatLevel();
-        int levelMonster = m.getCombatLevel();
+        int levelMonster = m.getLevel();
         CombatResult result;
         
         /*
