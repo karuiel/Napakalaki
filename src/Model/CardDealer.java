@@ -22,6 +22,7 @@ public class CardDealer {
     private ArrayList<Monster> usedMonster;
     private ArrayList<Treasure> unusedTreasures;
     private ArrayList<Treasure> usedTreasures;
+    private ArrayList<Cultist> unusedCultist;
     
 //------------------------------Constructors------------------------------------    
  
@@ -454,6 +455,30 @@ public class CardDealer {
      * @brief Método para inicializar el mazo de cartas de Sectarios
     */
     private void initCultistCardDesk(){
+        String name = "Sectario";
+        int level = 1;
+        Cultist c = new Cultist(name,level);
+        unusedCultist.add(c);
+        
+        level = 2;
+        c = new Cultist(name,level);
+        unusedCultist.add(c);
+        
+        level = 1;
+        c = new Cultist(name,level);
+        unusedCultist.add(c);
+        
+        level = 2;
+        c = new Cultist(name,level);
+        unusedCultist.add(c);
+        
+        level = 1;
+        c = new Cultist(name,level);
+        unusedCultist.add(c);
+        
+        level = 1;
+        c = new Cultist(name,level);
+        unusedCultist.add(c);
         
     
     }
@@ -473,6 +498,11 @@ public class CardDealer {
         Collections.shuffle(unusedMonster);
     }
 
+    
+    private void shuffleCultists(){
+        Collections.shuffle(unusedCultist);
+    }
+    
     /*
      * @brief Método para incluir una carta de tesoro en el mazo de usadas
     */
@@ -494,6 +524,7 @@ public class CardDealer {
     public void initCards(){
         initTreasureCardDeck();
         initMonsterCardDeck();
+        initCultistCardDesk();
     }
     
     /*
@@ -538,6 +569,16 @@ public class CardDealer {
             unusedMonster.remove(0);
             
         }
+        return next;
+    }
+    
+    //Nota:
+    //No pongo comprobación porque hay 6 y nunca hay tantos jugadores
+    //De todas formas preguntar al profesor
+    public Cultist nextCultist(){
+        Cultist next ;
+        next = unusedCultist.get(0);
+        unusedCultist.remove(0);
         return next;
     }
 }

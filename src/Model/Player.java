@@ -125,6 +125,7 @@ public class Player {
     protected boolean shouldConvert(){
         Dice dice = Dice.getInstance();
         int number = dice.nextNumber();
+        
         if(number==6){
             return true;
         }else{
@@ -338,20 +339,19 @@ public class Player {
                 }
                 else{
                     applyBadConsequence(bad);
-                    result = CombatResult.LOSE;
+                    boolean convert = this.shouldConvert();
+                    if(convert){
+                        result = CombatResult.LOSEANDCONVERT;
+                    }
+                    else{
+                        result = CombatResult.LOSE;
+                    }
                 }
             }
             else{
                 result = CombatResult.LOSEANDESCAPE;
             }
             
-            //Nota: arreglar
-            if(result == CombatResult.LOSE){
-                boolean convert = this.shouldConvert();
-                if(convert){
-                    result = CombatResult.LOSEANDCONVERT;
-                }
-            }
         }
         discardNecklaceIfVisible();
         return result;

@@ -69,7 +69,10 @@ public class Napakalaki {
         CombatResult result = currentPlayer.combat(currentMonster);
         CardDealer dealer = CardDealer.getInstance();
         if(result == CombatResult.LOSEANDCONVERT){
-            //Nota: jeje
+            Cultist c = dealer.nextCultist();
+            CultistPlayer cp = new CultistPlayer(this.currentPlayer,c);
+            this.currentPlayer = cp;
+            this.players.set(currentPlayerIndex, cp);
         }
         dealer.giveMonsterBack(currentMonster);
         return result;

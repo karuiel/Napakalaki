@@ -9,7 +9,7 @@ package Model;
  *
  * @author Miguel Morales Castilla y María del Mar Ruiz Martín
  */
-public class Cultist {
+public class Cultist implements Card{
     private String name;
     private int gainedLevels;
     
@@ -22,9 +22,7 @@ public class Cultist {
         return this.gainedLevels;
     }
     
-    //Hay que cambiarlo
     public int getSpecialValue(){
-        System.out.println("Hay que arreglar el método getSpecialValue");
-        return this.gainedLevels;
+        return this.gainedLevels * CultistPlayer.getTotalCultistPlayer();
     }
 }

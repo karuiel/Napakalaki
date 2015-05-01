@@ -11,7 +11,7 @@ package Model;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-public class Monster {
+public class Monster implements Card{
     
     private String name;
     private int level;
