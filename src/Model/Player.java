@@ -50,9 +50,9 @@ public class Player {
     }
     
     /*
- * @brief Constuctor de copia
- * @param Player player: jugador a copiar   
- */
+     * @brief Constuctor de copia
+     * @param Player player: jugador a copiar   
+    */
     public Player(Player player){
         this.name = player.name;
         this.level = player.level;
@@ -115,20 +115,26 @@ public class Player {
         return this.hiddenTreasures;
     }
     
-//---------------------------------Other methods--------------------------------
-    
-    
     protected int getOponentLevel(Monster m){
         return m.getLevel();
     }
     
+//---------------------------------Other methods--------------------------------
+    
+ 
+    /*
+     * @brief Método que determina si el jugador se convierte a sectario
+     * @return boolean: true en caso en que deba convertirse
+                        false en caso contrario
+    */
     protected boolean shouldConvert(){
         Dice dice = Dice.getInstance();
         int number = dice.nextNumber();
         
         if(number==6){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
