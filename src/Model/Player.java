@@ -45,7 +45,7 @@ public class Player {
         this.hiddenTreasures = new ArrayList<>();
         this.visibleTreasures = new ArrayList<>();
         this.pendingBadConsequence = new BadConsequence("vacio",false);
-        initTreasures();
+        //initTreasures();
 
     }
     

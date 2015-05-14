@@ -15,7 +15,7 @@ import java.util.Arrays;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-public class BadConsequence {
+public abstract class BadConsequence {
     
   private String text;
   private int levels;
@@ -36,25 +36,9 @@ public class BadConsequence {
    *@param int nVisible: número de tesoros visibles a perder
    *@param int nHidden: número de tesoros ocultos a perder
    */
-  public BadConsequence(String text, int levels, int nVisible, int nHidden){
+  public BadConsequence(String text, int levels){
       this.text = text;
-      this.levels = levels;
-      if(nVisible >= 0){
-        this.nVisibleTreasures = nVisible;
-      }  
-      else{
-      this.nVisibleTreasures = 0;
-      }
-      if(nHidden >= 0){
-        this.nHiddenTreasures = nHidden;
-      }
-      else{
-          this.nHiddenTreasures = 0;
-      }
-      this.death = false;
-      this.specificHiddenTreasures = new ArrayList<>();
-      this.specificVisibleTreasures = new ArrayList<>();
-      
+      this.levels = levels;     
   }
   
   /*
@@ -155,8 +139,9 @@ public class BadConsequence {
    */ 
   public String toString(){
       String output;
+      output = "\nEsto es un mal rollo con el siguiente contenido:\n";
       
-      output ="Text = " + text + 
+      /*output +="Text = " + text + 
               "\n\tLevels = "+ Integer.toString(levels) +
               "\n\tVisible treasures = " + Integer.toString(nVisibleTreasures)+
               "\n\tHidden treasures = " + Integer.toString(nHiddenTreasures)+
@@ -181,7 +166,7 @@ public class BadConsequence {
       //Caso en que specificHiddenTreasures está vacío
       if(specificHiddenTreasures.isEmpty()){
          output += "nil";
-      }  
+      }  */
       
       return output;
   }
@@ -192,23 +177,22 @@ public class BadConsequence {
    * @return boolean: true en caso de que esté vacío
    *                  false en caso contrario
    */
-  public boolean isEmpty(){
-      boolean vacio = false;
+  public abstract boolean isEmpty();
+      /*boolean vacio = false;
       if(levels == 0  && nVisibleTreasures == 0  && nHiddenTreasures == 0 && !death
                 && specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
           vacio = true;      
       }
-      return vacio;
-  }
+      return vacio;*/
+  
   
   /*
    * @brief Método para determinar si el mal rollo implica la muerte
    * @return boolean: truen en caso de que implique la muerte
                       false en caso contrario
   */
-  public boolean kills(){
-      return this.death;
-  }
+  public abstract boolean kills();
+      //return this.death;
 
   /*
    * @brief Método para eliminar un tesoro t de la lista de tesoros
@@ -226,7 +210,7 @@ public class BadConsequence {
                 Se busca un tesoros del mismo tipo que t y se elimina del mal rollo
             Si no, se disminuye en uno el número de tesoros que implica    
       */
-      
+     /* 
       if(specificVisibleTreasures.size()!=0){
         for(int i = 0; i < specificVisibleTreasures.size()&& !found;++i){
                 TreasureKind type = specificVisibleTreasures.get(i);
@@ -242,7 +226,7 @@ public class BadConsequence {
       } 
        if(!eliminado){
            nVisibleTreasures = Math.max(0,nVisibleTreasures-1); 
-       }
+       }*/
   }
   /*
    * @brief Método para eliminar un tesoro t de la lista de tesoros
@@ -260,7 +244,7 @@ public class BadConsequence {
                 Se busca un tesoros del mismo tipo que t y se elimina del mal rollo
             Si no, se disminuye en uno el número de tesoros que implica    
       */
-      if(specificHiddenTreasures.size()!=0){
+     /*if(specificHiddenTreasures.size()!=0){
         for(int i = 0; i < specificHiddenTreasures.size()&& !found;++i){
             TreasureKind type = specificHiddenTreasures.get(i);
             if(type == t.getType()){
@@ -275,7 +259,7 @@ public class BadConsequence {
       }  
       if(!eliminado){
         nHiddenTreasures = Math.max(0,nHiddenTreasures-1); 
-      }  
+      }  */
   }
   
   
@@ -308,7 +292,7 @@ public class BadConsequence {
             *Se crea un mal rollo con los tipos específicos de tesoros seleccionados        
       */
       
-      if(death){
+      /*if(death){
          bad = new BadConsequence(text,death); 
       }
       else if(nVisibleTreasures != 0 || nHiddenTreasures != 0){
@@ -359,6 +343,7 @@ public class BadConsequence {
         }
         bad  = new BadConsequence(text ,0, vT, hT);
       }
-      return bad;
+      return bad;*/
+      return this;
   }
-}
+}  
