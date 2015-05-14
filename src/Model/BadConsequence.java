@@ -19,12 +19,6 @@ public abstract class BadConsequence {
     
   private String text;
   private int levels;
-  private int nVisibleTreasures;
-  private int nHiddenTreasures;
-  private boolean death;
-  private ArrayList<TreasureKind> specificHiddenTreasures;
-  private ArrayList<TreasureKind> specificVisibleTreasures;
-  
   
   //-------------------------------------Constructors----------------------------------------------
   
@@ -140,6 +134,8 @@ public abstract class BadConsequence {
   public String toString(){
       String output;
       output = "\nEsto es un mal rollo con el siguiente contenido:\n";
+      output +="Text = " + text + 
+              "\n\tLevels = "+ Integer.toString(levels);
       
       /*output +="Text = " + text + 
               "\n\tLevels = "+ Integer.toString(levels) +

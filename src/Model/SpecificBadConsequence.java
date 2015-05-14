@@ -15,9 +15,6 @@ public class SpecificBadConsequence extends BadConsequence{
     
   private String text;
   private int levels;
-  private int nVisibleTreasures;
-  private int nHiddenTreasures;
-  private boolean death;
   private ArrayList<TreasureKind> specificHiddenTreasures;
   private ArrayList<TreasureKind> specificVisibleTreasures;
     
@@ -38,9 +35,7 @@ public class SpecificBadConsequence extends BadConsequence{
         String output;
         output = super.toString();
         
-        output +="Text = " + text + 
-              "\n\tLevels = "+ Integer.toString(levels) +
-              "\n\tSpecific visible treasures = ";
+        output += "\n\tSpecific visible treasures = ";
               
       for(TreasureKind vElement : specificVisibleTreasures){
           output += vElement.toString() + " ";

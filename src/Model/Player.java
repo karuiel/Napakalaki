@@ -37,6 +37,8 @@ public class Player {
  * @brief Constuctor de la clase
  * @param String name: nombre del jugador   
  */
+    
+    //Nota: cambiar el constructor
     public Player(String name){
 
         this.name = name;

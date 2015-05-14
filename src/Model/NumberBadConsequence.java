@@ -17,9 +17,6 @@ public class NumberBadConsequence extends BadConsequence{
   private int levels;
   private int nVisibleTreasures;
   private int nHiddenTreasures;
-  private boolean death;
-  private ArrayList<TreasureKind> specificHiddenTreasures;
-  private ArrayList<TreasureKind> specificVisibleTreasures;
     
     
     public NumberBadConsequence(String text, int levels, int nVisible, int nHidden){
@@ -36,9 +33,7 @@ public class NumberBadConsequence extends BadConsequence{
         
         String output;
         output = super.toString();
-        output +="Text = " + text + 
-              "\n\tLevels = "+ Integer.toString(levels) +
-              "\n\tVisible treasures = " + Integer.toString(nVisibleTreasures)+
+        output += "\n\tVisible treasures = " + Integer.toString(nVisibleTreasures)+
               "\n\tHidden treasures = " + Integer.toString(nHiddenTreasures);
               
         return output;
