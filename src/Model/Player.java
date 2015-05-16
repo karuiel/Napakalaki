@@ -23,7 +23,7 @@ import java.util.Iterator;
  */
 
 public class Player {
-    private boolean dead = true;
+    private boolean dead;
     private String name;
     private int level;
     private int MAXHIDDENTREASURES = 4;
@@ -43,12 +43,9 @@ public class Player {
 
         this.name = name;
         this.level = 1;
-        this.dead = false;
+        this.dead = true;
         this.hiddenTreasures = new ArrayList<>();
         this.visibleTreasures = new ArrayList<>();
-        //this.pendingBadConsequence = new BadConsequence("vacio",false);
-        //initTreasures();
-
     }
     
     /*
@@ -207,8 +204,13 @@ public class Player {
      */
     public boolean validState(){
         boolean valid = true;
-        if(hiddenTreasures.size() > 4 || !pendingBadConsequence.isEmpty()){
-            valid = false;
+        if(hiddenTreasures.size() > 4 ){
+            valid = false; 
+        }
+        else if(pendingBadConsequence != null){
+            if(!pendingBadConsequence.isEmpty()){
+                valid = false;
+            }
         }
         return valid;
     }
@@ -401,9 +403,11 @@ public class Player {
     */
     public void discardVisibleTreasure(Treasure t){
         visibleTreasures.remove(t);
-        if( (!pendingBadConsequence.isEmpty())){
-            pendingBadConsequence.substractVisibleTreasure(t);
-        }
+        if(pendingBadConsequence != null){
+            if( (!pendingBadConsequence.isEmpty())){
+                pendingBadConsequence.substractVisibleTreasure(t);
+            }
+        }    
         CardDealer dealer = CardDealer.getInstance();
         dealer.giveTreasureBack(t);
         dieIfNoTreasures();
@@ -415,9 +419,11 @@ public class Player {
     */
     public void discardHiddenTreasure(Treasure t){
         hiddenTreasures.remove(t);
-        if( (!pendingBadConsequence.isEmpty())){
-            pendingBadConsequence.substractHiddenTreasure(t);
-        }
+        if(pendingBadConsequence != null){
+            if( (!pendingBadConsequence.isEmpty())){
+                pendingBadConsequence.substractHiddenTreasure(t);
+            }
+        }    
         CardDealer dealer = CardDealer.getInstance();
         dealer.giveTreasureBack(t);
         dieIfNoTreasures();
@@ -549,8 +555,13 @@ public class Player {
               "\tNivel de Combate = "+ Integer.toString(this.getCombatLevel())+
               "\n\tMuerto = " + dead + 
               "\n\tTesoros visibles = " + this.visibleTreasures.toString() +
-              "\n\tTesoros ocultos = " + this.hiddenTreasures.toString() + 
-              "\n\tPendingBadConsequence = " + this.pendingBadConsequence.toString();
+              "\n\tTesoros ocultos = " + this.hiddenTreasures.toString();
+        if(pendingBadConsequence != null){
+            output += "\n\tPendingBadConsequence = " + this.pendingBadConsequence.toString();
+        }
+        else{
+            output += "\n\tPendingBadConsequence = [] ";
+        }
         return output;
     }
     

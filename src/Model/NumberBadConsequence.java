@@ -14,16 +14,27 @@ import java.util.ArrayList;
 public class NumberBadConsequence extends BadConsequence{
     
     private String text;
-  private int levels;
-  private int nVisibleTreasures;
-  private int nHiddenTreasures;
+    private int levels;
+    private int nVisibleTreasures;
+    private int nHiddenTreasures;
     
     
     public NumberBadConsequence(String text, int levels, int nVisible, int nHidden){
-      super(text, levels);
+      super(text);
+      this.levels = levels;
       this.nVisibleTreasures = nVisible;
       this.nHiddenTreasures = nHidden;      
     } 
+    
+    
+  /*
+   * @brief Metodo que devuelve el atributo levels
+   * @return int: número de niveles a perder 
+   */ 
+  public int getLevel(){
+      return levels;
+  }
+    
     
     /*
     * @brief Metodo que devuelve el atributo nVisibleTreasures
@@ -50,6 +61,7 @@ public class NumberBadConsequence extends BadConsequence{
         
         String output;
         output = super.toString();
+        output += "\n\tLevels = "+ Integer.toString(levels);
         output += "\n\tVisible treasures = " + Integer.toString(nVisibleTreasures)+
               "\n\tHidden treasures = " + Integer.toString(nHiddenTreasures);
               
@@ -58,7 +70,7 @@ public class NumberBadConsequence extends BadConsequence{
     
     public boolean isEmpty(){
       boolean vacio = false;
-      if(levels == 0  && nVisibleTreasures == 0  && nHiddenTreasures == 0){
+      if(nVisibleTreasures == 0  && nHiddenTreasures == 0){
           vacio = true;      
       }
       return vacio;

@@ -18,18 +18,24 @@ public class PruebaNapakalaki {
         CombatResult resutl = CombatResult.LOSEANDESCAPE;
         
 
-        //Prueba clase dado    
+        //Prueba clase dado 
+        System.out.println("\ndado");
+        
         Dice dado = Dice.getInstance();            
         System.out.println(dado.nextNumber());    
 
 
         //Prueba clase Prize
+        System.out.println("\nPrize");
+        
         int t = 1;
         int l = 1;
         Prize premio = new Prize(t,l);
         System.out.println(premio.toString());
        
         //Prueba clase cultist
+        System.out.println("\nCultist");
+        
         String n = "un nombre";
         int gl = 1;
         Cultist cultist = new Cultist(n,gl);
@@ -37,6 +43,8 @@ public class PruebaNapakalaki {
         System.out.println(cultist.getSpecialValue());
         
         //Prueba clase treasure
+        System.out.println("\nTreasure");
+        
         String nombre = "un nombre";
         int g = 1;
         int min = 1;
@@ -49,6 +57,8 @@ public class PruebaNapakalaki {
         
         
         //Prueba de BadConsequence
+        System.out.println("\nBadConsequences");
+        
         
         String text = "un texto";
         boolean mata = true;
@@ -73,15 +83,29 @@ public class PruebaNapakalaki {
         
         
         //Prueba clase monster
+        System.out.println("\nMonster");
+        
         int lC = 2;
         Monster monster = new Monster(n,l,specific,premio,lC);
         System.out.println(monster.toString());
         System.out.println(monster.getBasicBalue());
         System.out.println(monster.getSpecialValue());
         
+        //Prueba Player
+        System.out.println("\nPlayer");
+        
+        Player player = new Player("nombre");
+        System.out.println(player.toString());
         
         //Prueba clase cardDealer
-        CardDealer dealer = CardDealer.getInstance();   
+        System.out.println("\nCardDealer");
+        
+        CardDealer dealer = CardDealer.getInstance();  
+        dealer.initCards();
+        System.out.println(dealer.nextCultist());
+        System.out.println(dealer.nextMonster());
+        System.out.println(dealer.nextTreasure());
+        dealer.giveMonsterBack(monster);
 
 
        /* //Prueba clase BadConsequence

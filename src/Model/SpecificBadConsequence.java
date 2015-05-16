@@ -21,13 +21,23 @@ public class SpecificBadConsequence extends BadConsequence{
     
     public SpecificBadConsequence(String text, int levels, ArrayList<TreasureKind> tVisible, 
                         ArrayList<TreasureKind> tHidden){
-      super(text, levels);
+      super(text);
+      this.levels = levels;
       this.specificHiddenTreasures = tHidden;
       this.specificVisibleTreasures = tVisible;
     }  
     
     
-      /*
+    
+  /*
+   * @brief Metodo que devuelve el atributo levels
+   * @return int: número de niveles a perder 
+   */ 
+  public int getLevel(){
+      return levels;
+  }
+    
+   /*
    * @brief Metodo que devuelve el atributo specificHiddenTreasures 
    * @return ArrayList<TreasureKind>: Array con el tipo de tesoros invisibles 
                                       concretos que se pierden
@@ -56,6 +66,8 @@ public class SpecificBadConsequence extends BadConsequence{
         String output;
         output = super.toString();
         
+        output +="\n\tLevels = "+ Integer.toString(levels);
+        
         output += "\n\tSpecific visible treasures = ";
               
       for(TreasureKind vElement : specificVisibleTreasures){
@@ -83,7 +95,7 @@ public class SpecificBadConsequence extends BadConsequence{
     
     public boolean isEmpty(){
       boolean vacio = false;
-      if(levels == 0 && specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
+      if(specificVisibleTreasures.isEmpty() && specificHiddenTreasures.isEmpty()){
           vacio = true;      
       }
       return vacio;

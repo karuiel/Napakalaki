@@ -17,8 +17,7 @@ import java.util.Arrays;
 
 public abstract class BadConsequence {
     
-  private String text;
-  private int levels;
+  private String text; 
   
   //-------------------------------------Constructors----------------------------------------------
   
@@ -30,9 +29,8 @@ public abstract class BadConsequence {
    *@param int nVisible: número de tesoros visibles a perder
    *@param int nHidden: número de tesoros ocultos a perder
    */
-  public BadConsequence(String text, int levels){
-      this.text = text;
-      this.levels = levels;     
+  public BadConsequence(String text){
+      this.text = text;     
   }
   
   //--------------------------------------Getters-----------------------------------------------
@@ -44,13 +42,13 @@ public abstract class BadConsequence {
   public String getText(){
       return text;
   }
-
-  /*
+  
+   /*
    * @brief Metodo que devuelve el atributo levels
    * @return int: número de niveles a perder 
    */ 
   public int getLevel(){
-      return levels;
+      return 0;
   }
   
   //-----------------------------------Other methods---------------------------------------
@@ -62,9 +60,8 @@ public abstract class BadConsequence {
   public String toString(){
       String output;
       output = "\nEsto es un mal rollo con el siguiente contenido:\n";
-      output +="Text = " + text + 
-              "\n\tLevels = "+ Integer.toString(levels);
-      
+      output +="Text = " + text;
+                
       return output;
   }
   

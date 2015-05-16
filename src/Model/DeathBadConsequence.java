@@ -11,14 +11,16 @@ import java.util.ArrayList;
  *
  * @author maria
  */
+
+
+//NOTA: si mata ¿Bc está vacío o no?
 public class DeathBadConsequence extends BadConsequence{
     
   private String text;
-  private int levels;
   private boolean death;
     
     public DeathBadConsequence(String text , boolean death){
-      super(text, 0);
+      super(text);
       this.death = death;
     } 
     

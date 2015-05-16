@@ -25,4 +25,10 @@ public class Cultist implements Card{
     public int getSpecialValue(){
         return this.gainedLevels * CultistPlayer.getTotalCultistPlayer();
     }
+    
+    public String toString(){
+        String output;
+        output = "Nombre: " + name + "\t\tGainedLevels = " + gainedLevels;
+        return output;
+    }
 }
