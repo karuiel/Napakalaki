@@ -17,8 +17,8 @@ public class DeathBadConsequence extends BadConsequence{
   private int levels;
   private boolean death;
     
-    public DeathBadConsequence(String text, int levels, boolean death){
-      super(text, levels);
+    public DeathBadConsequence(String text , boolean death){
+      super(text, 0);
       this.death = death;
     } 
     
@@ -36,7 +36,7 @@ public class DeathBadConsequence extends BadConsequence{
     
     public boolean isEmpty(){
       boolean vacio = false;
-      if(levels == 0  && !death){
+      if(!death){
           vacio = true;      
       }
       return vacio;
@@ -48,9 +48,9 @@ public class DeathBadConsequence extends BadConsequence{
     public void substractVisibleTreasure(Treasure t){ 
     }
     
-    public DeathBadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h){
+    public DeathBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
         DeathBadConsequence bad;
-        bad = new DeathBadConsequence(text,levels,death); 
+        bad = new DeathBadConsequence(text,death); 
         return bad;
     }
 }

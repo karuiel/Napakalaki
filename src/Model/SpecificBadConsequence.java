@@ -27,6 +27,27 @@ public class SpecificBadConsequence extends BadConsequence{
     }  
     
     
+      /*
+   * @brief Metodo que devuelve el atributo specificHiddenTreasures 
+   * @return ArrayList<TreasureKind>: Array con el tipo de tesoros invisibles 
+                                      concretos que se pierden
+                                      Será un array vacío en caso de que no se especifiquen      
+   */ 
+  public ArrayList<TreasureKind> getSpecificHiddenTreasures(){
+      return this.specificHiddenTreasures;
+  }
+   
+  /*
+   * @brief Metodo que devuelve el atributo specificHiddenTreasures 
+   * @return ArrayList<TreasureKind>: Array con el tipo de tesoros visibles 
+                                      concretos que se pierden
+                                      Será un array vacío en caso de que no se especifiquen      
+   */ 
+  public ArrayList<TreasureKind> getSpecificVisibleTreasures(){
+      return this.specificVisibleTreasures;
+  }
+    
+    
     public boolean kills(){
         return false;
     }
@@ -107,7 +128,7 @@ public class SpecificBadConsequence extends BadConsequence{
     }
     
     
-    public SpecificBadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h){
+    public SpecificBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
       
         SpecificBadConsequence bad; 
         ArrayList<TreasureKind> vT = new ArrayList<>();

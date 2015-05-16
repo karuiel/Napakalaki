@@ -46,7 +46,7 @@ public class Player {
         this.dead = false;
         this.hiddenTreasures = new ArrayList<>();
         this.visibleTreasures = new ArrayList<>();
-        this.pendingBadConsequence = new BadConsequence("vacio",false);
+        //this.pendingBadConsequence = new BadConsequence("vacio",false);
         //initTreasures();
 
     }
@@ -545,8 +545,12 @@ public class Player {
     */
     public String toString(){
         String output =" " + name + 
-              "\tNiveles = "+ Integer.toString(level)+
-              "\tNivele de Combate = "+ Integer.toString(this.getCombatLevel());
+              "\tNivel = "+ Integer.toString(level)+
+              "\tNivel de Combate = "+ Integer.toString(this.getCombatLevel())+
+              "\n\tMuerto = " + dead + 
+              "\n\tTesoros visibles = " + this.visibleTreasures.toString() +
+              "\n\tTesoros ocultos = " + this.hiddenTreasures.toString() + 
+              "\n\tPendingBadConsequence = " + this.pendingBadConsequence.toString();
         return output;
     }
     

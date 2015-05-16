@@ -88,7 +88,8 @@ public class Monster implements Card{
         return "Name = " + name + 
                 "\n\tCombat level = " + Integer.toString(level) +
                 "\n\n\tPrize = ("+ price.toString()+" ) " +
-                "\n\n\tBad consequence = ( " + bc.toString()+ " ) ";
+                "\n\n\tBad consequence = ( " + bc.toString()+ " ) " +
+                "\n\n\tLevelChangeAgainstCultistPlayer = " + levelChangeAgainstCultistPlayer ;
     } 
     
     public int getBasicBalue(){

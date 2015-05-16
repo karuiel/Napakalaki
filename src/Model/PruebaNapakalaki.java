@@ -1,73 +1,127 @@
-/*package Model;
+package Model;
 import java.util.ArrayList;
-import java.util.Arrays;*/
+import java.util.Arrays;
 
 /**
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 
-/*public class PruebaNapakalaki {
+public class PruebaNapakalaki {
 
     
     public static void main(String[] args) {
         
-    // Prueba de las clases de la segunda práctica    
+        // Prueba de las clases de la segunda práctica    
+
+        //Obtener enumerados    
+        TreasureKind treasureKind = TreasureKind.BOTHHANDS;
+        CombatResult resutl = CombatResult.LOSEANDESCAPE;
         
-    Dice dado = Dice.getInstance();            
-    System.out.println(dado.nextNumber());    
-    
-    //Prueba clase dado
-    CardDealer cartas = CardDealer.getInstance();   
-    
-    
-    //Prueba clase BadConsequence
-    BadConsequence bc = new BadConsequence("uno",false);
-    if(bc.isEmpty()){
-        System.out.println("bc vacío");
-    }
-    else{
-        System.out.println("bc lleno");
-    }
-    
-    
-    if(bc.kills()){
-        System.out.println("mata");
-    }
-    else{
-        System.out.println("no mata");
-    }
-    bc.toString();
-    
-    //Prueba clase Treasure
-    String text = "tesoro";
-    int goldCoins = 1000;
-    int min = 1;
-    int max = 2;
-    TreasureKind tesoro = TreasureKind.HELMET;
-    Treasure t = new Treasure(text, goldCoins, min, max, tesoro);
-    System.out.println("Datos del tesoro:");
-    System.out.println(t.getGoldCoins());
-    System.out.println(t.getMaxBonus());
-    System.out.println(t.getMinBonus());
-    System.out.println(t.getName());
-    System.out.println(t.getType());
-   
-    //Prueba de clase jugador
-    
-    Player jugador = new Player("Maria");
-    System.out.println(jugador.getCombatLevel());
-    System.out.println(jugador.validState());
-    System.out.println(jugador.hasVisibleTreasures());
-    System.out.println(jugador.isDead());
-    System.out.println(jugador.canMakeTreasureVisible(t));
-    //Prueba de clase CardDealer
-    CardDealer crupier = CardDealer.getInstance();
-    BadConsequence badConsequence = new BadConsequence("Toses los pulmones y pierdes 2 niveles", 2, 0, 0);
-    Prize prize = new Prize(1,1);
-    Monster monster = new Monster("La que redacta en las tinieblas", 2, badConsequence, prize);
-    
-    crupier.giveMonsterBack(monster);
-    crupier.giveTreasureBack(t);
+
+        //Prueba clase dado    
+        Dice dado = Dice.getInstance();            
+        System.out.println(dado.nextNumber());    
+
+
+        //Prueba clase Prize
+        int t = 1;
+        int l = 1;
+        Prize premio = new Prize(t,l);
+        System.out.println(premio.toString());
+       
+        //Prueba clase cultist
+        String n = "un nombre";
+        int gl = 1;
+        Cultist cultist = new Cultist(n,gl);
+        System.out.println(cultist.getBasicBalue());
+        System.out.println(cultist.getSpecialValue());
+        
+        //Prueba clase treasure
+        String nombre = "un nombre";
+        int g = 1;
+        int min = 1;
+        int max = 2;
+        TreasureKind tesoro = TreasureKind.NECKLACE;
+        Treasure treasure = new Treasure(nombre, g, min, max, tesoro);
+        System.out.println(treasure.toString());
+        System.out.println(treasure.getBasicBalue());
+        System.out.println(treasure.getSpecialValue());
+        
+        
+        //Prueba de BadConsequence
+        
+        String text = "un texto";
+        boolean mata = true;
+        DeathBadConsequence death = new DeathBadConsequence(text, mata);
+        System.out.println(death.toString());
+        
+        int levels = 1;
+        int nV = 2;
+        int nH = 4;
+        NumberBadConsequence number = new NumberBadConsequence(text, levels, nV, nH);
+        System.out.println(number.toString());
+        
+        ArrayList<TreasureKind> sV = new ArrayList<>();
+        ArrayList<TreasureKind> sH = new ArrayList<>();
+        sV.add(TreasureKind.ARMOR);
+        sV.add(TreasureKind.SHOE);
+        sH.add(TreasureKind.SHOE);
+        sH.add(TreasureKind.BOTHHANDS);
+        sH.add(TreasureKind.NECKLACE);
+        SpecificBadConsequence specific = new SpecificBadConsequence(text, levels,sV,sH);
+        System.out.println(specific.toString());
+        
+        
+        //Prueba clase monster
+        int lC = 2;
+        Monster monster = new Monster(n,l,specific,premio,lC);
+        System.out.println(monster.toString());
+        System.out.println(monster.getBasicBalue());
+        System.out.println(monster.getSpecialValue());
+        
+        
+        //Prueba clase cardDealer
+        CardDealer dealer = CardDealer.getInstance();   
+
+
+       /* //Prueba clase BadConsequence
+        BadConsequence bc = new BadConsequence("uno",false);
+        if(bc.isEmpty()){
+            System.out.println("bc vacío");
+        }
+        else{
+            System.out.println("bc lleno");
+        }
+
+
+        if(bc.kills()){
+            System.out.println("mata");
+        }
+        else{
+            System.out.println("no mata");
+        }
+        bc.toString();*/
+
+
+
+        //Prueba de clase jugador
+
+        /*Player jugador = new Player("Maria");
+        System.out.println(jugador.getCombatLevel());
+        System.out.println(jugador.validState());
+        System.out.println(jugador.hasVisibleTreasures());
+        System.out.println(jugador.isDead());
+        System.out.println(jugador.canMakeTreasureVisible(t));
+        //Prueba de clase CardDealer
+        CardDealer crupier = CardDealer.getInstance();
+        BadConsequence badConsequence = new BadConsequence("Toses los pulmones y pierdes 2 niveles", 2, 0, 0);
+        Prize prize = new Prize(1,1);
+        Monster monster1 = new Monster("La que redacta en las tinieblas", 2, badConsequence, prize);
+
+        crupier.giveMonsterBack(monster);
+        crupier.giveTreasureBack(t);*/
+    }  
+}    
     
         //-----------------------------Prueba Sesión 1--------------------------
      /*  

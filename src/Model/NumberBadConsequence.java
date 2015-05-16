@@ -25,6 +25,23 @@ public class NumberBadConsequence extends BadConsequence{
       this.nHiddenTreasures = nHidden;      
     } 
     
+    /*
+    * @brief Metodo que devuelve el atributo nVisibleTreasures
+    * @return int: número de tesoros visibles a perder 
+    */
+   public int getNVisibleTreasures(){
+       return nVisibleTreasures;
+   }
+
+   /*
+    * @brief Metodo que devuelve el atributo nHiddenTreasures
+    * @return int: número de tesoros invisibles a perder
+    */  
+   public int getNHiddenTreasures(){
+       return nHiddenTreasures;
+  }
+    
+    
     public boolean kills(){
         return false;
     }
@@ -57,7 +74,7 @@ public class NumberBadConsequence extends BadConsequence{
         nVisibleTreasures = Math.max(0,nVisibleTreasures-1);  
     }
     
-    public NumberBadConsequence adjustToFitTreasureList(ArrayList<Treasure> v, ArrayList<Treasure> h){
+    public NumberBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
           NumberBadConsequence bad;
      
           int nV = Math.min(nVisibleTreasures,v.size());
