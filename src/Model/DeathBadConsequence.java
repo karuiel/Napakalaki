@@ -44,12 +44,6 @@ public class DeathBadConsequence extends BadConsequence{
       return vacio;
     }
     
-    public void substractHiddenTreasure(Treasure t){
-    }
-    
-    public void substractVisibleTreasure(Treasure t){ 
-    }
-    
     public DeathBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
         DeathBadConsequence bad;
         bad = new DeathBadConsequence(text,death); 

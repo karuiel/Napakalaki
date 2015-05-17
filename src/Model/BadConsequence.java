@@ -86,13 +86,13 @@ public abstract class BadConsequence {
    *        visibles, ya sea específico o un número determinado
    * @param Treasure t: tesoro entregado para cumplir el mal rollo
   */
-  public abstract void substractVisibleTreasure(Treasure t);
+  public void substractVisibleTreasure(Treasure t){}
   /*
    * @brief Método para eliminar un tesoro t de la lista de tesoros
    *        ocultos, ya sea específico o un número determinado
    * @param Treasure t: tesoro entregado para cumplir el mal rollo
   */
-  public abstract void substractHiddenTreasure(Treasure t);
+  public void substractHiddenTreasure(Treasure t){}
   
   
   /*

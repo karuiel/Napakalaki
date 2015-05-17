@@ -141,7 +141,6 @@ public class SpecificBadConsequence extends BadConsequence{
     
     
     public SpecificBadConsequence adjustToFitTreasureLists(ArrayList<Treasure> v, ArrayList<Treasure> h){
-      
         SpecificBadConsequence bad; 
         ArrayList<TreasureKind> vT = new ArrayList<>();
         ArrayList<TreasureKind> hT = new ArrayList<>();
@@ -171,7 +170,7 @@ public class SpecificBadConsequence extends BadConsequence{
         }
        
         //Ajuste de los tesoros ocultos
-        for(TreasureKind t1: specificHiddenTreasures){            
+        for(TreasureKind t1: specificHiddenTreasures){ 
             boolean found = false;
             //Búsqueda del tesoro t2 entre los tesoros del jugador
             for(int i = 0; i < hCopy.size()&& !found;++i){

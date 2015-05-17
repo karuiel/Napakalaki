@@ -58,27 +58,49 @@ public class PruebaNapakalaki {
         
         //Prueba de BadConsequence
         System.out.println("\nBadConsequences");
+        ArrayList<Treasure> visibles = new ArrayList<>();
+        ArrayList<Treasure> hidden = new ArrayList<>();
+        visibles.add(treasure);
+        hidden.add(treasure);
         
         
         String text = "un texto";
         boolean mata = true;
         DeathBadConsequence death = new DeathBadConsequence(text, mata);
         System.out.println(death.toString());
+        System.out.println(death.isEmpty());
+        death.substractHiddenTreasure(treasure);
+        death.substractVisibleTreasure(treasure);
+        System.out.println(death.adjustToFitTreasureLists(visibles, hidden));
+        System.out.println(death.toString());
+        
         
         int levels = 1;
         int nV = 2;
         int nH = 4;
         NumberBadConsequence number = new NumberBadConsequence(text, levels, nV, nH);
         System.out.println(number.toString());
+        System.out.println(number.isEmpty());
+        number.substractHiddenTreasure(treasure);
+        number.substractVisibleTreasure(treasure);
+        System.out.println(number.adjustToFitTreasureLists(visibles, hidden));
+        System.out.println(number.toString());
+        
         
         ArrayList<TreasureKind> sV = new ArrayList<>();
         ArrayList<TreasureKind> sH = new ArrayList<>();
         sV.add(TreasureKind.ARMOR);
         sV.add(TreasureKind.SHOE);
+        sV.add(TreasureKind.NECKLACE);
         sH.add(TreasureKind.SHOE);
         sH.add(TreasureKind.BOTHHANDS);
         sH.add(TreasureKind.NECKLACE);
         SpecificBadConsequence specific = new SpecificBadConsequence(text, levels,sV,sH);
+        System.out.println(specific.toString());
+        System.out.println(specific.isEmpty());
+        System.out.println(specific.adjustToFitTreasureLists(visibles, hidden));
+        specific.substractHiddenTreasure(treasure);
+        specific.substractVisibleTreasure(treasure);
         System.out.println(specific.toString());
         
         
@@ -91,12 +113,6 @@ public class PruebaNapakalaki {
         System.out.println(monster.getBasicBalue());
         System.out.println(monster.getSpecialValue());
         
-        //Prueba Player
-        System.out.println("\nPlayer");
-        
-        Player player = new Player("nombre");
-        System.out.println(player.toString());
-        
         //Prueba clase cardDealer
         System.out.println("\nCardDealer");
         
@@ -106,7 +122,31 @@ public class PruebaNapakalaki {
         System.out.println(dealer.nextMonster());
         System.out.println(dealer.nextTreasure());
         dealer.giveMonsterBack(monster);
-
+        
+        //Prueba Player
+        System.out.println("\n\n\nPlayer");
+        
+        Player player = new Player("nombre");
+        System.out.println(player.toString());
+        player.initTreasures();
+        System.out.println(player.toString());
+        System.out.println(player.validState());
+        System.out.println(player.isDead());
+        System.out.println(player.makeTreasureVisible(player.getHiddenTreasures().get(0)));
+        System.out.println(player.hasVisibleTreasures());
+        player.applyPrize(premio);
+        System.out.println(player.toString());
+        System.out.println(player.computeGoldCoinsValue(hidden));
+        player.combat(monster);
+        player.applyBadConsequence(death);
+        player.isDead();
+        
+        //Prueba cultist        
+        System.out.println("Prueba cultist Player");
+        CultistPlayer cultistPlayer = new CultistPlayer(player, cultist);
+        System.out.println(CultistPlayer.getTotalCultistPlayer());
+        System.out.println(cultistPlayer.getOponentLevel(monster));
+        
 
        /* //Prueba clase BadConsequence
         BadConsequence bc = new BadConsequence("uno",false);

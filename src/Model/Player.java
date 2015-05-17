@@ -553,9 +553,7 @@ public class Player {
         String output =" " + name + 
               "\tNivel = "+ Integer.toString(level)+
               "\tNivel de Combate = "+ Integer.toString(this.getCombatLevel())+
-              "\n\tMuerto = " + dead + 
-              "\n\tTesoros visibles = " + this.visibleTreasures.toString() +
-              "\n\tTesoros ocultos = " + this.hiddenTreasures.toString();
+              "\n\tMuerto = " + dead ;
         if(pendingBadConsequence != null){
             output += "\n\tPendingBadConsequence = " + this.pendingBadConsequence.toString();
         }
