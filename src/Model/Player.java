@@ -348,13 +348,11 @@ public class Player {
                     result = CombatResult.LOSEANDDIE;
                 }
                 else{
+                    result = CombatResult.LOSE;
                     applyBadConsequence(bad);
                     boolean convert = this.shouldConvert();
                     if(convert){
                         result = CombatResult.LOSEANDCONVERT;
-                    }
-                    else{
-                        result = CombatResult.LOSE;
                     }
                 }
             }
