@@ -11,6 +11,5 @@ package Model;
  */
 public interface Card {
     public int getBasicBalue();
-    public int getSpecialValue();
-    
+    public int getSpecialValue();    
 }

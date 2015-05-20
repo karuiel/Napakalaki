@@ -50,7 +50,7 @@ public class NumberBadConsequence extends BadConsequence{
     */  
    public int getNHiddenTreasures(){
        return nHiddenTreasures;
-  }
+   }
     
     
     public boolean kills(){

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Miguemc
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public class CultistPlayer extends Player {
     
     private static int totalCultistPlayers = 0;
-    private ArrayList<Cultist> myCultistCard;
+    private Cultist myCultistCard;
     
     //---------------------------------Constructor----------------------------------
     
@@ -26,8 +26,7 @@ public class CultistPlayer extends Player {
     public CultistPlayer(Player p, Cultist c){
         super(p);
         totalCultistPlayers += 1;  
-        myCultistCard = new ArrayList<>();
-        myCultistCard.add(c);
+        myCultistCard = c;
     }
     
     
@@ -66,7 +65,7 @@ public class CultistPlayer extends Player {
     */
     @Override
     public int getCombatLevel(){
-        return super.getCombatLevel() + myCultistCard.get(0).getSpecialValue();
+        return super.getCombatLevel() + myCultistCard.getSpecialValue();
     }
     
     /*
