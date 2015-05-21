@@ -561,4 +561,11 @@ public class Player {
         return output;
     }
     
+    public void setVisibleTreasures(ArrayList<Treasure> t){
+        this.visibleTreasures = t;
+    }
+    
+    public void setHiddenTreasures(ArrayList<Treasure> t){
+        this.hiddenTreasures = t;
+    }
 }    

@@ -96,6 +96,7 @@ public class PruebaNapakalaki {
         sH.add(TreasureKind.BOTHHANDS);
         sH.add(TreasureKind.NECKLACE);
         SpecificBadConsequence specific = new SpecificBadConsequence(text, levels,sV,sH);
+        
         System.out.println(specific.toString());
         System.out.println(specific.isEmpty());
         System.out.println(specific.adjustToFitTreasureLists(visibles, hidden));
@@ -141,10 +142,11 @@ public class PruebaNapakalaki {
         player.applyBadConsequence(death);
         player.isDead();
         
-        //Prueba cultist        
+        //Prueba cultist player      
         System.out.println("Prueba cultist Player");
         CultistPlayer cultistPlayer = new CultistPlayer(player, cultist);
         System.out.println(CultistPlayer.getTotalCultistPlayer());
+        System.out.println(cultistPlayer.toString());
         System.out.println(cultistPlayer.getOponentLevel(monster));
         
 

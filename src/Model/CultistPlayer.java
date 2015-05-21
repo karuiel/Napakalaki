@@ -78,4 +78,10 @@ public class CultistPlayer extends Player {
         return super.computeGoldCoinsValue(t) * 2;
     }
     
+    public String toString(){
+        String output = super.toString();
+        output += "\n\tmyCultistCard = " + myCultistCard.toString();
+        return output;
+    }
+    
 }
