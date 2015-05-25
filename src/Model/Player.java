@@ -255,6 +255,9 @@ public class Player {
      * @return boolean: true en caso en que se pueda pasar a visible
      *                  false en caso contrario
     */
+    public int getLevel(){
+        return level;
+    }
     public boolean canMakeTreasureVisible(Treasure t){
         TreasureKind type = t.getType();
         boolean canMake = false;

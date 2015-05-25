@@ -1,9 +1,3 @@
-/*
- * Clase que representa un dado
- * Invariante de representación:
- *  -Tan solo puede haber una instancia de la clase
- */
-
 
 package Model;
 
@@ -16,7 +10,7 @@ import javax.swing.Timer;
 
 /**
  *
- * @author Miguel Morales Castillo y María del Mar Ruiz Martín
+ * @author fvelasco
  */
 public class Dice extends JDialog {
   
