@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Miguemc
+ * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public class PlayerView extends javax.swing.JPanel {
     private Player playerModel;
