@@ -1,6 +1,8 @@
 package Model;
 import java.util.ArrayList;
 import java.util.Arrays;
+import GUI.NapakalakiView;
+import GUI.PlayerNamesCapture;
 
 /**
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
@@ -11,6 +13,24 @@ public class PruebaNapakalaki {
     
     public static void main(String[] args) {
         
+        //Quinta sesión
+        
+        Napakalaki napakalakiModel = Napakalaki.getInstance();
+        NapakalakiView napakalakiView = new NapakalakiView();
+        
+        Dice.createInstance (napakalakiView);
+        napakalakiView.setNapakalaki(napakalakiModel);
+        napakalakiView.showView();
+        
+        ArrayList<String> names =  new ArrayList();
+        PlayerNamesCapture namesCapture = new PlayerNamesCapture(napakalakiView,true);
+        
+        names = namesCapture.getNames();
+        napakalakiModel.initGame(names);
+        
+        napakalakiView.showView();
+        
+        /*
         // Prueba de las clases de la segunda práctica    
 
         //Obtener enumerados    
@@ -147,8 +167,7 @@ public class PruebaNapakalaki {
         CultistPlayer cultistPlayer = new CultistPlayer(player, cultist);
         System.out.println(CultistPlayer.getTotalCultistPlayer());
         System.out.println(cultistPlayer.toString());
-        System.out.println(cultistPlayer.getOponentLevel(monster));
-        
+        System.out.println(cultistPlayer.getOponentLevel(monster));*/
 
        /* //Prueba clase BadConsequence
         BadConsequence bc = new BadConsequence("uno",false);
