@@ -51,7 +51,7 @@ public class MonsterView extends javax.swing.JPanel {
     private void initComponents() {
 
         prizeView1 = new GUI.PrizeView();
-        badConsequenceView1 = new GUI.BadConsequenceView();
+        badConsequenceView1 = new GUI.DeathBadConsequenceView();
         nameD = new javax.swing.JLabel();
         textD = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
@@ -144,7 +144,7 @@ public class MonsterView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private GUI.BadConsequenceView badConsequenceView1;
+    private GUI.DeathBadConsequenceView badConsequenceView1;
     private javax.swing.JLabel level;
     private javax.swing.JLabel levelD;
     private javax.swing.JLabel name;

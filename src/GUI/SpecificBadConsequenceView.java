@@ -9,12 +9,12 @@ package GUI;
  *
  * @author Miguemc
  */
-public class BadConsequenceView extends javax.swing.JPanel {
+public class SpecificBadConsequenceView extends javax.swing.JPanel {
 
     /**
-     * Creates new form BadConsequenceView
+     * Creates new form SpecificBadConsequenceView
      */
-    public BadConsequenceView() {
+    public SpecificBadConsequenceView() {
         initComponents();
     }
 

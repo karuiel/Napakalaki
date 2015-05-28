@@ -91,7 +91,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="GUI.BadConsequenceView" name="badConsequenceView1">
+    <Container class="GUI.DeathBadConsequenceView" name="badConsequenceView1">
 
       <Layout>
         <DimensionLayout dim="0">
