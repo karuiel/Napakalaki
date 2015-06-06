@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package GUI;
+import Model.*;
 
 /**
  *
  * @author Miguemc
  */
 public class DeathBadConsequenceView extends javax.swing.JPanel {
-
+    DeathBadConsequence deathBadConsequenceModel;
     /**
      * Creates new form BadConsequenceView
      */
     public DeathBadConsequenceView() {
         initComponents();
+    }
+    
+    public void setDeathBadConsequence(DeathBadConsequence bc){
+        deathBadConsequenceModel = bc;
+        text.setText(deathBadConsequenceModel.getText());
+        death.setText(Boolean.toString(deathBadConsequenceModel.kills()));
+        repaint();
     }
 
     /**
@@ -27,12 +35,18 @@ public class DeathBadConsequenceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        textD = new javax.swing.JLabel();
+        deathD = new javax.swing.JLabel();
+        text = new javax.swing.JLabel();
+        death = new javax.swing.JLabel();
 
-        jLabel1.setText("jLabel1");
+        textD.setText("Text");
 
-        jLabel2.setText("jLabel2");
+        deathD.setText("Death");
+
+        text.setText("jLabel3");
+
+        death.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,24 +55,36 @@ public class DeathBadConsequenceView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(356, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textD)
+                        .addGap(26, 26, 26)
+                        .addComponent(text))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deathD)
+                        .addGap(18, 18, 18)
+                        .addComponent(death)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textD)
+                    .addComponent(text))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addContainerGap(243, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deathD)
+                    .addComponent(death))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel death;
+    private javax.swing.JLabel deathD;
+    private javax.swing.JLabel text;
+    private javax.swing.JLabel textD;
     // End of variables declaration//GEN-END:variables
 }
