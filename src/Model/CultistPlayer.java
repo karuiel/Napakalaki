@@ -68,6 +68,14 @@ public class CultistPlayer extends Player {
         return super.getCombatLevel() + myCultistCard.getSpecialValue();
     }
     
+    public int getCultistBasicValue(){
+        return this.myCultistCard.getBasicValue();
+    }
+    
+    public int getCultistSpecialValue(){
+        return this.myCultistCard.getSpecialValue();
+    }
+    
     /*
      * @brief Método que calcula los niveles que proporcionaría vender una lista de tesoros
      * @param ArrayList<Treasure> t: lista de tesoros a tasar
@@ -82,6 +90,11 @@ public class CultistPlayer extends Player {
         String output = super.toString();
         output += "\n\tmyCultistCard = " + myCultistCard.toString();
         return output;
+    }
+    
+    @Override
+    public boolean isCultist(){
+        return true;
     }
     
 }

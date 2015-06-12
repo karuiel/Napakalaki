@@ -92,7 +92,7 @@ public class Monster implements Card{
                 "\n\n\tLevelChangeAgainstCultistPlayer = " + levelChangeAgainstCultistPlayer ;
     } 
     
-    public int getBasicBalue(){
+    public int getBasicValue(){
         return getLevel();
     }
     public int getSpecialValue(){

@@ -10,6 +10,6 @@ package Model;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public interface Card {
-    public int getBasicBalue();
+    public int getBasicValue();
     public int getSpecialValue();    
 }

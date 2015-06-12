@@ -12,7 +12,10 @@ import Model.Treasure;
  * @author Miguel Morales Castillo y María del Mar Ruiz Martín
  */
 public class TreasureView extends javax.swing.JPanel {
+    
     private Treasure treasureModel;
+    private boolean selected = false;
+    
     /**
      * Creates new form TreasureView
      */
@@ -25,16 +28,20 @@ public class TreasureView extends javax.swing.JPanel {
         goldCoins.setText(Integer.toString(treasureModel.getGoldCoins()));
         name.setText(treasureModel.getName());
         type.setText(treasureModel.getType().toString());
-        minBonus.setText(Integer.toString(treasureModel.getBasicBalue()));
+        minBonus.setText(Integer.toString(treasureModel.getBasicValue()));
         maxBonus.setText(Integer.toString(treasureModel.getSpecialValue()));
-        // Se supone que el JLabel que se ha creado para mostrar el valor en
-        // piezas de oro del tesoro se ha denominado coins
-        // Proceder de manera similar con el resto de componentes
-        // Finalizar con la siguiente orden para que los cambios se hagan
-        // efectivos
+
         repaint();
     }
 
+    public boolean isSelected(){
+        return this.selected;
+    }
+    
+    public Treasure getTreasure(){
+        return this.treasureModel;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +51,6 @@ public class TreasureView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nameD = new javax.swing.JLabel();
         typeD = new javax.swing.JLabel();
         minBonusD = new javax.swing.JLabel();
         name = new javax.swing.JLabel();
@@ -55,7 +61,12 @@ public class TreasureView extends javax.swing.JPanel {
         goldCoinsD = new javax.swing.JLabel();
         goldCoins = new javax.swing.JLabel();
 
-        nameD.setText("Name");
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         typeD.setText("Type");
 
@@ -81,36 +92,29 @@ public class TreasureView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(name)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+                        .addComponent(goldCoinsD)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(maxBonusD)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(minBonusD)
-                                .addComponent(typeD)
-                                .addComponent(nameD))
-                            .addGap(22, 22, 22))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(maxBonusD)
-                            .addGap(18, 18, 18)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(goldCoinsD)
-                        .addGap(33, 33, 33)))
+                                .addComponent(typeD)))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(goldCoins)
                     .addComponent(maxBonus)
-                    .addComponent(name)
-                    .addComponent(type)
-                    .addComponent(minBonus))
+                    .addComponent(goldCoins)
+                    .addComponent(minBonus)
+                    .addComponent(type))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameD)
-                    .addComponent(name))
                 .addGap(18, 18, 18)
+                .addComponent(name)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(typeD)
                     .addComponent(type))
@@ -126,9 +130,16 @@ public class TreasureView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goldCoinsD)
                     .addComponent(goldCoins))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        this.selected = !this.selected;
+        setBackground(new java.awt.Color(250,0,100));
+        setOpaque(selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -139,7 +150,6 @@ public class TreasureView extends javax.swing.JPanel {
     private javax.swing.JLabel minBonus;
     private javax.swing.JLabel minBonusD;
     private javax.swing.JLabel name;
-    private javax.swing.JLabel nameD;
     private javax.swing.JLabel type;
     private javax.swing.JLabel typeD;
     // End of variables declaration//GEN-END:variables

@@ -35,9 +35,6 @@ public class CardDealer {
         unusedTreasures = new ArrayList<>();
         usedTreasures = new ArrayList<>();
         unusedCultist = new ArrayList<>();
-        shuffleTreasures();
-        shuffleMonsters();
-        shuffleCultists();
     }
     
 //------------------------------Other methods-----------------------------------
@@ -527,6 +524,9 @@ public class CardDealer {
         initTreasureCardDeck();
         initMonsterCardDeck();
         initCultistCardDesk();
+        shuffleTreasures();
+        shuffleMonsters();
+        shuffleCultists();
     }
     
     /*

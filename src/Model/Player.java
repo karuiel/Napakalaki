@@ -256,8 +256,9 @@ public class Player {
      *                  false en caso contrario
     */
     public int getLevel(){
-        return level;
+        return this.level;
     }
+    
     public boolean canMakeTreasureVisible(Treasure t){
         TreasureKind type = t.getType();
         boolean canMake = false;
@@ -570,5 +571,9 @@ public class Player {
     
     public void setHiddenTreasures(ArrayList<Treasure> t){
         this.hiddenTreasures = t;
+    }
+    
+    public boolean isCultist(){
+        return false;
     }
 }    

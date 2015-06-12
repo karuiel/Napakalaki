@@ -19,7 +19,8 @@ public class PruebaNapakalaki {
         NapakalakiView napakalakiView = new NapakalakiView();
         
         Dice.createInstance (napakalakiView);
-        napakalakiView.setNapakalaki(napakalakiModel);
+        napakalakiView.setNapakalaki(napakalakiModel); 
+        //nota::¿hay que quitar esto?
         napakalakiView.showView();
         
         ArrayList<String> names =  new ArrayList();

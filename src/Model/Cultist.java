@@ -18,7 +18,7 @@ public class Cultist implements Card{
         this.gainedLevels = gainedLevels;
     }
     
-    public int getBasicBalue(){
+    public int getBasicValue(){
         return this.gainedLevels;
     }
     

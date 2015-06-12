@@ -95,7 +95,7 @@ public class Treasure implements Card{
                    
     }
     
-    public int getBasicBalue(){
+    public int getBasicValue(){
         return minBonus;
     }
     public int getSpecialValue(){

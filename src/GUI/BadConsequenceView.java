@@ -4,20 +4,30 @@
  * and open the template in the editor.
  */
 package GUI;
+import Model.BadConsequence;
 
 /**
  *
- * @author Miguemc
+ * @author maria
  */
-public class SpecificBadConsequenceView extends javax.swing.JPanel {
+public class BadConsequenceView extends javax.swing.JPanel {
 
+    BadConsequence bcView;
+    
     /**
-     * Creates new form SpecificBadConsequenceView
+     * Creates new form BadConsequenceView
      */
-    public SpecificBadConsequenceView() {
+    public BadConsequenceView() {
         initComponents();
     }
 
+    public void setBadConsequence (BadConsequence bc) {
+        bcView = bc;
+        text.setText(bcView.getText());
+
+        repaint();
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +37,30 @@ public class SpecificBadConsequenceView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        text = new javax.swing.JTextArea();
+
+        text.setColumns(20);
+        text.setRows(5);
+        jScrollPane1.setViewportView(text);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea text;
     // End of variables declaration//GEN-END:variables
 }
